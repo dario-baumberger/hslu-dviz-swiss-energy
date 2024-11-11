@@ -1,16 +1,14 @@
-// Fetch the JSON data
 fetch('./data/stromproduktion_swissgrid.json')
     .then(response => response.json())
     .then(data => {
-        // Create the Highcharts chart with the fetched data
         Highcharts.chart('chart1', {
             chart: {
                 backgroundColor: 'transparent',
-                type: 'column',
-            },
-            title: {
-                text: 'Yearly Production by Energietraeger',
-                align: 'left'
+                type: 'column'
+            }, 
+            title: false,
+            credits: {
+                enabled: false
             },
             xAxis: {
                 categories: data[0].data.map((_, index) => index + 2014) 
@@ -35,167 +33,89 @@ fetch('./data/stromproduktion_swissgrid.json')
                     
                 }
             },
-            series: data // Use the fetched data as the series
+            series: data
         });
     })
     .catch(error => console.error('Error fetching the JSON data:', error));
 
 
-Highcharts.chart('chart2', {
-    title: {
-        text: 'Sales of petroleum products March, Norway',
-        align: 'left'
-    },
-    xAxis: {
-        categories: [
-            'Jet fuel', 'Duty-free diesel', 'Petrol', 'Diesel', 'Gas oil'
-        ]
-    },
-    yAxis: {
-        title: {
-            text: 'Million liters'
-        }
-    },
-    tooltip: {
-        valueSuffix: ' million liters'
-    },
-    plotOptions: {
-        series: {
-            borderRadius: '25%'
-        }
-    },
-    series: [{
-        type: 'column',
-        name: '2020',
-        data: [59, 83, 65, 228, 184]
-    }, {
-        type: 'column',
-        name: '2021',
-        data: [24, 79, 72, 240, 167]
-    }, {
-        type: 'column',
-        name: '2022',
-        data: [58, 88, 75, 250, 176]
-    }, {
-        type: 'line',
-        step: 'center',
-        name: 'Average',
-        data: [47, 83.33, 70.66, 239.33, 175.66],
-        marker: {
-            lineWidth: 2,
-            lineColor: Highcharts.getOptions().colors[3],
-            fillColor: 'white'
-        }
-    }, {
-        type: 'pie',
-        name: 'Total',
-        data: [{
-            name: '2020',
-            y: 619,
-            color: Highcharts.getOptions().colors[0], // 2020 color
-            dataLabels: {
-                enabled: true,
-                distance: -50,
-                format: '{point.total} M',
-                style: {
-                    fontSize: '15px'
+    fetch('./data/einfuhr_ausfuhr.json')
+    .then(response => response.json())
+    .then(data => {
+        Highcharts.chart('chart2', {
+            chart: {
+                backgroundColor: 'transparent',
+                type: 'column',
+            },
+            title: false,
+            credits: {
+                enabled: false
+            },
+            xAxis: {
+                categories: data[0].data 
+            },
+            yAxis: {
+                title: {
+                    text: 'Produktion (GWh)'
                 }
-            }
-        }, {
-            name: '2021',
-            y: 586,
-            color: Highcharts.getOptions().colors[1] // 2021 color
-        }, {
-            name: '2022',
-            y: 647,
-            color: Highcharts.getOptions().colors[2] // 2022 color
-        }],
-        center: [75, 65],
-        size: 100,
-        innerSize: '70%',
-        showInLegend: false,
-        dataLabels: {
-            enabled: false
-        }
-    }]
-});
+            },
+            tooltip: {
+                valueSuffix: ' GWh'
+            },
+            plotOptions: {
+                column: {
+                    dataLabels: {
+                        enabled: false
+                    },
+                },
+                series: {
+                    // borderRadius: '25%'
+                    
+                }
+            },
+            series: data.slice(1)
+        });
+    })
+    .catch(error => console.error('Error fetching the JSON data:', error));
 
 
-Highcharts.chart('chart3', {
-    title: {
-        text: 'Sales of petroleum products March, Norway',
-        align: 'left'
-    },
-    xAxis: {
-        categories: [
-            'Jet fuel', 'Duty-free diesel', 'Petrol', 'Diesel', 'Gas oil'
-        ]
-    },
-    yAxis: {
-        title: {
-            text: 'Million liters'
-        }
-    },
-    tooltip: {
-        valueSuffix: ' million liters'
-    },
-    plotOptions: {
-        series: {
-            borderRadius: '25%'
-        }
-    },
-    series: [{
-        type: 'column',
-        name: '2020',
-        data: [59, 83, 65, 228, 184]
-    }, {
-        type: 'column',
-        name: '2021',
-        data: [24, 79, 72, 240, 167]
-    }, {
-        type: 'column',
-        name: '2022',
-        data: [58, 88, 75, 250, 176]
-    }, {
-        type: 'line',
-        step: 'center',
-        name: 'Average',
-        data: [47, 83.33, 70.66, 239.33, 175.66],
-        marker: {
-            lineWidth: 2,
-            lineColor: Highcharts.getOptions().colors[3],
-            fillColor: 'white'
-        }
-    }, {
-        type: 'pie',
-        name: 'Total',
-        data: [{
-            name: '2020',
-            y: 619,
-            color: Highcharts.getOptions().colors[0], // 2020 color
-            dataLabels: {
-                enabled: true,
-                distance: -50,
-                format: '{point.total} M',
-                style: {
-                    fontSize: '15px'
+
+fetch('./data/erzeugung.json')
+    .then(response => response.json())
+    .then(data => {
+        Highcharts.chart('chart3', {
+            chart: {
+                backgroundColor: 'transparent',
+                type: 'area',
+            },
+            title: false,
+            credits: {
+                enabled: false
+            },
+            xAxis: {
+                categories: data[0].data.map((year) => year) 
+            },
+            yAxis: {
+                title: {
+                    text: 'Produktion (GWh)'
                 }
-            }
-        }, {
-            name: '2021',
-            y: 586,
-            color: Highcharts.getOptions().colors[1] // 2021 color
-        }, {
-            name: '2022',
-            y: 647,
-            color: Highcharts.getOptions().colors[2] // 2022 color
-        }],
-        center: [75, 65],
-        size: 100,
-        innerSize: '70%',
-        showInLegend: false,
-        dataLabels: {
-            enabled: false
-        }
-    }]
-});
+            },
+            tooltip: {
+                valueSuffix: ' GWh'
+            },
+            plotOptions: {
+                area: {
+                    stacking: 'percent',
+                    marker: {
+                        enabled: false
+                    }
+                },
+                series: {
+                    // borderRadius: '25%'
+                    
+                }
+            },
+            series: data.slice(1)
+        });
+    })
+    .catch(error => console.error('Error fetching the JSON data:', error));
