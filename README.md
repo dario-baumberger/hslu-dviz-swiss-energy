@@ -17,3 +17,5 @@
 
 ## Deployment
 Push to main brach. Github Pages will automatically deploy the chagnes after a short time.
+
+[https://dario-baumberger.github.io/hslu-dviz-swiss-energy/](https://dario-baumberger.github.io/hslu-dviz-swiss-energy/)
