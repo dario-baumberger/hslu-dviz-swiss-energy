@@ -4,17 +4,10 @@ import { chart1 } from "./chart1.js";
 import { chart2 } from "./chart2.js";
 import { chart3 } from "./chart3.js";
 
-class Bootstrapper {
-	static start() {
+function bootstrapp(){
 		chart1();
 		chart2();
 		chart3();
 	}
-}
 
-document.addEventListener("DOMContentLoaded", Bootstrapper.start);
-
-
-
-
-
+document.addEventListener("DOMContentLoaded", bootstrapp());
