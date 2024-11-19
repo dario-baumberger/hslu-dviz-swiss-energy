@@ -4,7 +4,7 @@ export function chart2() {
 	fetch('./data/einfuhr_ausfuhr.json')
 		.then(response => response.json())
 		.then(data => {
-			Highcharts.chart('chart2', {
+			Highcharts.chart('chart1', {
 				chart: {
 					backgroundColor: 'transparent',
 					type: 'column',
