@@ -119,7 +119,7 @@ export default defineComponent({
     },
   },
   mounted() {
-    fetch('/data/erzeugung.json')
+    fetch('../data/erzeugung.json')
       .then((response) => response.json())
       .then((data: ProductionData[]) => {
         console.log(data)
