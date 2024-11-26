@@ -56,7 +56,9 @@ export default defineComponent({
     }"
     class="bg-white relative overflow-hidden h-screen w-full"
   >
-    <div class="fixed top-0 bottom-0 h-screen flex items-center justify-center w-full">
+    <div
+      class="fixed top-0 bottom-0 left-0 right-0 h-screen px-8 flex items-center justify-center w-full"
+    >
       <div class="w-full max-w-5xl m-auto">
         <h2 class="text-3xl mb-4 font-sans">{{ title }}</h2>
         <slot />

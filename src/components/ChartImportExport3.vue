@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="flex flex-col md:flex-row gap-4 justify-center">
-      <div id="chartImport3" class="h-full"></div>
-      <div id="chartExport3" class="h-full"></div>
+    <div class="flex flex-col md:flex-row gap-4 justify-center max-w-56 md:max-w-none mx-auto">
+      <div id="chartImport3" class="h-full w-full"></div>
+      <div id="chartExport3" class="h-full w-full"></div>
     </div>
     <div class="flex h-auto w-full flex-col">
       <div class="relative h-auto min-h-4 pt-10 pb-5">
