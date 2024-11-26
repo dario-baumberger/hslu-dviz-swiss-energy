@@ -51,7 +51,7 @@ export default defineComponent({
     }
   },
   methods: {
-    createChart(years: number[], data: Highcharts.SeriesMapOptions) {
+    createChart(years: number[], data: Highcharts.SeriesMapDataOptions[]) {
       const options: Highcharts.Options = {
         chart: {
           map: topology,
@@ -150,34 +150,38 @@ export default defineComponent({
         this.knob2 = this.max
         console.log(this.knob2, this.max)
 
-        this.createChart(this.years, [
-          ['ch-fr', 10],
-          ['ch-lu', 11],
-          ['ch-ni', 12],
-          ['ch-vs', 13],
-          ['ch-sg', 14],
-          ['ch-ar', 15],
-          ['ch-ti', 16],
-          ['ch-gl', 17],
-          ['ch-gr', 18],
-          ['ch-sz', 19],
-          ['ch-tg', 20],
-          ['ch-sh', 21],
-          ['ch-ur', 22],
-          ['ch-zh', 23],
-          ['ch-zg', 24],
-          ['ch-vd', 25],
-          ['ch-bl', 26],
-          ['ch-be', 27],
-          ['ch-bs', 28],
-          ['ch-so', 29],
-          ['ch-nw', 30],
-          ['ch-ai', 31],
-          ['ch-ge', 32],
-          ['ch-ju', 33],
-          ['ch-ne', 34],
-          ['ch-ag', 35],
-        ] as Highcharts.SeriesMapOptions)
+        data = {
+          data: [
+            ['ch-fr', 10],
+            ['ch-lu', 11],
+            ['ch-ni', 12],
+            ['ch-vs', 13],
+            ['ch-sg', 14],
+            ['ch-ar', 15],
+            ['ch-ti', 16],
+            ['ch-gl', 17],
+            ['ch-gr', 18],
+            ['ch-sz', 19],
+            ['ch-tg', 20],
+            ['ch-sh', 21],
+            ['ch-ur', 22],
+            ['ch-zh', 23],
+            ['ch-zg', 24],
+            ['ch-vd', 25],
+            ['ch-bl', 26],
+            ['ch-be', 27],
+            ['ch-bs', 28],
+            ['ch-so', 29],
+            ['ch-nw', 30],
+            ['ch-ai', 31],
+            ['ch-ge', 32],
+            ['ch-ju', 33],
+            ['ch-ne', 34],
+            ['ch-ag', 35],
+          ],
+        } as Highcharts.SeriesMapDataOptions
+
+        this.createChart(this.years, data)
       })
       .catch((error) => console.error('Error fetching the JSON data:', error))
   },
