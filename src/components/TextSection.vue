@@ -7,9 +7,13 @@ export default {
 </script>
 <template>
   <section
-    class="w-full px-4 relative bg-white"
+    class="w-full px-4 relative bg-white py-20 relative z-10"
     id="section2"
-    style="filter: drop-shadow(2em 5em 1em rgb(255 255 255 / 1))"
+    style="
+      box-shadow:
+        0 -2em 5em rgba(255, 255, 255, 1),
+        0 2em 5em rgba(255, 255, 255, 1);
+    "
   >
     <div class="max-w-prose m-auto w-full">
       <h2 class="text-3xl mb-4 font-sans">{{ title }}</h2>

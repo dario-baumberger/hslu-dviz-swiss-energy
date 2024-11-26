@@ -3,7 +3,8 @@ import ChartProduction from './components/ChartProduction.vue'
 import ChartImportExport from './components/ChartImportExport.vue'
 import ChartProduction2 from './components/ChartProduction2.vue'
 import Jumbotron from './components/Jumbotron.vue'
-import TextSection from './components/icons/TextSection.vue'
+import TextSection from './components/TextSection.vue'
+import ChartSection from './components/ChartSection.vue'
 </script>
 
 <template>
@@ -30,47 +31,36 @@ import TextSection from './components/icons/TextSection.vue'
         provide an overview.
       </p>
     </TextSection>
+    <ChartSection>
+      <ChartProduction />
+    </ChartSection>
 
-    <section class="bg-white" id="section3">
-      <div class="max-w-3xl m-auto">
-        <ChartProduction />
-      </div>
-    </section>
-    <section
-      class="w-full px-4 relative bg-white"
-      id="section2"
-      style="filter: drop-shadow(2em 5em 1em rgb(255 255 255 / 1))"
-    >
-      <div class="max-w-prose m-auto w-full">
-        <h2 class="text-3xl mb-4">Import Export</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti at aliquam obcaecati
-          eaque non quod minima voluptas vel repellendus repellat! Sequi dolores, aliquam corporis
-          optio eveniet quod. Quos, necessitatibus asperiores! Lorem ipsum dolor sit amet
-          consectetur, adipisicing elit. Quam eius laboriosam aliquam magnam ea voluptates quaerat
-          quisquam, perspiciatis, obcaecati autem dolores libero tempore voluptatum facere enim
-          repellendus nulla a quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id iure
-          recusandae culpa sapiente facilis enim at perspiciatis quasi inventore repellat corrupti
-          sed cum iste, mollitia officia cupiditate nam quo. Veritatis! Lorem ipsum dolor sit amet,
-          consectetur adipisicing elit. Fuga adipisci commodi rem facere sed quod blanditiis
-          consectetur iusto nemo ducimus, nostrum distinctio sapiente id, laboriosam ea. Accusamus
-          laboriosam nisi ullam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores,
-          ducimus perferendis fugit quod facilis voluptate ratione vitae assumenda aut, quam harum,
-          nulla ipsam provident architecto pariatur. Error ipsum nobis odio.
-        </p>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos iusto alias, atque sint,
-          magnam quasi, dolorem veritatis reiciendis perspiciatis fugiat ratione quibusdam modi eius
-          fuga! Sint amet dolor saepe sapiente?
-        </p>
-      </div>
-    </section>
+    <TextSection title="Import Export">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti at aliquam obcaecati eaque
+        non quod minima voluptas vel repellendus repellat! Sequi dolores, aliquam corporis optio
+        eveniet quod. Quos, necessitatibus asperiores! Lorem ipsum dolor sit amet consectetur,
+        adipisicing elit. Quam eius laboriosam aliquam magnam ea voluptates quaerat quisquam,
+        perspiciatis, obcaecati autem dolores libero tempore voluptatum facere enim repellendus
+        nulla a quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id iure recusandae
+        culpa sapiente facilis enim at perspiciatis quasi inventore repellat corrupti sed cum iste,
+        mollitia officia cupiditate nam quo. Veritatis! Lorem ipsum dolor sit amet, consectetur
+        adipisicing elit. Fuga adipisci commodi rem facere sed quod blanditiis consectetur iusto
+        nemo ducimus, nostrum distinctio sapiente id, laboriosam ea. Accusamus laboriosam nisi
+        ullam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, ducimus perferendis
+        fugit quod facilis voluptate ratione vitae assumenda aut, quam harum, nulla ipsam provident
+        architecto pariatur. Error ipsum nobis odio.
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos iusto alias, atque sint,
+        magnam quasi, dolorem veritatis reiciendis perspiciatis fugiat ratione quibusdam modi eius
+        fuga! Sint amet dolor saepe sapiente?
+      </p>
+    </TextSection>
 
-    <section class="bg-white" id="section3">
-      <div class="max-w-3xl m-auto top-0 bottom-0 left-0 right-0">
-        <ChartImportExport />
-      </div>
-    </section>
+    <ChartSection>
+      <ChartImportExport />
+    </ChartSection>
     <TextSection title="Production">
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos iusto alias, atque sint,
@@ -79,11 +69,9 @@ import TextSection from './components/icons/TextSection.vue'
       </p>
     </TextSection>
 
-    <section class="bg-white" id="section5">
-      <div class="max-w-3xl m-auto top-0 bottom-0 left-0 right-0">
-        <ChartProduction2 />
-      </div>
-    </section>
+    <ChartSection>
+      <ChartProduction2 />
+    </ChartSection>
     <section class="" id="section6"></section>
   </main>
   <footer class="text-center text-sm p-4">

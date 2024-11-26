@@ -11,7 +11,7 @@ export default {
 </script>
 <template>
   <section
-    class="w-full p-4 relative bg-white bg-cover relative snap-start snap-always"
+    class="w-full p-4 relative bg-white bg-cover relative snap-start snap-always relative z-10"
     id="section1"
   >
     <div
