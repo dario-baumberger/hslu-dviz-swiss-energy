@@ -1,57 +1,46 @@
 <script setup lang="ts">
-  import ChartProduction from './components/ChartProduction.vue';
-  import ChartImportExport from './components/ChartImportExport.vue';
-  import ChartProduction2 from './components/ChartProduction2.vue';
-import Jumbotron from './components/Jumbotron.vue';
-import TextSection from './components/icons/TextSection.vue';
-
+import ChartProduction from './components/ChartProduction.vue'
+import ChartImportExport from './components/ChartImportExport.vue'
+import ChartProduction2 from './components/ChartProduction2.vue'
+import Jumbotron from './components/Jumbotron.vue'
+import TextSection from './components/icons/TextSection.vue'
 </script>
 
 <template>
   <main class="h-full max-h-full flex flex-col snap-y snap-mandatory relative font-serif">
     <Jumbotron />
 
-    <TextSection title="Swiss 2050 Energy Strategy" >
+    <TextSection title="Swiss 2050 Energy Strategy">
       <p>
-          In 2017, the Swiss public voted in favour of the revised Energy Act. This was the first
-          step in implementing the 2050 Energy Strategy, which contains the following objectives:
-        </p>
-        <p>
-          <ul class="list-disc pl-4">
-            <li>
-              promote renewable energy in Switzerland;
-            </li>
-            <li>
-              reduce dependency on fossil energy from abroad;
-
-            </li>
-            <li>
-              reduce energy consumption;
-            </li>
-            <li>
-              increase energy efficiency.
-            </li>
-          </ul>
-        </p>
-        <p>
-          Existing nuclear power plants can remain in operation as long as they are safe. There is a ban on the
-          construction of new nuclear power plants.
-        </p>
-        <p class="mt-4">
-          How is Switzerland doing in terms of energy production and consumption? The following charts provide an
-          overview.
-        </p>
+        In 2017, the Swiss public voted in favour of the revised Energy Act. This was the first step
+        in implementing the 2050 Energy Strategy, which contains the following objectives:
+      </p>
+      <ul class="list-disc pl-4">
+        <li>promote renewable energy in Switzerland;</li>
+        <li>reduce dependency on fossil energy from abroad;</li>
+        <li>reduce energy consumption;</li>
+        <li>increase energy efficiency.</li>
+      </ul>
+      <p>
+        Existing nuclear power plants can remain in operation as long as they are safe. There is a
+        ban on the construction of new nuclear power plants.
+      </p>
+      <p class="mt-4">
+        How is Switzerland doing in terms of energy production and consumption? The following charts
+        provide an overview.
+      </p>
     </TextSection>
 
-
-
-    <section class=" bg-white  " id="section3">
-      <div class="max-w-3xl m-auto  ">
+    <section class="bg-white" id="section3">
+      <div class="max-w-3xl m-auto">
         <ChartProduction />
       </div>
     </section>
-    <section class="w-full px-4 relative bg-white " id="section2"
-      style="filter: drop-shadow(2em 5em 1em rgb(255 255 255 / 1))">
+    <section
+      class="w-full px-4 relative bg-white"
+      id="section2"
+      style="filter: drop-shadow(2em 5em 1em rgb(255 255 255 / 1))"
+    >
       <div class="max-w-prose m-auto w-full">
         <h2 class="text-3xl mb-4">Import Export</h2>
         <p>
@@ -77,21 +66,21 @@ import TextSection from './components/icons/TextSection.vue';
       </div>
     </section>
 
-    <section class=" bg-white" id="section3">
-      <div class="max-w-3xl m-auto top-0 bottom-0 left-0 right-0 ">
+    <section class="bg-white" id="section3">
+      <div class="max-w-3xl m-auto top-0 bottom-0 left-0 right-0">
         <ChartImportExport />
       </div>
     </section>
-    <TextSection title="Production" >
+    <TextSection title="Production">
       <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos iusto alias, atque sint,
-          magnam quasi, dolorem veritatis reiciendis perspiciatis fugiat ratione quibusdam modi eius
-          fuga! Sint amet dolor saepe sapiente?
-        </p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos iusto alias, atque sint,
+        magnam quasi, dolorem veritatis reiciendis perspiciatis fugiat ratione quibusdam modi eius
+        fuga! Sint amet dolor saepe sapiente?
+      </p>
     </TextSection>
 
-    <section class="  bg-white" id="section5">
-      <div class="max-w-3xl m-auto top-0 bottom-0 left-0 right-0 ">
+    <section class="bg-white" id="section5">
+      <div class="max-w-3xl m-auto top-0 bottom-0 left-0 right-0">
         <ChartProduction2 />
       </div>
     </section>
