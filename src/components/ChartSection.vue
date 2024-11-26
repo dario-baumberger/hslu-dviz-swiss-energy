@@ -24,7 +24,7 @@ export default defineComponent({
     onMounted(() => {
       observer = new IntersectionObserver(handleIntersection, {
         root: null,
-        threshold: 0.1, // Adjust the threshold as needed
+        threshold: 0.3, // Adjust the threshold as needed
       })
 
       if (sectionRef.value) {

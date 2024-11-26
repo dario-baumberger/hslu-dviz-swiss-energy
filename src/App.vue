@@ -6,6 +6,7 @@ import Jumbotron from './components/Jumbotron.vue'
 import TextSection from './components/TextSection.vue'
 import ChartSection from './components/ChartSection.vue'
 import ChartImportExport2 from './components/ChartImportExport2.vue'
+import ChartImportExport3 from './components/ChartImportExport3.vue'
 </script>
 
 <template>
@@ -30,6 +31,11 @@ import ChartImportExport2 from './components/ChartImportExport2.vue'
       <p class="mt-4">
         How is Switzerland doing in terms of energy production and consumption? The following charts
         provide an overview.
+      </p>
+    </TextSection>
+    <TextSection title="Swiss 2050 Energy Strategy">
+      <p>
+       
       </p>
     </TextSection>
     <ChartSection>
@@ -71,6 +77,16 @@ import ChartImportExport2 from './components/ChartImportExport2.vue'
     </TextSection>
     <ChartSection>
       <ChartImportExport2 />
+    </ChartSection>
+    <TextSection title="Production">
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos iusto alias, atque sint,
+        magnam quasi, dolorem veritatis reiciendis perspiciatis fugiat ratione quibusdam modi eius
+        fuga! Sint amet dolor saepe sapiente?
+      </p>
+    </TextSection>
+    <ChartSection>
+      <ChartImportExport3 />
     </ChartSection>
     <TextSection title="Production">
       <p>
