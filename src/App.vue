@@ -3,6 +3,7 @@
   import ChartImportExport from './components/ChartImportExport.vue';
   import ChartProduction2 from './components/ChartProduction2.vue';
 import Jumbotron from './components/Jumbotron.vue';
+import TextSection from './components/icons/TextSection.vue';
 
 </script>
 
@@ -10,11 +11,8 @@ import Jumbotron from './components/Jumbotron.vue';
   <main class="h-full max-h-full flex flex-col snap-y snap-mandatory relative font-serif">
     <Jumbotron />
 
-    <section class="w-full px-4 relative bg-white " id="section2"
-      style="filter: drop-shadow(2em 5em 1em rgb(255 255 255 / 1))">
-      <div class="max-w-prose m-auto w-full">
-        <h2 class="text-3xl mb-4 font-sans">Swiss 2050 Energy Strategy</h2>
-        <p>
+    <TextSection title="Swiss 2050 Energy Strategy" >
+      <p>
           In 2017, the Swiss public voted in favour of the revised Energy Act. This was the first
           step in implementing the 2050 Energy Strategy, which contains the following objectives:
         </p>
@@ -43,8 +41,9 @@ import Jumbotron from './components/Jumbotron.vue';
           How is Switzerland doing in terms of energy production and consumption? The following charts provide an
           overview.
         </p>
-      </div>
-    </section>
+    </TextSection>
+
+
 
     <section class=" bg-white  " id="section3">
       <div class="max-w-3xl m-auto  ">
@@ -83,17 +82,14 @@ import Jumbotron from './components/Jumbotron.vue';
         <ChartImportExport />
       </div>
     </section>
-    <section class="w-full px-4 relative bg-white " id="section4"
-      style="filter: drop-shadow(2em 5em 1em rgb(255 255 255 / 1))">
-      <div class="max-w-prose m-auto w-full">
-        <h2 class="text-3xl mb-4">Production</h2>
-        <p>
+    <TextSection title="Production" >
+      <p>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos iusto alias, atque sint,
           magnam quasi, dolorem veritatis reiciendis perspiciatis fugiat ratione quibusdam modi eius
           fuga! Sint amet dolor saepe sapiente?
         </p>
-      </div>
-    </section>
+    </TextSection>
+
     <section class="  bg-white" id="section5">
       <div class="max-w-3xl m-auto top-0 bottom-0 left-0 right-0 ">
         <ChartProduction2 />
