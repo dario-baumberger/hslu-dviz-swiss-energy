@@ -49,7 +49,10 @@ export default defineComponent({
 <template>
   <section
     ref="sectionRef"
-    :class="{ 'opacity-1': isVisible, 'opacity-0': !isVisible }"
+    :class="{
+      'opacity-1 pointer-events-auto': isVisible,
+      'opacity-0 pointer-events-none	': !isVisible,
+    }"
     class="bg-white relative overflow-hidden h-screen w-full"
   >
     <div class="fixed top-0 bottom-0 h-screen flex items-center justify-center w-full">

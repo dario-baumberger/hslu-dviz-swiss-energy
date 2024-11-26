@@ -5,6 +5,7 @@ import ChartProduction2 from './components/ChartProduction2.vue'
 import Jumbotron from './components/Jumbotron.vue'
 import TextSection from './components/TextSection.vue'
 import ChartSection from './components/ChartSection.vue'
+import ChartImportExport2 from './components/ChartImportExport2.vue'
 </script>
 
 <template>
@@ -60,6 +61,16 @@ import ChartSection from './components/ChartSection.vue'
 
     <ChartSection>
       <ChartImportExport />
+    </ChartSection>
+    <TextSection title="Production">
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos iusto alias, atque sint,
+        magnam quasi, dolorem veritatis reiciendis perspiciatis fugiat ratione quibusdam modi eius
+        fuga! Sint amet dolor saepe sapiente?
+      </p>
+    </TextSection>
+    <ChartSection>
+      <ChartImportExport2 />
     </ChartSection>
     <TextSection title="Production">
       <p>

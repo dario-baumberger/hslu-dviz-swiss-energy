@@ -3,24 +3,30 @@
     <div id="chart1" class="h-full"></div>
     <div class="flex h-auto w-full flex-col">
       <div class="relative h-auto min-h-4 pt-10 pb-5">
-        <span class="absolute top-0 left-0">{{ min }}</span>
-        <span class="absolute top-0 right-0">{{ max }}</span>
-        <input
-          class="appearance-none h-1 w-full absolute pointer-events-none bg-slate-200"
-          type="range"
-          v-model.number="knob1"
-          :min="min"
-          :max="max"
-          @input="updateChart"
-        />
-        <input
-          class="appearance-none h-1 w-full absolute pointer-events-none bg-slate-200"
-          type="range"
-          v-model.number="knob2"
-          :min="min"
-          :max="max"
-          @input="updateChart"
-        />
+        <span class="absolute top-0 left-0">{{ min }} {{ knob1 }}</span>
+        <span class="absolute top-0 right-0">{{ max }} {{ knob2 }}</span>
+        <label>
+          <span class="sr-only">Limit 1</span>
+          <input
+            class="appearance-none h-1 w-full absolute pointer-events-none bg-slate-200"
+            type="range"
+            v-model.number="knob1"
+            :min="min"
+            :max="max"
+            @input="updateChart"
+          />
+        </label>
+        <label>
+          <span class="sr-only">Limit 2</span>
+          <input
+            class="appearance-none h-1 w-full absolute pointer-events-none bg-slate-200"
+            type="range"
+            v-model.number="knob2"
+            :min="min"
+            :max="max"
+            @input="updateChart"
+          />
+        </label>
       </div>
     </div>
   </div>
@@ -129,7 +135,6 @@ export default defineComponent({
         this.max = Math.max(...this.years)
         this.knob1 = this.min
         this.knob2 = this.max
-        console.log(this.knob2, this.max)
 
         this.createChart(this.years, data)
       })
