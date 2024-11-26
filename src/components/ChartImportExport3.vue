@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex">
+    <div class="flex flex-col md:flex-row gap-4 justify-center">
       <div id="chartImport3" class="h-full"></div>
       <div id="chartExport3" class="h-full"></div>
     </div>

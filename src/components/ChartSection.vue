@@ -11,6 +11,7 @@ export default defineComponent({
 
     const handleIntersection = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
+        console.log(entry)
         if (entry.isIntersecting) {
           isVisible.value = true
         } else {

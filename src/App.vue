@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import ChartProduction from './components/ChartProduction.vue'
 import ChartImportExport from './components/ChartImportExport.vue'
-import ChartProduction2 from './components/ChartProduction2.vue'
+
 import Jumbotron from './components/Jumbotron.vue'
 import TextSection from './components/TextSection.vue'
 import ChartSection from './components/ChartSection.vue'
-import ChartImportExport2 from './components/ChartImportExport2.vue'
+
 import ChartImportExport3 from './components/ChartImportExport3.vue'
+import ChartProductionBar from './components/ChartProductionBar.vue'
+import ChartSwissMap from './components/ChartSwissMap.vue'
+import ChartProductionArea from './components/ChartProductionArea.vue'
 </script>
 
 <template>
@@ -34,12 +36,10 @@ import ChartImportExport3 from './components/ChartImportExport3.vue'
       </p>
     </TextSection>
     <TextSection title="Swiss 2050 Energy Strategy">
-      <p>
-       
-      </p>
+      <p></p>
     </TextSection>
     <ChartSection>
-      <ChartProduction />
+      <ChartProductionBar />
     </ChartSection>
 
     <TextSection title="Import Export">
@@ -66,38 +66,51 @@ import ChartImportExport3 from './components/ChartImportExport3.vue'
     </TextSection>
 
     <ChartSection>
-      <ChartImportExport />
+      <ChartProductionArea />
     </ChartSection>
     <TextSection title="Production">
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos iusto alias, atque sint,
         magnam quasi, dolorem veritatis reiciendis perspiciatis fugiat ratione quibusdam modi eius
-        fuga! Sint amet dolor saepe sapiente?
+        fuga! Sint amet dolor saepe sapiente? lorem ipsum dolor sit amet consectetur adipisicing
+        elit. Deleniti at aliquam obcaecati eaque. Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Libero nisi recusandae quae placeat cupiditate ipsum id exercitationem,
+        officiis nemo impedit consectetur neque praesentium sapiente itaque tempora fuga tempore
+        necessitatibus quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad repudiandae
+        facilis eveniet, veritatis, ea commodi atque nesciunt sint vel neque ratione eius
+        accusantium nostrum perferendis explicabo porro provident molestiae ipsum?
       </p>
     </TextSection>
     <ChartSection>
-      <ChartImportExport2 />
+      <ChartSwissMap />
     </ChartSection>
-    <TextSection title="Production">
+    <TextSection title="Import and Export from EU">
       <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos iusto alias, atque sint,
-        magnam quasi, dolorem veritatis reiciendis perspiciatis fugiat ratione quibusdam modi eius
-        fuga! Sint amet dolor saepe sapiente?
+        Die Schweiz importiert Energie aus ihren Nachbarländern und exportiert auch Energie in
+        dieselben. Die folgenden Karten zeigen die Energieimporte und -exporte der letzten Jahre .
+      </p>
+      <p>
+        Am meisten Energie bezieht die Schweiz aus Deutschland und Frankreich. Am meisten Energie
+        liefer die Schweiz nach Italien. Die Schweiz liefert auch Energie an Staaten, von welchen
+        Sie Energie bezieht.
       </p>
     </TextSection>
     <ChartSection>
       <ChartImportExport3 />
     </ChartSection>
-    <TextSection title="Production">
+    <TextSection title="Import and Export Verhältnis">
       <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos iusto alias, atque sint,
-        magnam quasi, dolorem veritatis reiciendis perspiciatis fugiat ratione quibusdam modi eius
-        fuga! Sint amet dolor saepe sapiente?
+        In den Vergangen Jahren ist nicht ersichtlich, dass die Schweiz deutlich mehr Energie
+        exportiert als importiert.
+      </p>
+      <p>
+        Vor 2003 lieferte die Schweiz mehr Energie als sie bezog. Ab 2003 ist dies nicht mehr der
+        eindeutig der Fall.
       </p>
     </TextSection>
 
     <ChartSection>
-      <ChartProduction2 />
+      <ChartImportExport />
     </ChartSection>
     <section class="" id="section6"></section>
   </main>

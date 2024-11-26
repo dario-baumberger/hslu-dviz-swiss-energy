@@ -75,7 +75,7 @@ export default defineComponent({
         },
         yAxis: {
           title: {
-            text: 'Produktion (GWh)',
+            text: 'GWh',
           },
         },
         tooltip: {
@@ -106,14 +106,16 @@ export default defineComponent({
 
       const filteredData = this.originalData.map((series) => ({
         ...series,
-        data: series.data.slice(startIndex, endIndex),
+        data: series.data.slice(startIndex + 1, endIndex),
       }))
+
+      console.log(filteredData)
 
       this.chart?.update({
         xAxis: {
           categories: filteredYears.map((year) => year.toString()),
         },
-        series: filteredData as Highcharts.SeriesOptionsType[],
+        series: filteredData.slice(1) as Highcharts.SeriesOptionsType[],
       })
     },
   },
