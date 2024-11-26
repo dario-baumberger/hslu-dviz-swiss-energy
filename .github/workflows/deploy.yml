@@ -3,7 +3,7 @@ name: Deploy Vue.js App to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main # Change this to your default branch if it's not 'main'
 
 jobs:
   build:
@@ -24,8 +24,19 @@ jobs:
       - name: Build Vue.js app
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
