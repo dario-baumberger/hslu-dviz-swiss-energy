@@ -1,7 +1,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import * as Highcharts from 'highcharts'
-import InputRange from './InputRange.vue'
 
 type ProductionData = {
   name: string
