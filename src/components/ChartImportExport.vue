@@ -118,7 +118,7 @@ export default defineComponent({
     },
   },
   mounted() {
-    fetch('../data/einfuhr_ausfuhr.json')
+    fetch('./data/einfuhr_ausfuhr.json')
       .then((response) => response.json())
       .then((data) => {
         this.years = data[0].data

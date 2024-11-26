@@ -119,7 +119,7 @@ export default defineComponent({
     },
   },
   mounted() {
-    fetch('../data/stromproduktion_swissgrid.json')
+    fetch('./data/stromproduktion_swissgrid.json')
       .then((response) => response.json())
       .then((data) => {
         this.years = data[0].data.map((_: unknown, index: number) => index + 2014)
