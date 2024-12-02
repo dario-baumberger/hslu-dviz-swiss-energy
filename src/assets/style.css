@@ -7,12 +7,13 @@ input[type='range']::-webkit-slider-thumb {
   pointer-events: all;
   width: 24px;
   height: 24px;
-  background-color: #fff;
+  background-color: #efefef;
   border-radius: 50%;
   box-shadow: 0 0 0 1px #c6c6c6;
+  border-color: black;
   cursor: pointer;
-  z-index: 1;
   position: relative;
+  z-index: 11;
 }
 
 input[type='range']::-moz-range-thumb {
@@ -20,14 +21,17 @@ input[type='range']::-moz-range-thumb {
   pointer-events: all;
   width: 24px;
   height: 24px;
-  background-color: #fff;
+  background-color: #efefef;
   border-radius: 50%;
   box-shadow: 0 0 0 1px #c6c6c6;
+  border-color: black;
   cursor: pointer;
+  position: relative;
+  z-index: 11;
 }
 
 input[type='range']::-webkit-slider-thumb:hover {
-  background: #f7f7f7;
+  background: #efefef;
 }
 
 input[type='range']::-webkit-slider-thumb:active {
@@ -41,7 +45,7 @@ input[type='range']::-webkit-slider-thumb:active {
 
 #knob1 {
   height: 0;
-  z-index: 1;
+  z-index: 11;
 }
 
 p {

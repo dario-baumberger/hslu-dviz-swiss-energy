@@ -6,7 +6,11 @@ module.exports = {
       sans: ['"Oswald"', 'sans-serif'],
       serif: ['"Quattrocento"', 'serif'],
     },
-    extend: {},
+    extend: {
+      width: {
+        '2px': '2px',
+      },
+    },
   },
   plugins: [],
 }
