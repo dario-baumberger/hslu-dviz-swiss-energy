@@ -69,6 +69,7 @@ export default defineComponent({
       const options: Highcharts.Options = {
         chart: {
           map: topology,
+          animation: false,
         },
         credits: {
           enabled: false,
@@ -129,6 +130,9 @@ export default defineComponent({
               enabled: true,
               format: '{point.name}',
             },
+            tooltip: {
+              pointFormat: '{point.name}: {point.value}',
+            },
           },
         ],
       }
@@ -188,7 +192,6 @@ export default defineComponent({
       .then((data) => {
         this.years = data.map((item: YearlyData) => item.name)
         this.originalData = data
-
         this.min = Math.min(...this.years)
         this.max = Math.max(...this.years)
         this.yearToShow = this.max

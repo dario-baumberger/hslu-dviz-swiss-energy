@@ -120,7 +120,6 @@ export default defineComponent({
       .then((data) => {
         this.years = data[0].data
         this.originalData = data
-
         this.min = Math.min(...this.years)
         this.max = Math.max(...this.years)
         this.knob1 = this.min

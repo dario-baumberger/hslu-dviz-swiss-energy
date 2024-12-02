@@ -121,10 +121,8 @@ export default defineComponent({
       .then((data) => {
         this.years = data[0].data.map((_: unknown, index: number) => index + 2014)
         this.originalData = data
-
         this.min = Math.min(...this.years)
         this.max = Math.max(...this.years)
-
         this.knob1 = this.min
         this.knob2 = this.max
 

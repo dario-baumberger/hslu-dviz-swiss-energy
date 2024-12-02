@@ -75,9 +75,6 @@ export default defineComponent({
               enabled: false,
             },
           },
-          series: {
-            // borderRadius: '25%'
-          },
         },
         series: data.slice(1),
       }
@@ -120,7 +117,6 @@ export default defineComponent({
       .then((data) => {
         this.years = data[0].data
         this.originalData = data
-
         this.min = Math.min(...this.years)
         this.max = Math.max(...this.years)
         this.knob1 = this.min
