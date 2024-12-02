@@ -45,7 +45,7 @@ import ChartConsumption from './components/ChartConsumption.vue'
         mix.
       </p>
     </TextSection>
-    <ChartSection>
+    <ChartSection source-url="test">
       <ChartProductionBar />
     </ChartSection>
 
