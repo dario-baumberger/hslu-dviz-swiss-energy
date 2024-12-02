@@ -104,7 +104,7 @@ export default defineComponent({
             data: mapData(filteredYears?.data.imports),
             states: {
               hover: {
-                color: '#BADA55',
+                color: '#8B0000',
               },
             },
             dataLabels: {

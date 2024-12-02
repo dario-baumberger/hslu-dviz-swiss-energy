@@ -1,6 +1,6 @@
 [
   {
-    "name": "Flusskraft",
+    "name": "Hydropower",
     "data": [
       17237.7,
       16594.0,
@@ -16,7 +16,7 @@
     ]
   },
   {
-    "name": "Kernkraft",
+    "name": "Nuclear",
     "data": [
       26439.9,
       22155.9,
@@ -48,7 +48,7 @@
     ]
   },
   {
-    "name": "Speicherkraft",
+    "name": "Storage Power",
     "data": [
       20803.9,
       21754.1,
@@ -64,7 +64,7 @@
     ]
   },
   {
-    "name": "Thermische",
+    "name": "Thermal",
     "data": [
       3660.6,
       3660.6,

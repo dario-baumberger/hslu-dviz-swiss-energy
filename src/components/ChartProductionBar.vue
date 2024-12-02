@@ -81,7 +81,7 @@ export default defineComponent({
         },
         yAxis: {
           title: {
-            text: 'Produktion (GWh)',
+            text: 'GWh',
           },
         },
         tooltip: {

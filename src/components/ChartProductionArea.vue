@@ -47,7 +47,7 @@ export default defineComponent({
         },
         yAxis: {
           title: {
-            text: 'Produktion (GWh)',
+            text: 'GWh',
           },
         },
         tooltip: {
@@ -64,7 +64,7 @@ export default defineComponent({
             // borderRadius: '25%'
           },
         },
-        series: data as Highcharts.SeriesOptionsType[],
+        series: data.slice(1) as Highcharts.SeriesOptionsType[],
       }
 
       this.chart = Highcharts.chart('chart3', options)

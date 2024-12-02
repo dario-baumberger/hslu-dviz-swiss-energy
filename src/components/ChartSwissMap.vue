@@ -66,6 +66,9 @@ export default defineComponent({
         title: {
           text: '',
         },
+        credits: {
+          enabled: false,
+        },
         series: [
           {
             type: 'map',
