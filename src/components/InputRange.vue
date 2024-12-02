@@ -58,14 +58,24 @@ export default defineComponent({
     watch(
       () => props.low,
       (newVal) => {
-        knob1.value = newVal
+        if (newVal > knob2.value) {
+          knob1.value = knob2.value
+          knob2.value = newVal
+        } else {
+          knob1.value = newVal
+        }
       },
     )
 
     watch(
       () => props.high,
       (newVal) => {
-        knob2.value = newVal
+        if (newVal < knob1.value) {
+          knob2.value = knob1.value
+          knob1.value = newVal
+        } else {
+          knob2.value = newVal
+        }
       },
     )
 
