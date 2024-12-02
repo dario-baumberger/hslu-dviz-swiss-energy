@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="chart2" class="h-full"></div>
+    <div id="chartConsumption" class="h-full"></div>
     <div class="flex h-auto w-full flex-col">
       <div class="relative h-auto min-h-4 pt-10 pb-5">
         <span class="absolute top-0 left-0">{{ min }}</span>
@@ -100,7 +100,7 @@ export default defineComponent({
         series: data.slice(1),
       }
 
-      this.chart = Highcharts.chart('chart2', options)
+      this.chart = Highcharts.chart('chartConsumption', options)
     },
     updateChart() {
       if (!(this.knob1 && this.knob2 && this.min && this.max)) {

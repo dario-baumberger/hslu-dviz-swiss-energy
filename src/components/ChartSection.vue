@@ -11,7 +11,7 @@ export default defineComponent({
 
     const handleIntersection = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
-        console.log(entry)
+        //console.log(entry)
         if (entry.isIntersecting) {
           isVisible.value = true
         } else {
@@ -59,7 +59,13 @@ export default defineComponent({
     <div
       class="fixed top-0 bottom-0 left-0 right-0 h-screen px-8 flex items-center justify-center w-full"
     >
-      <div class="w-full max-w-5xl m-auto">
+      <div
+        class="w-full max-w-5xl m-auto"
+        :class="{
+          block: isVisible,
+          'hidden	': !isVisible,
+        }"
+      >
         <h2 class="text-3xl mb-4 font-sans">{{ title }}</h2>
         <slot />
       </div>

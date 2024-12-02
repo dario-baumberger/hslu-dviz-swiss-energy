@@ -29,10 +29,10 @@ type ProductionData = {
 }
 
 type ComponentData = {
-  min: number
-  max: number
-  knob1: number
-  knob2: number
+  min: number | undefined
+  max: number | undefined
+  knob1: number | undefined
+  knob2: number | undefined
   originalData: ProductionData[]
   years: number[]
   chart: Highcharts.Chart | null
@@ -117,6 +117,10 @@ export default defineComponent({
       this.chart = Highcharts.mapChart('chartExport2', options)
     },
     updateChart() {
+      if (!(this.knob1 && this.knob2 && this.min && this.max)) {
+        return
+      }
+
       const minYear = this.knob1
       const maxYear = this.knob2
 

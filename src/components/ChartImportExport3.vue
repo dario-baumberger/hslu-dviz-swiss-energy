@@ -8,14 +8,17 @@
       <div class="relative h-auto min-h-4 pt-10 pb-5">
         <span class="absolute top-0 left-0">{{ min }}</span>
         <span class="absolute top-0 right-0">{{ max }}</span>
-        <input
-          class="appearance-none h-1 w-full absolute pointer-events-none bg-slate-200"
-          type="range"
-          v-model.number="yearToShow"
-          :min="min"
-          :max="max"
-          @input="updateChart"
-        />
+        <label v-if="min && max && yearToShow">
+          <span class="sr-only">Limit 1</span>
+          <input
+            class="appearance-none h-1 w-full absolute pointer-events-none bg-slate-200"
+            type="range"
+            v-model.number="yearToShow"
+            :min="min"
+            :max="max"
+            @input="updateChart"
+          />
+        </label>
       </div>
     </div>
   </div>

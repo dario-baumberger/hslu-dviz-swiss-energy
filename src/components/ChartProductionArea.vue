@@ -8,10 +8,10 @@ type ProductionData = {
 }
 
 type ComponentData = {
-  min: number
-  max: number
-  knob1: number
-  knob2: number
+  min: number | undefined
+  max: number | undefined
+  knob1: number | undefined
+  knob2: number | undefined
   originalData: ProductionData[]
   years: number[]
   chart: Highcharts.Chart | null
@@ -70,6 +70,10 @@ export default defineComponent({
       this.chart = Highcharts.chart('chart3', options)
     },
     updateChart() {
+      if (!(this.knob1 && this.knob2 && this.min && this.max)) {
+        return
+      }
+
       const minYear = this.knob1
       const maxYear = this.knob2
 
@@ -119,22 +123,28 @@ export default defineComponent({
       <div class="relative h-auto min-h-4 pt-10 pb-5">
         <span class="absolute top-0 left-0">{{ min }}</span>
         <span class="absolute top-0 right-0">{{ max }}</span>
-        <input
-          class="appearance-none h-1 w-full absolute pointer-events-none bg-slate-200"
-          type="range"
-          v-model.number="knob1"
-          :min="min"
-          :max="max"
-          @input="updateChart"
-        />
-        <input
-          class="appearance-none h-1 w-full absolute pointer-events-none bg-slate-200"
-          type="range"
-          v-model.number="knob2"
-          :min="min"
-          :max="max"
-          @input="updateChart"
-        />
+        <label v-if="min && max && knob1">
+          <span class="sr-only">Limit 1</span>
+          <input
+            class="appearance-none h-1 w-full absolute pointer-events-none bg-slate-200"
+            type="range"
+            v-model.number="knob1"
+            :min="min"
+            :max="max"
+            @input="updateChart"
+          />
+        </label>
+        <label v-if="min && max && knob2">
+          <span class="sr-only">Limit 2</span>
+          <input
+            class="appearance-none h-1 w-full absolute pointer-events-none bg-slate-200"
+            type="range"
+            v-model.number="knob2"
+            :min="min"
+            :max="max"
+            @input="updateChart"
+          />
+        </label>
       </div>
     </div>
   </div>

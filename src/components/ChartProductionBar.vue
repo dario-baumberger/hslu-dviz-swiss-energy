@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div id="chart1" class="h-full"></div>
+    <div id="chartProductionBar" class="h-full"></div>
     <div class="flex h-auto w-full flex-col">
       <div class="relative h-auto min-h-4 pt-10 pb-5">
-        <span class="absolute top-0 left-0">{{ min }} {{ knob1 }}</span>
-        <span class="absolute top-0 right-0">{{ max }} {{ knob2 }}</span>
-        <label>
+        <span class="absolute top-0 left-0">{{ min }}</span>
+        <span class="absolute top-0 right-0">{{ max }}</span>
+        <label v-if="min && max && knob1">
           <span class="sr-only">Limit 1</span>
           <input
             class="appearance-none h-1 w-full absolute pointer-events-none bg-slate-200"
@@ -16,7 +16,7 @@
             @input="updateChart"
           />
         </label>
-        <label>
+        <label v-if="min && max && knob2">
           <span class="sr-only">Limit 2</span>
           <input
             class="appearance-none h-1 w-full absolute pointer-events-none bg-slate-200"
@@ -42,10 +42,10 @@ type ProductionData = {
 }
 
 type ComponentData = {
-  min: number
-  max: number
-  knob1: number
-  knob2: number
+  min: number | undefined
+  max: number | undefined
+  knob1: number | undefined
+  knob2: number | undefined
   originalData: ProductionData[]
   years: number[]
   chart: Highcharts.Chart | null
@@ -54,10 +54,10 @@ type ComponentData = {
 export default defineComponent({
   data(): ComponentData {
     return {
-      min: 0,
-      max: 100,
-      knob1: 10,
-      knob2: 40,
+      min: undefined,
+      max: undefined,
+      knob1: undefined,
+      knob2: undefined,
       originalData: [],
       years: [] as number[],
       chart: null as Highcharts.Chart | null,
@@ -71,7 +71,7 @@ export default defineComponent({
           type: 'column',
         },
         title: {
-          text: 'Stromproduktion in der Schweiz',
+          text: '',
         },
         credits: {
           enabled: false,
@@ -101,9 +101,13 @@ export default defineComponent({
         series: data as Highcharts.SeriesOptionsType[],
       }
 
-      this.chart = Highcharts.chart('chart1', options)
+      this.chart = Highcharts.chart('chartProductionBar', options)
     },
     updateChart() {
+      if (!(this.knob1 && this.knob2 && this.min && this.max)) {
+        return
+      }
+
       const minYear = this.knob1
       const maxYear = this.knob2
 
@@ -133,8 +137,12 @@ export default defineComponent({
 
         this.min = Math.min(...this.years)
         this.max = Math.max(...this.years)
+
+        console.log(this.min, this.max)
         this.knob1 = this.min
         this.knob2 = this.max
+
+        console.log(this.knob1, this.knob2)
 
         this.createChart(this.years, data)
       })

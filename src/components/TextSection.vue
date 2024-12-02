@@ -7,7 +7,7 @@ export default {
 </script>
 <template>
   <section
-    class="w-full px-8 md:px-16 relative bg-white py-20 relative z-10"
+    class="w-full px-8 md:px-16 relative bg-white py-10 relative z-10"
     id="section2"
     style="
       box-shadow:

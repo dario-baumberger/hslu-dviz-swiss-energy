@@ -9,6 +9,7 @@ import ChartImportExport3 from './components/ChartImportExport3.vue'
 import ChartProductionBar from './components/ChartProductionBar.vue'
 import ChartSwissMap from './components/ChartSwissMap.vue'
 import ChartProductionArea from './components/ChartProductionArea.vue'
+import ChartConsumption from './components/ChartConsumption.vue'
 </script>
 
 <template>
@@ -35,8 +36,14 @@ import ChartProductionArea from './components/ChartProductionArea.vue'
         provide an overview.
       </p>
     </TextSection>
-    <TextSection title="Swiss 2050 Energy Strategy">
-      <p></p>
+    <TextSection title="Swiss Energy Production">
+      <p>
+        Switzerland produces energy from various sources. The generated energy is fed into the grid,
+        where it is not possible to identify its specific source. This is referred to as the energy
+        mix. Within this mix, it is only possible to determine the proportion of energy contributed
+        by each source. Over the years, the energy mix has changed. The following chart shows the
+        mix.
+      </p>
     </TextSection>
     <ChartSection>
       <ChartProductionBar />
@@ -44,19 +51,8 @@ import ChartProductionArea from './components/ChartProductionArea.vue'
 
     <TextSection title="Import Export">
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti at aliquam obcaecati eaque
-        non quod minima voluptas vel repellendus repellat! Sequi dolores, aliquam corporis optio
-        eveniet quod. Quos, necessitatibus asperiores! Lorem ipsum dolor sit amet consectetur,
-        adipisicing elit. Quam eius laboriosam aliquam magnam ea voluptates quaerat quisquam,
-        perspiciatis, obcaecati autem dolores libero tempore voluptatum facere enim repellendus
-        nulla a quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id iure recusandae
-        culpa sapiente facilis enim at perspiciatis quasi inventore repellat corrupti sed cum iste,
-        mollitia officia cupiditate nam quo. Veritatis! Lorem ipsum dolor sit amet, consectetur
-        adipisicing elit. Fuga adipisci commodi rem facere sed quod blanditiis consectetur iusto
-        nemo ducimus, nostrum distinctio sapiente id, laboriosam ea. Accusamus laboriosam nisi
-        ullam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, ducimus perferendis
-        fugit quod facilis voluptate ratione vitae assumenda aut, quam harum, nulla ipsam provident
-        architecto pariatur. Error ipsum nobis odio.
+        Switzerland imports energy from its neighbouring countries and also exports energy to them.
+        The following maps show the energy imports and exports of the last years.
       </p>
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos iusto alias, atque sint,
@@ -86,19 +82,41 @@ import ChartProductionArea from './components/ChartProductionArea.vue'
     </ChartSection>
     <TextSection title="Import and Export from EU">
       <p>
-        Die Schweiz importiert Energie aus ihren Nachbarländern und exportiert auch Energie in
-        dieselben. Die folgenden Karten zeigen die Energieimporte und -exporte der letzten Jahre .
+        Electricity consumption is not constant. Sometimes too much electricity is produced, and
+        other times too little. The surplus is exported, and when there is a shortage, electricity
+        is imported.
       </p>
       <p>
-        Am meisten Energie bezieht die Schweiz aus Deutschland und Frankreich. Am meisten Energie
-        liefer die Schweiz nach Italien. Die Schweiz liefert auch Energie an Staaten, von welchen
-        Sie Energie bezieht.
+        Switzerland imports energy from its neighboring countries and also exports energy to the
+        same countries. The following maps show energy imports and exports over the past few years.
+      </p>
+      <p>
+        Switzerland imports the most energy from Germany and France. It exports the most energy to
+        Italy. Switzerland also supplies energy to countries from which it imports energy.
       </p>
     </TextSection>
     <ChartSection>
       <ChartImportExport3 />
     </ChartSection>
-    <TextSection title="Import and Export Verhältnis">
+    <TextSection title="Import and Export Ratio">
+      <p>
+        In recent years, it has not been evident that Switzerland exports significantly more energy
+        than it imports.
+      </p>
+      <p>
+        Before 2003, Switzerland supplied more energy than it consumed. Since 2003, this has no
+        longer been the case.
+      </p>
+      <p>
+        To identify the shares of fossil energy, renewable energy, or nuclear energy from abroad, we
+        need to know the energy mixes of the other countries.
+      </p>
+    </TextSection>
+
+    <ChartSection>
+      <ChartImportExport />
+    </ChartSection>
+    <TextSection title="Consumption">
       <p>
         In den Vergangen Jahren ist nicht ersichtlich, dass die Schweiz deutlich mehr Energie
         exportiert als importiert.
@@ -108,13 +126,28 @@ import ChartProductionArea from './components/ChartProductionArea.vue'
         eindeutig der Fall.
       </p>
     </TextSection>
-
     <ChartSection>
-      <ChartImportExport />
+      <ChartConsumption />
     </ChartSection>
-    <section class="" id="section6"></section>
+    <TextSection title="Conclusion">
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias deleniti, nostrum vel porro
+        libero dolores! Repudiandae omnis aliquam porro aut deserunt odio, dolorem, rerum iste
+        dolore sit quidem dolores at?
+      </p>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias deleniti, nostrum vel porro
+        libero dolores! Repudiandae omnis aliquam porro aut deserunt odio, dolorem, rerum iste
+        dolore sit quidem dolores at?
+      </p>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias deleniti, nostrum vel porro
+        libero dolores! Repudiandae omnis aliquam porro aut deserunt odio, dolorem, rerum iste
+        dolore sit quidem dolores at?
+      </p>
+    </TextSection>
   </main>
-  <footer class="text-center text-sm p-4">
+  <footer class="text-center text-sm p-4 pt-20 bg-white">
     <p class="mb-4">HSLU FS24 DVIZ Project: Swiss Energy</p>
     <p class="mb-4 text-sm">
       All charts are made with
