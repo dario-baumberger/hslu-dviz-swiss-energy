@@ -2,6 +2,7 @@
   <div class="flex flex-col md:flex-row gap-4 justify-center max-w-56 md:max-w-none mx-auto">
     <div id="chartImport3" class="h-full w-full"></div>
     <div id="chartExport3" class="h-full w-full"></div>
+    <div id="chartNetto3" class="h-full w-full"></div>
   </div>
   <InputSlide
     v-if="min !== undefined && max !== undefined && yearToShow !== undefined"
@@ -15,7 +16,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Highcharts from 'highcharts/highmaps'
-import topology from '@highcharts/map-collection/custom/europe.topo.json'
+import topology from '@highcharts/map-collection/custom/european-union.topo.json'
 import InputSlide from './InputSlide.vue'
 
 interface YearlyData {
@@ -23,6 +24,7 @@ interface YearlyData {
   data: {
     exports: [string, number][]
     imports: [string, number][]
+    netto: [string, number][]
   }
 }
 
@@ -32,8 +34,9 @@ type ComponentData = {
   yearToShow: number | undefined
   originalData: YearlyData[]
   years: number[]
-  chartImport: Highcharts.Chart | null
-  chartExport: Highcharts.Chart | null
+  chartImport: Highcharts.Chart | undefined
+  chartExport: Highcharts.Chart | undefined
+  chartNetto: Highcharts.Chart | undefined
 }
 
 function isNumberOrNull(value: unknown): value is number | null {
@@ -58,8 +61,9 @@ export default defineComponent({
       yearToShow: undefined,
       originalData: [],
       years: [],
-      chartImport: null,
-      chartExport: null,
+      chartImport: undefined,
+      chartExport: undefined,
+      chartNetto: undefined,
     }
   },
   methods: {
@@ -130,8 +134,37 @@ export default defineComponent({
               enabled: true,
               format: '{point.name}',
             },
-            tooltip: {
-              pointFormat: '{point.name}: {point.value}',
+          },
+        ],
+      }
+
+      const nettoOptions: Highcharts.Options = {
+        ...options,
+        title: {
+          text: 'Netto',
+        },
+        colorAxis: {
+          type: 'linear',
+
+          stops: [
+            [0, '#005645'],
+            [0.5, '#E6E7E8'],
+            [1, '#FF0000'],
+          ],
+        },
+        series: [
+          {
+            type: 'map',
+            name: 'Netto',
+            data: mapData(filteredYears?.data.netto),
+            states: {
+              hover: {
+                color: '#0000FF',
+              },
+            },
+            dataLabels: {
+              enabled: true,
+              format: '{point.name}',
             },
           },
         ],
@@ -139,6 +172,7 @@ export default defineComponent({
 
       this.chartImport = Highcharts.mapChart('chartImport3', importOptions)
       this.chartExport = Highcharts.mapChart('chartExport3', exportOptions)
+      this.chartNetto = Highcharts.mapChart('chartNetto3', nettoOptions)
     },
     updateChart() {
       const filteredYears = this.originalData.find((item) => item.name === this.yearToShow)
@@ -168,6 +202,25 @@ export default defineComponent({
             type: 'map',
             name: 'Import',
             data: mapData(filteredYears?.data.imports),
+            states: {
+              hover: {
+                color: 'red',
+              },
+            },
+            dataLabels: {
+              enabled: true,
+              format: '{point.name}',
+            },
+          },
+        ],
+      })
+
+      this.chartNetto?.update({
+        series: [
+          {
+            type: 'map',
+            name: 'Import',
+            data: mapData(filteredYears?.data.netto),
             states: {
               hover: {
                 color: 'red',
