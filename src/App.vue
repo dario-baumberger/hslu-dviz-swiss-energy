@@ -85,7 +85,7 @@ import ChartConsumption from './components/ChartConsumption.vue'
     </TextSection>
 
     <ChartSection
-      source-url="https://www.admin.ch/gov/de/start/dokumentation/medienmitteilungen.msg-id-97643.html#:~:text=In%20der%20Schweiz%20wird%20Strom,produziert%20(%3D%20Schweizer%20Produktionsmix%202022)."
+      source-url="https://www.admin.ch/gov/de/start/dokumentation/medienmitteilungen.msg-id-97643.html"
     >
       <ChartProductionArea />
     </ChartSection>
