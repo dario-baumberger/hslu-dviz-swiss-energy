@@ -18,6 +18,7 @@ import { defineComponent } from 'vue'
 import Highcharts from 'highcharts/highmaps'
 import topology from '@highcharts/map-collection/custom/european-union.topo.json'
 import InputSlide from './InputSlide.vue'
+import formatNumber from '../utils/formatNumber'
 
 interface YearlyData {
   name: number
@@ -152,16 +153,20 @@ export default defineComponent({
           ],
         },
         tooltip: {
+          useHTML: true,
           formatter: function () {
             const point = this.point
             const hcKey = point.properties['hc-key']
-            const imports = filteredYears?.data.imports[hcKey]
-            const exports = filteredYears?.data.exports[hcKey]
+            const imports = filteredYears?.data.imports[hcKey] as unknown as number
+            const exports = filteredYears?.data.exports[hcKey] as unknown as number
+            const pointValue = point.value as number
             return `
-              <b>${point.name}</b><br/>
-              Imports: ${imports}<br/>
-              Exports: ${exports}<br/>
-              Netto: ${point.value}
+            <b class="text-sm">${point.name}</b><br/>
+              <ul>
+              <li class="text-xs flex gap-2 justify-between"><span>Imports: </span> <span class="text-right">${formatNumber(imports)}</span></li>
+              <li class="text-xs flex gap-2 justify-between"><span>Exports: </span> <span class="text-right">${formatNumber(exports)}</span></li>
+              <li class="text-xs flex gap-2 justify-between"><span>Netto: </span> <span class="text-right">${formatNumber(pointValue)}</span></li>
+              </ul>
             `
           },
         },
