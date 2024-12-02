@@ -49,21 +49,6 @@ import ChartConsumption from './components/ChartConsumption.vue'
       <ChartProductionBar />
     </ChartSection>
 
-    <TextSection title="Import Export">
-      <p>
-        Switzerland imports energy from its neighbouring countries and also exports energy to them.
-        The following maps show the energy imports and exports of the last years.
-      </p>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos iusto alias, atque sint,
-        magnam quasi, dolorem veritatis reiciendis perspiciatis fugiat ratione quibusdam modi eius
-        fuga! Sint amet dolor saepe sapiente?
-      </p>
-    </TextSection>
-
-    <ChartSection>
-      <ChartProductionArea />
-    </ChartSection>
     <TextSection title="Production">
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos iusto alias, atque sint,
@@ -80,6 +65,31 @@ import ChartConsumption from './components/ChartConsumption.vue'
     <ChartSection>
       <ChartSwissMap />
     </ChartSection>
+
+    <TextSection title="Swiss Energy Mix">
+      <p>
+        In Switzerland, electricity is produced from 52.8% hydropower, 36.4% nuclear power, 1.4%
+        fossil fuels, and 9.4% new renewable energies (Swiss production mix 2022). Information on
+        this can be found in the Swiss Electricity Statistics.
+      </p>
+      <p>
+        However, electricity delivered to Swiss sockets is not only from Swiss production: there is
+        active trade with foreign countries, with electricity being both exported and imported.
+        Swiss guarantees of origin are traded domestically, and foreign ones can be imported.
+        Therefore, the Swiss production mix does not correspond to the average composition of the
+        delivered electricity (Swiss delivery mix).
+      </p>
+      <a href="https://www.strom.ch/de/service/stromkennzeichnung" target="_blank"
+        >More Informationen</a
+      >
+    </TextSection>
+
+    <ChartSection
+      source-url="https://www.admin.ch/gov/de/start/dokumentation/medienmitteilungen.msg-id-97643.html#:~:text=In%20der%20Schweiz%20wird%20Strom,produziert%20(%3D%20Schweizer%20Produktionsmix%202022)."
+    >
+      <ChartProductionArea />
+    </ChartSection>
+
     <TextSection title="Import and Export from EU">
       <p>
         Electricity consumption is not constant. Sometimes too much electricity is produced, and

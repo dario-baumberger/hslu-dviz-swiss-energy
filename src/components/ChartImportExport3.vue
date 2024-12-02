@@ -163,9 +163,9 @@ export default defineComponent({
             return `
             <b class="text-sm">${point.name}</b><br/>
               <ul>
-              <li class="text-xs flex gap-2 justify-between"><span>Imports: </span> <span class="text-right">${formatNumber(imports)}</span></li>
-              <li class="text-xs flex gap-2 justify-between"><span>Exports: </span> <span class="text-right">${formatNumber(exports)}</span></li>
-              <li class="text-xs flex gap-2 justify-between"><span>Netto: </span> <span class="text-right">${formatNumber(pointValue)}</span></li>
+              <li class="text-xs flex gap-2 justify-between"><span>Imports: </span> <span class="text-right">${formatNumber(imports)} MWh</span></li>
+              <li class="text-xs flex gap-2 justify-between"><span>Exports: </span> <span class="text-right">${formatNumber(exports)} MWh</span></li>
+              <li class="text-xs flex gap-2 justify-between"><span>Netto: </span> <span class="text-right">${formatNumber(pointValue)} MWh</span></li>
               </ul>
             `
           },
