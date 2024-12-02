@@ -70,7 +70,7 @@ export default defineComponent({
         <slot />
         <a
           v-if="sourceUrl"
-          href="{{ sourceUrl }}"
+          :href="sourceUrl"
           target="_blank"
           class="absolute right-0 bottom-0 mr-10 mb-10 flex gap-2 items-center group hover:text-blue-500"
           >Source
