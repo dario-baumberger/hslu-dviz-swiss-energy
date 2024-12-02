@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col md:flex-row gap-4 justify-center max-w-56 md:max-w-none mx-auto">
-    <div id="chartImport3" class="h-full w-full"></div>
-    <div id="chartExport3" class="h-full w-full"></div>
+  <div class="flex flex-col md:flex-row gap-4 justify-center md:max-w-none mx-auto">
+    <div id="chartImport3" class="h-full w-full hidden md:block"></div>
+    <div id="chartExport3" class="h-full w-full hidden md:block"></div>
     <div id="chartNetto3" class="h-full w-full"></div>
   </div>
   <InputSlide
@@ -145,12 +145,25 @@ export default defineComponent({
         },
         colorAxis: {
           type: 'linear',
-
           stops: [
             [0, '#005645'],
             [0.5, '#E6E7E8'],
             [1, '#FF0000'],
           ],
+        },
+        tooltip: {
+          formatter: function () {
+            const point = this.point
+            const hcKey = point.properties['hc-key']
+            const imports = filteredYears?.data.imports[hcKey]
+            const exports = filteredYears?.data.exports[hcKey]
+            return `
+              <b>${point.name}</b><br/>
+              Imports: ${imports}<br/>
+              Exports: ${exports}<br/>
+              Netto: ${point.value}
+            `
+          },
         },
         series: [
           {
