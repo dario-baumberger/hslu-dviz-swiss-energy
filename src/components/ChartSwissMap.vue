@@ -1,27 +1,19 @@
 <template>
-  <div>
-    <div id="chartExport2" class="h-full"></div>
-    <div class="flex h-auto w-full flex-col">
-      <div class="relative h-auto min-h-4 pt-10 pb-5">
-        <span class="absolute top-0 left-0">{{ min }}</span>
-        <span class="absolute top-0 right-0">{{ max }}</span>
-        <input
-          class="appearance-none h-1 w-full absolute pointer-events-none bg-slate-200"
-          type="range"
-          v-model.number="knob1"
-          :min="min"
-          :max="max"
-          @input="updateChart"
-        />
-      </div>
-    </div>
-  </div>
+  <div id="chartExport2" class="h-full"></div>
+  <InputSlide
+    v-if="min !== undefined && max !== undefined && yearToShow !== undefined"
+    :min="min"
+    :max="max"
+    :value="yearToShow"
+    @changed="handleRangeChange"
+  />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Highcharts from 'highcharts/highmaps'
 import topology from '@highcharts/map-collection/countries/ch/ch-all.topo.json'
+import InputSlide from './InputSlide.vue'
 
 type ProductionData = {
   name: string
@@ -31,20 +23,21 @@ type ProductionData = {
 type ComponentData = {
   min: number | undefined
   max: number | undefined
-  knob1: number | undefined
-  knob2: number | undefined
+  yearToShow: number | undefined
   originalData: ProductionData[]
   years: number[]
   chart: Highcharts.Chart | null
 }
 
 export default defineComponent({
+  components: {
+    InputSlide,
+  },
   data(): ComponentData {
     return {
-      min: 0,
-      max: 100,
-      knob1: 10,
-      knob2: 40,
+      min: undefined,
+      max: undefined,
+      yearToShow: undefined,
       originalData: [],
       years: [],
       chart: null,
@@ -119,15 +112,16 @@ export default defineComponent({
 
       this.chart = Highcharts.mapChart('chartExport2', options)
     },
+    handleRangeChange(value: number) {
+      this.yearToShow = value
+      this.updateChart()
+    },
     updateChart() {
-      if (!(this.knob1 && this.knob2 && this.min && this.max)) {
+      if (!(this.yearToShow && this.min && this.max)) {
         return
       }
 
-      const minYear = this.knob1
-      const maxYear = this.knob2
-
-      const filteredYears = this.years.filter((year) => year >= minYear && year <= maxYear)
+      /*const filteredYears = this.years.filter((year) => year >= minYear && year <= maxYear)
       const startIndex = this.years.indexOf(minYear)
       const endIndex = this.years.indexOf(maxYear) + 1
 
@@ -135,13 +129,13 @@ export default defineComponent({
         ...series,
         data: series.data.slice(startIndex, endIndex),
       }))
-
       this.chart?.update({
         xAxis: {
           categories: filteredYears.map((year) => year.toString()),
         },
         series: filteredData as Highcharts.SeriesOptionsType[],
       })
+        */
     },
   },
   mounted() {
@@ -153,9 +147,7 @@ export default defineComponent({
 
         this.min = Math.min(...this.years)
         this.max = Math.max(...this.years)
-        this.knob1 = this.min
-        this.knob2 = this.max
-        console.log(this.knob2, this.max)
+        this.yearToShow = this.max
 
         data = {
           data: [

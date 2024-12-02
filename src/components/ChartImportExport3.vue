@@ -1,33 +1,22 @@
 <template>
-  <div>
-    <div class="flex flex-col md:flex-row gap-4 justify-center max-w-56 md:max-w-none mx-auto">
-      <div id="chartImport3" class="h-full w-full"></div>
-      <div id="chartExport3" class="h-full w-full"></div>
-    </div>
-    <div class="flex h-auto w-full flex-col">
-      <div class="relative h-auto min-h-4 pt-10 pb-5">
-        <span class="absolute top-0 left-0">{{ min }}</span>
-        <span class="absolute top-0 right-0">{{ max }}</span>
-        <label v-if="min && max && yearToShow">
-          <span class="sr-only">Limit 1</span>
-          <input
-            class="appearance-none h-1 w-full absolute pointer-events-none bg-slate-200"
-            type="range"
-            v-model.number="yearToShow"
-            :min="min"
-            :max="max"
-            @input="updateChart"
-          />
-        </label>
-      </div>
-    </div>
+  <div class="flex flex-col md:flex-row gap-4 justify-center max-w-56 md:max-w-none mx-auto">
+    <div id="chartImport3" class="h-full w-full"></div>
+    <div id="chartExport3" class="h-full w-full"></div>
   </div>
+  <InputSlide
+    v-if="min !== undefined && max !== undefined && yearToShow !== undefined"
+    :min="min"
+    :max="max"
+    :value="yearToShow"
+    @changed="handleRangeChange"
+  />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Highcharts from 'highcharts/highmaps'
 import topology from '@highcharts/map-collection/custom/europe.topo.json'
+import InputSlide from './InputSlide.vue'
 
 interface YearlyData {
   name: number
@@ -38,9 +27,9 @@ interface YearlyData {
 }
 
 type ComponentData = {
-  min: number
-  max: number
-  yearToShow: number
+  min: number | undefined
+  max: number | undefined
+  yearToShow: number | undefined
   originalData: YearlyData[]
   years: number[]
   chartImport: Highcharts.Chart | null
@@ -59,11 +48,14 @@ function mapData(data: unknown): [string, number | null][] {
 }
 
 export default defineComponent({
+  components: {
+    InputSlide,
+  },
   data(): ComponentData {
     return {
-      min: 0,
-      max: 100,
-      yearToShow: 10,
+      min: undefined,
+      max: undefined,
+      yearToShow: undefined,
       originalData: [],
       years: [],
       chartImport: null,
@@ -100,7 +92,6 @@ export default defineComponent({
           {
             type: 'map',
             name: 'Import',
-
             data: mapData(filteredYears?.data.imports),
             states: {
               hover: {
@@ -146,8 +137,6 @@ export default defineComponent({
       this.chartExport = Highcharts.mapChart('chartExport3', exportOptions)
     },
     updateChart() {
-      console.log('update')
-
       const filteredYears = this.originalData.find((item) => item.name === this.yearToShow)
 
       this.chartExport?.update({
@@ -188,13 +177,15 @@ export default defineComponent({
         ],
       })
     },
+    handleRangeChange(value: number) {
+      this.yearToShow = value
+      this.updateChart()
+    },
   },
   mounted() {
     fetch('./data/ogd107_strom_import_export.json')
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
-
         this.years = data.map((item: YearlyData) => item.name)
         this.originalData = data
 

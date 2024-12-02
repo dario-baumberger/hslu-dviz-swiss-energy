@@ -1,40 +1,19 @@
 <template>
-  <div>
-    <div id="chart2" class="h-full"></div>
-    <div class="flex h-auto w-full flex-col">
-      <div class="relative h-auto min-h-4 pt-10 pb-5">
-        <span class="absolute top-0 left-0">{{ min }}</span>
-        <span class="absolute top-0 right-0">{{ max }}</span>
-        <label v-if="min && max && knob1">
-          <span class="sr-only">Limit 1</span>
-          <input
-            class="appearance-none h-1 w-full absolute pointer-events-none bg-slate-200"
-            type="range"
-            v-model.number="knob1"
-            :min="min"
-            :max="max"
-            @input="updateChart"
-          />
-        </label>
-        <label v-if="min && max && knob2">
-          <span class="sr-only">Limit 2</span>
-          <input
-            class="appearance-none h-1 w-full absolute pointer-events-none bg-slate-200"
-            type="range"
-            v-model.number="knob2"
-            :min="min"
-            :max="max"
-            @input="updateChart"
-          />
-        </label>
-      </div>
-    </div>
-  </div>
+  <div id="chart2" class="h-full"></div>
+  <InputRange
+    v-if="min !== undefined && max !== undefined && knob1 !== undefined && knob2 !== undefined"
+    :min="min"
+    :max="max"
+    :low="knob1"
+    :high="knob2"
+    @changed="handleRangeChange"
+  />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Highcharts from 'highcharts'
+import InputRange from './InputRange.vue'
 
 type ProductionData = {
   name: string
@@ -52,12 +31,15 @@ type ComponentData = {
 }
 
 export default defineComponent({
+  components: {
+    InputRange,
+  },
   data(): ComponentData {
     return {
-      min: 0,
-      max: 100,
-      knob1: 10,
-      knob2: 40,
+      min: undefined,
+      max: undefined,
+      knob1: undefined,
+      knob2: undefined,
       originalData: [],
       years: [],
       chart: null,
@@ -102,6 +84,11 @@ export default defineComponent({
 
       this.chart = Highcharts.chart('chart2', options)
     },
+    handleRangeChange({ low, high }: { low: number; high: number }) {
+      this.knob1 = low
+      this.knob2 = high
+      this.updateChart()
+    },
     updateChart() {
       if (!(this.knob1 && this.knob2 && this.min && this.max)) {
         return
@@ -118,8 +105,6 @@ export default defineComponent({
         ...series,
         data: series.data.slice(startIndex + 1, endIndex),
       }))
-
-      console.log(filteredData)
 
       this.chart?.update({
         xAxis: {
@@ -140,7 +125,6 @@ export default defineComponent({
         this.max = Math.max(...this.years)
         this.knob1 = this.min
         this.knob2 = this.max
-        console.log(this.knob2, this.max)
 
         this.createChart(this.years, data)
       })
