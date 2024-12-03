@@ -1,27 +1,42 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
 {
-  "name": "Node.js & TypeScript",
-  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+  "name": "Python + Node.js DevContainer",
+  "dockerFile": "Dockerfile",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "octref.vetur",
+        "ms-vscode-remote.remote-containers",
+        "Vue.volar",
+        "ms-playwright.playwright",
+        "vitest.explorer"
+      ]
+    },
+    "python.defaultInterpreterPath": ".venv/bin/python",
+    "jupyter.jupyterServerType": "local"
+  },
+  "postCreateCommand": "/bin/bash -c 'python3 -m venv .venv && .venv/bin/pip install --upgrade pip && .venv/bin/pip install notebook ipykernel -r requirements.txt'",
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "remoteUser": "vscode",
   "features": {
-    "ghcr.io/devcontainers/features/python:1": {},
-    "ghcr.io/devcontainers-extra/features/pipenv:2": {},
-    "ghcr.io/devcontainers-extra/features/vue-cli:2": {}
-  }
-
-  // Features to add to the dev container. More info: https://containers.dev/features.
-  // "features": {},
-
-  // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  // "forwardPorts": [],
-
-  // Use 'postCreateCommand' to run commands after the container is created.
-  // "postCreateCommand": "yarn install",
-
-  // Configure tool-specific properties.
-  // "customizations": {},
-
-  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-  // "remoteUser": "root"
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.10"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    }
+  },
+  "portsAttributes": {
+    "3000": {
+      "label": "Vite Server"
+    },
+    "8888": {
+      "label": "Jupyter Notebook"
+    }
+  },
+  "forwardPorts": [3000, 8888]
 }
