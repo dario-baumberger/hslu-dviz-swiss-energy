@@ -91,8 +91,8 @@ export default defineComponent({
         },
         colorAxis: {
           type: 'linear',
-          minColor: '#E6E7E8',
-          maxColor: '#FF0000',
+          minColor: '#efefef',
+          maxColor: '#b71c1c',
         },
         series: [
           {
@@ -101,7 +101,7 @@ export default defineComponent({
             data: mapData(filteredYears?.data.imports),
             states: {
               hover: {
-                color: '#8B0000',
+                color: '#f44336',
               },
             },
             dataLabels: {
@@ -118,8 +118,8 @@ export default defineComponent({
         },
         colorAxis: {
           type: 'linear',
-          minColor: '#E6E7E8',
-          maxColor: '#005645',
+          minColor: '#efefef',
+          maxColor: '#1b5e20',
         },
         series: [
           {
@@ -128,7 +128,7 @@ export default defineComponent({
             data: mapData(filteredYears?.data.exports),
             states: {
               hover: {
-                color: '#BADA55',
+                color: '#4caf50',
               },
             },
             dataLabels: {
@@ -147,9 +147,9 @@ export default defineComponent({
         colorAxis: {
           type: 'linear',
           stops: [
-            [0, '#005645'],
-            [0.5, '#E6E7E8'],
-            [1, '#FF0000'],
+            [0, '#1b5e20'],
+            [0.5, '#efefef'],
+            [1, '#b71c1c'],
           ],
         },
         tooltip: {
