@@ -5,7 +5,7 @@ import Jumbotron from './components/Jumbotron.vue'
 import TextSection from './components/TextSection.vue'
 import ChartSection from './components/ChartSection.vue'
 
-import ChartImportExport3 from './components/ChartImportExport3.vue'
+import ChartImportExportMap from './components/ChartImportExportMap.vue'
 import ChartProductionBar from './components/ChartProductionBar.vue'
 import ChartSwissMap from './components/ChartSwissMap.vue'
 import ChartProductionArea from './components/ChartProductionArea.vue'
@@ -16,7 +16,11 @@ import ChartConsumption from './components/ChartConsumption.vue'
   <main class="h-full max-h-full flex flex-col snap-y snap-mandatory relative font-serif">
     <Jumbotron />
 
-    <TextSection title="Swiss 2050 Energy Strategy">
+    <TextSection
+      :has-shadow-top="false"
+      :has-shadow-bottom="false"
+      title="Swiss 2050 Energy Strategy"
+    >
       <p>
         In 2017, the Swiss public voted in favour of the revised Energy Act. This was the first step
         in implementing the 2050 Energy Strategy, which contains the following objectives:
@@ -36,7 +40,7 @@ import ChartConsumption from './components/ChartConsumption.vue'
         provide an overview.
       </p>
     </TextSection>
-    <TextSection title="Swiss Energy Production">
+    <TextSection :has-shadow-top="false" title="Swiss Energy Production">
       <p>
         Switzerland produces energy from various sources. The generated energy is fed into the grid,
         where it is not possible to identify its specific source. This is referred to as the energy
@@ -47,23 +51,6 @@ import ChartConsumption from './components/ChartConsumption.vue'
     </TextSection>
     <ChartSection source-url="test">
       <ChartProductionBar />
-    </ChartSection>
-
-    <TextSection title="Production">
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos iusto alias, atque sint,
-        magnam quasi, dolorem veritatis reiciendis perspiciatis fugiat ratione quibusdam modi eius
-        fuga! Sint amet dolor saepe sapiente? lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Deleniti at aliquam obcaecati eaque. Lorem, ipsum dolor sit amet consectetur
-        adipisicing elit. Libero nisi recusandae quae placeat cupiditate ipsum id exercitationem,
-        officiis nemo impedit consectetur neque praesentium sapiente itaque tempora fuga tempore
-        necessitatibus quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad repudiandae
-        facilis eveniet, veritatis, ea commodi atque nesciunt sint vel neque ratione eius
-        accusantium nostrum perferendis explicabo porro provident molestiae ipsum?
-      </p>
-    </TextSection>
-    <ChartSection>
-      <ChartSwissMap />
     </ChartSection>
 
     <TextSection title="Swiss Energy Mix">
@@ -90,6 +77,25 @@ import ChartConsumption from './components/ChartConsumption.vue'
       <ChartProductionArea />
     </ChartSection>
 
+    <TextSection title="European Energy Mix">
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut, nihil itaque? Earum,
+        consequatur eligendi. Sunt libero maiores incidunt veritatis voluptatum, consequuntur unde
+        ratione pariatur adipisci obcaecati corporis sint fugit quae?
+      </p>
+      <p>
+        lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, nihil itaque? Earum,
+        consequatur eligendi. Sunt libero maiores incidunt veritatis voluptatum, consequuntur unde
+        ratione pariatur adipisci obcaecati corporis sint fugit quae?
+      </p>
+    </TextSection>
+
+    <ChartSection
+      source-url="https://www.admin.ch/gov/de/start/dokumentation/medienmitteilungen.msg-id-97643.html"
+    >
+      <ChartProductionArea />
+    </ChartSection>
+
     <TextSection title="Import and Export from EU">
       <p>
         Electricity consumption is not constant. Sometimes too much electricity is produced, and
@@ -106,7 +112,7 @@ import ChartConsumption from './components/ChartConsumption.vue'
       </p>
     </TextSection>
     <ChartSection>
-      <ChartImportExport3 />
+      <ChartImportExportMap />
     </ChartSection>
     <TextSection title="Import and Export Ratio">
       <p>
@@ -138,6 +144,22 @@ import ChartConsumption from './components/ChartConsumption.vue'
     </TextSection>
     <ChartSection>
       <ChartConsumption />
+    </ChartSection>
+    <TextSection title="Production">
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos iusto alias, atque sint,
+        magnam quasi, dolorem veritatis reiciendis perspiciatis fugiat ratione quibusdam modi eius
+        fuga! Sint amet dolor saepe sapiente? lorem ipsum dolor sit amet consectetur adipisicing
+        elit. Deleniti at aliquam obcaecati eaque. Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Libero nisi recusandae quae placeat cupiditate ipsum id exercitationem,
+        officiis nemo impedit consectetur neque praesentium sapiente itaque tempora fuga tempore
+        necessitatibus quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad repudiandae
+        facilis eveniet, veritatis, ea commodi atque nesciunt sint vel neque ratione eius
+        accusantium nostrum perferendis explicabo porro provident molestiae ipsum?
+      </p>
+    </TextSection>
+    <ChartSection>
+      <ChartSwissMap />
     </ChartSection>
     <TextSection title="Conclusion">
       <p>
