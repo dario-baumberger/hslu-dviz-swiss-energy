@@ -12,7 +12,8 @@
         "ms-vscode-remote.remote-containers",
         "Vue.volar",
         "ms-playwright.playwright",
-        "vitest.explorer"
+        "vitest.explorer",
+        "EditorConfig.EditorConfig"
       ]
     },
     "python.defaultInterpreterPath": ".venv/bin/python",
@@ -29,14 +30,5 @@
     "ghcr.io/devcontainers/features/node:1": {
       "version": "18"
     }
-  },
-  "portsAttributes": {
-    "3000": {
-      "label": "Vite Server"
-    },
-    "8888": {
-      "label": "Jupyter Notebook"
-    }
-  },
-  "forwardPorts": [3000, 8888]
+  }
 }
