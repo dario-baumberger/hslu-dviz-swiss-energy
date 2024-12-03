@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-col md:flex-row gap-4 justify-center md:max-w-none mx-auto">
-    <div id="chartImport3" class="h-full w-full hidden md:block"></div>
-    <div id="chartExport3" class="h-full w-full hidden md:block"></div>
-    <div id="chartNetto3" class="h-full w-full"></div>
+    <div id="chartMapImport" class="h-full w-full hidden md:block"></div>
+    <div id="chartMapExport" class="h-full w-full hidden md:block"></div>
+    <div id="chartMapNetto" class="h-full w-full"></div>
   </div>
   <InputSlide
     v-if="min !== undefined && max !== undefined && yearToShow !== undefined"
@@ -188,9 +188,9 @@ export default defineComponent({
         ],
       }
 
-      this.chartImport = Highcharts.mapChart('chartImport3', importOptions)
-      this.chartExport = Highcharts.mapChart('chartExport3', exportOptions)
-      this.chartNetto = Highcharts.mapChart('chartNetto3', nettoOptions)
+      this.chartImport = Highcharts.mapChart('chartMapImport', importOptions)
+      this.chartExport = Highcharts.mapChart('chartMapExport', exportOptions)
+      this.chartNetto = Highcharts.mapChart('chartMapNetto', nettoOptions)
     },
     updateChart() {
       const filteredYears = this.originalData.find((item) => item.name === this.yearToShow)

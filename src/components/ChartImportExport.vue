@@ -75,10 +75,9 @@ export default defineComponent({
               enabled: false,
             },
           },
-          series: {
-            // borderRadius: '25%'
-          },
+          series: {},
         },
+        colors: ['#b71c1c', '#1b5e20'],
         series: data.slice(1),
       }
 
