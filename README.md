@@ -1,81 +1,79 @@
 # hslu-dviz-swiss-energy
 
-## Data Sources
+## Recommended IDE Setup
 
-| Name                                                                    | Link                                                                                                           | Description |
-| ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ----------- |
-| energiedashboard.ch: Stromproduktion Swissgrid                          | [Link](https://opendata.swiss/de/dataset/energiedashboard-ch-stromproduktion-swissgrid)                        |             |
-| energiedashboard.ch: Tägliche Flüsse in die und aus der Schweiz (Strom) | [Link](https://opendata.swiss/de/dataset/energiedashboard-ch-tagliche-flusse-in-die-und-aus-der-schweiz-strom) |             |
-| energiedashboard.ch: Stromverbrauch Swissgrid                           | [Link](https://opendata.swiss/de/dataset/energiedashboard-ch-stromverbrauch-swissgrid)                         |             |
-| Schweizerische Elektrizitätsbilanz - Jahreswerte                        | [Link](https://opendata.swiss/de/dataset/schweizerische-elektrizitatsbilanz-jahreswerte)                       |
+Developing this project is seamless with **Visual Studio Code** and a **DevContainer** setup.
 
-## Deployment
+### Steps to Get Started:
 
-Push to main brach. Github Pages will automatically deploy the chagnes after a short time.
+1. Open the project in VS Code.
+2. Open the project in the **DevContainer** (use the VS Code DevContainer extension).
+3. Run the following commands:
+   ```bash
+   npm install
+   ```
+4. Use the NPM scripts for development and testing.
 
-[https://dario-baumberger.github.io/hslu-dviz-swiss-energy/](https://dario-baumberger.github.io/hslu-dviz-swiss-energy/)
+### Without a DevContainer:
+
+If you prefer not to use the DevContainer, you will need to manually install the following prerequisites:
+
+- [Node.js (NPM)](https://nodejs.org/)
+- [Python](https://www.python.org/)
+- [Jupyter Notebook](https://jupyter.org/install)
+
+---
+
+## Data
+
+### Data Sources
+
+The project uses the following data sources:
+
+| Name                                                                    | Link                                                                                                           | Description                        |
+| ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| Energiedashboard.ch: Stromproduktion Swissgrid                          | [Link](https://opendata.swiss/de/dataset/energiedashboard-ch-stromproduktion-swissgrid)                        | Electricity production data        |
+| Energiedashboard.ch: Tägliche Flüsse in die und aus der Schweiz (Strom) | [Link](https://opendata.swiss/de/dataset/energiedashboard-ch-tagliche-flusse-in-die-und-aus-der-schweiz-strom) | Daily electricity flows data       |
+| Energiedashboard.ch: Stromverbrauch Swissgrid                           | [Link](https://opendata.swiss/de/dataset/energiedashboard-ch-stromverbrauch-swissgrid)                         | Electricity consumption data       |
+| Schweizerische Elektrizitätsbilanz - Jahreswerte                        | [Link](https://opendata.swiss/de/dataset/schweizerische-elektrizitatsbilanz-jahreswerte)                       | Swiss electricity balance (annual) |
+
+---
+
+## Run Jupyter Notebooks
+
+To run Jupyter Notebooks in this project, execute the following command:
+
+```bash
+jupyter notebook
+```
+
+Ensure Jupyter Notebook is installed, either manually or through the DevContainer setup.
+
+---
 
 ## Frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+This template uses **Vue 3** with **Vite** for frontend development.
 
-### Recommended IDE Setup
+### NPM Scripts
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+The project includes the following NPM scripts:
 
-### Type Support for `.vue` Imports in TS
+| Script              | Description                                                    |
+| ------------------- | -------------------------------------------------------------- |
+| `npm run dev`       | Compile and Hot-Reload for Development                         |
+| `npm run build`     | Type-Check, Compile, and Minify for Production                 |
+| `npm run test:unit` | Run Unit Tests with [Vitest](https://vitest.dev/)              |
+| `npm run test:e2e`  | Run End-to-End Tests with [Playwright](https://playwright.dev) |
+| `npm run lint`      | Lint code with [ESLint](https://eslint.org/)                   |
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+---
 
-### Customize configuration
+## Deployment
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+This project is deployed using **GitHub Pages**. To deploy:
 
-### Project Setup
+1. Push changes to the `main` branch.
+2. GitHub Pages will automatically deploy the changes after a short delay.
 
-```sh
-npm install
-```
-
-#### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-#### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-#### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-#### Run End-to-End Tests with [Playwright](https://playwright.dev)
-
-```sh
-# Install browsers for the first run
-npx playwright install
-
-# When testing on CI, must build the project first
-npm run build
-
-# Runs the end-to-end tests
-npm run test:e2e
-# Runs the tests only on Chromium
-npm run test:e2e -- --project=chromium
-# Runs the tests of a specific file
-npm run test:e2e -- tests/example.spec.ts
-# Runs the tests in debug mode
-npm run test:e2e -- --debug
-```
-
-#### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+Deployed URL: [https://dario-baumberger.github.io/hslu-dviz-swiss-energy/](https://dario-baumberger.github.io/hslu-dviz-swiss-energy/)
