@@ -59,7 +59,7 @@ import ChartConsumption from './components/ChartConsumption.vue'
         officiis nemo impedit consectetur neque praesentium sapiente itaque tempora fuga tempore
         necessitatibus quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad repudiandae
         facilis eveniet, veritatis, ea commodi atque nesciunt sint vel neque ratione eius
-        accusantium nostrum perferendis explicabo porro provident molestiae ipsum?
+        accusantium nostrum perferendis explicabo porro provident molestiae ipsum? gabriel
       </p>
     </TextSection>
     <ChartSection>
