@@ -22,13 +22,13 @@ export default {
     <div
       class="max-w-prose m-auto w-full h-screen p-4 flex items-center justify-center flex-col text-center relative text-white"
     >
-      <div>
+      <div class="max-w-prose m-auto">
         <h1 class="text-6xl mb-8 font-sans uppercase font-bold">Swiss Energy</h1>
-        <p class="font-serif">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi provident fugiat nihil eum
-          laboriosam excepturi explicabo, nisi consequuntur odio praesentium ea, reiciendis iste
-          eveniet tempora labore perspiciatis qui officia ullam!
+        <p class="text-2xl">
+          In 2017, the Swiss public voted in favour of the revised Energy Act. This was the first
+          step in implementing the 2050 Energy Strategy.
         </p>
+        <p class="text-2xl">How is Switzerland doing?</p>
 
         <a
           href="#section2"
