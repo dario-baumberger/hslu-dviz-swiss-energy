@@ -32,3 +32,4 @@ coverage
 test-results/
 playwright-report/
 .venv/*
+vite.config.ts.timestamp*
