@@ -7,6 +7,14 @@ export default {
       bgImage,
     }
   },
+  methods: {
+    scrollToSection() {
+      const section = document.getElementById('section2')
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' })
+      }
+    },
+  },
 }
 </script>
 <template>
@@ -30,8 +38,8 @@ export default {
         </p>
         <p class="text-2xl">How is Switzerland doing?</p>
 
-        <a
-          href="#section2"
+        <button
+          @click="scrollToSection"
           class="animate-bounce mt-10 inline-flex flex-col justify-center items-center mt-40 hover:text-yellow-400 transition-all duration-300"
         >
           Scroll Down
@@ -47,7 +55,7 @@ export default {
               />
             </svg>
           </span>
-        </a>
+        </button>
       </div>
     </div>
   </section>
