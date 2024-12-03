@@ -10,6 +10,7 @@ import ChartProductionBar from './components/ChartProductionBar.vue'
 import ChartSwissMap from './components/ChartSwissMap.vue'
 import ChartProductionArea from './components/ChartProductionArea.vue'
 import ChartConsumption from './components/ChartConsumption.vue'
+import ChartCategorization from './components/ChartCategorization.vue'
 </script>
 
 <template>
@@ -35,9 +36,14 @@ import ChartConsumption from './components/ChartConsumption.vue'
         Existing nuclear power plants can remain in operation as long as they are safe. There is a
         ban on the construction of new nuclear power plants.
       </p>
+      <p>
+        <a href="https://www.uvek.admin.ch/uvek/en/home/energy/energy-policy.html" target="_blank"
+          >Read more about Principles of energy policy in Switzerland</a
+        >
+      </p>
       <p class="mt-4">
-        How is Switzerland doing in terms of energy production and consumption? The following charts
-        provide an overview.
+        How is Switzerland doing in terms of energy production, promote renewable energy, reduce
+        dependency on fossil energy from abroad and consumption?
       </p>
     </TextSection>
     <TextSection :has-shadow-top="false" title="Swiss Energy Production">
@@ -51,6 +57,18 @@ import ChartConsumption from './components/ChartConsumption.vue'
     </TextSection>
     <ChartSection source-url="test">
       <ChartProductionBar />
+    </ChartSection>
+    <TextSection :has-shadow-top="false" title="Energy Categorization">
+      <p>
+        Switzerland produces energy from various sources. The generated energy is fed into the grid,
+        where it is not possible to identify its specific source. This is referred to as the energy
+        mix. Within this mix, it is only possible to determine the proportion of energy contributed
+        by each source. Over the years, the energy mix has changed. The following chart shows the
+        mix.
+      </p>
+    </TextSection>
+    <ChartSection source-url="test">
+      <ChartCategorization />
     </ChartSection>
 
     <TextSection title="Swiss Energy Mix">
@@ -93,7 +111,7 @@ import ChartConsumption from './components/ChartConsumption.vue'
     <ChartSection
       source-url="https://www.admin.ch/gov/de/start/dokumentation/medienmitteilungen.msg-id-97643.html"
     >
-      <ChartProductionArea />
+      # todo: add chart here
     </ChartSection>
 
     <TextSection title="Import and Export from EU">
@@ -143,6 +161,7 @@ import ChartConsumption from './components/ChartConsumption.vue'
       </p>
     </TextSection>
     <ChartSection>
+      # todo: change chart
       <ChartConsumption />
     </ChartSection>
     <TextSection title="Production">
@@ -159,6 +178,7 @@ import ChartConsumption from './components/ChartConsumption.vue'
       </p>
     </TextSection>
     <ChartSection>
+      # todo: change chart
       <ChartSwissMap />
     </ChartSection>
     <TextSection title="Conclusion">

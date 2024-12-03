@@ -104,7 +104,7 @@ export default defineComponent({
     },
   },
   mounted() {
-    fetch('./data/erzeugung-grouped-1.json')
+    fetch('./data/erzeugung-grouped-2.json')
       .then((response) => response.json())
       .then((data: ProductionData[]) => {
         this.years = data[0].data

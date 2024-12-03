@@ -10,6 +10,9 @@ module.exports = {
       width: {
         '2px': '2px',
       },
+      height: {
+        'h-screen-1/2': '50vh',
+      },
     },
   },
   plugins: [],

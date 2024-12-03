@@ -1,8 +1,11 @@
 <template>
   <div class="flex h-auto w-full flex-col">
-    <div class="relative h-auto min-h-4 pt-10 pb-5">
-      <span class="absolute top-0 left-0">{{ min }}</span>
-      <span class="absolute top-0 right-0">{{ max }}</span>
+    <div class="relative h-auto min-h-4 pt-8 pb-5">
+      <div class="absolute top-0 left-0 right-0 flex justify-between">
+        <span class="font-sans text-sm">{{ min }}</span>
+        <span class="font-sans text-sm">{{ value }}</span>
+        <span class="font-sans text-sm">{{ max }}</span>
+      </div>
       <span class="absolute left-0 right-0 h-1 flex justify-between px-3 z-10">
         <span v-for="_ in max - min + 1" :key="_" class="w-2px h-full bg-black"> </span>
       </span>

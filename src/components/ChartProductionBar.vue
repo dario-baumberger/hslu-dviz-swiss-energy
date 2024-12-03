@@ -80,7 +80,7 @@ export default defineComponent({
             // borderRadius: '25%'
           },
         },
-        series: data as Highcharts.SeriesOptionsType[],
+        series: data.slice(1) as Highcharts.SeriesOptionsType[],
       }
 
       this.chart = Highcharts.chart('chartProductionBar', options)
@@ -116,10 +116,10 @@ export default defineComponent({
     },
   },
   mounted() {
-    fetch('./data/stromproduktion_swissgrid.json')
+    fetch('./data/erzeugung.json')
       .then((response) => response.json())
       .then((data) => {
-        this.years = data[0].data.map((_: unknown, index: number) => index + 2014)
+        this.years = data[0].data
         this.originalData = data
         this.min = Math.min(...this.years)
         this.max = Math.max(...this.years)

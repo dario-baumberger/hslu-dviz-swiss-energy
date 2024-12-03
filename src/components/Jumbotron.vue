@@ -18,7 +18,7 @@ export default {
       class="absolute top-0 left-0 right-0 bottom-0 bg-cover bg-center"
       :style="{ backgroundImage: `url(${bgImage})` }"
     ></div>
-    <div class="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-60"></div>
+    <div class="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-70"></div>
     <div
       class="max-w-prose m-auto w-full h-screen p-4 flex items-center justify-center flex-col text-center relative text-white"
     >
@@ -32,7 +32,7 @@ export default {
 
         <a
           href="#section2"
-          class="animate-bounce mt-10 inline-flex flex-col justify-center items-center mt-40"
+          class="animate-bounce mt-10 inline-flex flex-col justify-center items-center mt-40 hover:text-yellow-400 transition-all duration-300"
         >
           Scroll Down
           <span class="inline-block w-10 h-10">
