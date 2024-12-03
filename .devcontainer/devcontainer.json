@@ -1,6 +1,6 @@
 {
-  "name": "Python + Node.js DevContainer",
-  "dockerFile": "Dockerfile",
+  "name": "Python + Node.js",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -28,7 +28,7 @@
       "version": "3.10"
     },
     "ghcr.io/devcontainers/features/node:1": {
-      "version": "18"
+      "version": "22"
     }
   }
 }
