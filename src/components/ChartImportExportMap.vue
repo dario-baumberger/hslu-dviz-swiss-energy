@@ -16,7 +16,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Highcharts from 'highcharts/highmaps'
-import topology from '@highcharts/map-collection/custom/european-union.topo.json'
+//import topology from '@highcharts/map-collection/custom/european-union.topo.json'
+import topology from '../assets/map.topo.json'
 import InputSlide from './InputSlide.vue'
 import formatNumber from '../utils/formatNumber'
 
