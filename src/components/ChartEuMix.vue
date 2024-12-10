@@ -1,7 +1,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import * as Highcharts from 'highcharts'
-import InputRange from './InputRange.vue'
 
 type ProductionData = {
   name: string
@@ -32,7 +31,6 @@ export default defineComponent({
   },
   methods: {
     createChart(data: ProductionData[]) {
-      console.log(data[0].data)
       const options: Highcharts.Options = {
         chart: {
           backgroundColor: 'transparent',
@@ -83,7 +81,7 @@ export default defineComponent({
       const minYear = this.knob1
       const maxYear = this.knob2
 
-      const filteredYears = this.years.filter((year) => year >= minYear && year <= maxYear)
+      //const filteredYears = this.years.filter((year) => year >= minYear && year <= maxYear)
       const startIndex = this.years.indexOf(minYear)
       const endIndex = this.years.indexOf(maxYear) + 1
 
@@ -110,7 +108,7 @@ export default defineComponent({
       .then((response) => response.json())
       .then((data: ProductionData[]) => {
         //this.years = data[0].data
-        console.log(data)
+
         this.originalData = data
         //this.min = Math.min(...this.years)
         //this.max = Math.max(...this.years)

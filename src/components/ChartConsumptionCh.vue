@@ -89,7 +89,6 @@ export default defineComponent({
         ...series,
         data: series.data.slice(startIndex, endIndex),
       }))
-      console.log(filteredData)
 
       this.chart?.update({
         xAxis: {
@@ -109,7 +108,7 @@ export default defineComponent({
       .then((response) => response.json())
       .then((data: ProductionData[]) => {
         this.years = data[0].data
-        console.log(data)
+
         this.originalData = data
         this.min = Math.min(...this.years)
         this.max = Math.max(...this.years)
