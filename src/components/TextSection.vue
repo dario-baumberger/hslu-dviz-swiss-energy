@@ -28,12 +28,12 @@ export default {
 </script>
 <template>
   <section
-    class="w-full px-8 md:px-16 relative bg-white py-10 relative z-10"
+    class="w-full px-8 md:px-16 relative bg-white py-16 relative z-10"
     id="section2"
     :style="computedStyle"
   >
     <div class="max-w-prose m-auto w-full">
-      <h2 class="text-4xl mb-4 font-sans">{{ title }}</h2>
+      <h2 class="text-3xl md:text-4xl mb-4 font-sans">{{ title }}</h2>
       <slot />
     </div>
   </section>

@@ -32,15 +32,15 @@ export default {
     >
       <div class="max-w-prose m-auto">
         <h1 class="text-6xl mb-8 font-sans uppercase font-bold">Swiss Energy</h1>
-        <p class="text-2xl">
+        <p class="text-xl md:text-2xl">
           In 2017, the Swiss public voted in favour of the revised Energy Act. This was the first
           step in implementing the 2050 Energy Strategy.
         </p>
-        <p class="text-2xl">How is Switzerland doing?</p>
+        <p class="text-xl md:text-2xl">How is Switzerland doing?</p>
 
         <button
           @click="scrollToSection"
-          class="animate-bounce mt-10 inline-flex flex-col justify-center items-center mt-40 hover:text-yellow-400 transition-all duration-300"
+          class="animate-bounce mt-20 md:mt-40 inline-flex flex-col justify-center items-center hover:text-yellow-400 transition-all duration-300"
         >
           Scroll Down
           <span class="inline-block w-10 h-10">
