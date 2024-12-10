@@ -1,7 +1,7 @@
 <script lang="ts">
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-import { PropType } from 'vue'
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import type { PropType } from 'vue'
 
 export default {
   components: {
