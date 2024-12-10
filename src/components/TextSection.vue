@@ -1,7 +1,18 @@
 <script lang="ts">
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import { PropType } from 'vue'
+
 export default {
+  components: {
+    FontAwesomeIcon,
+  },
   props: {
     title: String,
+    icon: {
+      type: Object as PropType<IconDefinition>,
+      required: false,
+    },
     hasShadowTop: {
       type: Boolean,
       default: true,
@@ -33,7 +44,15 @@ export default {
     :style="computedStyle"
   >
     <div class="max-w-prose m-auto w-full">
-      <h2 class="text-3xl md:text-4xl mb-4 font-sans">{{ title }}</h2>
+      <div class="relative">
+        <font-awesome-icon
+          v-if="icon"
+          :icon="icon"
+          size="6x"
+          class="text-[#a3a3a3] absolute -top-24 left-0 -translate-x-full p-8"
+        />
+        <h2 class="text-3xl md:text-4xl mb-8 font-sans relative">{{ title }}</h2>
+      </div>
       <slot />
     </div>
   </section>
