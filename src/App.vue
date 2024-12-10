@@ -165,7 +165,7 @@ import ChartEuMix from './components/ChartEuMix.vue'
       <ChartConsumption />
     </ChartSection>
 
-    <TextSection title="Conclusion">
+    <TextSection title="Conclusion" :has-shadow-top="false" :has-shadow-bottom="false">
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias deleniti, nostrum vel porro
         libero dolores! Repudiandae omnis aliquam porro aut deserunt odio, dolorem, rerum iste
