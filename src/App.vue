@@ -7,7 +7,6 @@ import ChartSection from './components/ChartSection.vue'
 
 import ChartImportExportMap from './components/ChartImportExportMap.vue'
 import ChartProductionBar from './components/ChartProductionBar.vue'
-import ChartSwissMap from './components/ChartSwissMap.vue'
 import ChartProductionArea from './components/ChartProductionArea.vue'
 import ChartConsumption from './components/ChartConsumption.vue'
 import ChartCategorization from './components/ChartCategorization.vue'
