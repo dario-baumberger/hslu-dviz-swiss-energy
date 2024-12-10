@@ -48,8 +48,7 @@ export default {
         <font-awesome-icon
           v-if="icon"
           :icon="icon"
-          size="6x"
-          class="text-[#a3a3a3] absolute -top-24 left-0 -translate-x-full p-8"
+          class="text-[#a3a3a3] md:absolute -top-24 left-0 md:-translate-x-full pb-4 md:p-8 text-6xl md:text-8xl"
         />
         <h2 class="text-3xl md:text-4xl mb-8 font-sans relative">{{ title }}</h2>
       </div>
