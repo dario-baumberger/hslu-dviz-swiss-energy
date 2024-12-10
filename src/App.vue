@@ -12,12 +12,8 @@ import ChartCategorization from './components/ChartCategorization.vue'
 import ChartEuMix from './components/ChartEuMix.vue'
 import ChartConsumptionCh from './components/ChartConsumptionCh.vue'
 
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
   faBullseye,
-  faIndustry,
-  faObjectGroup,
-  faBlender,
   faRightLeft,
   faScaleUnbalanced,
   faChargingStation,
@@ -27,7 +23,6 @@ import {
   faSolarPanel,
   faSitemap,
 } from '@fortawesome/free-solid-svg-icons'
-import { faBalanceScaleLeft } from '@fortawesome/free-solid-svg-icons/faBalanceScaleLeft'
 </script>
 
 <template>
@@ -69,11 +64,14 @@ import { faBalanceScaleLeft } from '@fortawesome/free-solid-svg-icons/faBalanceS
     <div class="bg-white md:pt-32 rellative"></div>
     <TextSection :has-shadow-top="false" title="Swiss Energy Production" :icon="faSolarPanel">
       <p>
-        Switzerland produces energy from various sources. The generated energy is fed into the grid,
-        where it is not possible to identify its specific source. This is referred to as the energy
-        mix. Within this mix, it is only possible to determine the proportion of energy contributed
-        by each source. Over the years, the energy mix has changed. The following chart shows the
-        mix.
+        Switzerland produces energy from various sources. Hydropower is the most important source of
+        renewable energy in Switzerland. Followed by nuclear power. Hydropower is separated into run
+        of river and storage power plants. In the last few years, the share of renewable energy has
+        increased. Especially photovoltaic has increased. Switzerland has multiple renewable energy
+        sources which deliver only a small amount of energy. The share of fossil energy has
+        decreased. In the following chart, you can see the development of energy production. For the
+        further analysis we will split the energy production into the categories of renewable
+        energy, nuclear energy and fossil energy.
       </p>
     </TextSection>
     <ChartSection source-url="test">
@@ -84,9 +82,11 @@ import { faBalanceScaleLeft } from '@fortawesome/free-solid-svg-icons/faBalanceS
         Switzerland produces energy from various sources. The generated energy is fed into the grid,
         where it is not possible to identify its specific source. This is referred to as the energy
         mix. Within this mix, it is only possible to determine the proportion of energy contributed
-        by each source. Over the years, the energy mix has changed. The following chart shows the
-        mix.
+        by each source. Over the years, the energy mix has changed. From now on, we will only use
+        the three categories of renewable energy, nuclear energy, and fossil energy for our
+        analysis.
       </p>
+      <p>The following chart shows the energy mix of Switzerland over the past few years.</p>
     </TextSection>
     <ChartSection source-url="test">
       <ChartCategorization />
@@ -118,15 +118,13 @@ import { faBalanceScaleLeft } from '@fortawesome/free-solid-svg-icons/faBalanceS
 
     <TextSection title="European Energy Mix" :icon="faEarthEurope">
       <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut, nihil itaque? Earum,
-        consequatur eligendi. Sunt libero maiores incidunt veritatis voluptatum, consequuntur unde
-        ratione pariatur adipisci obcaecati corporis sint fugit quae?
+        In Europe, the energy mix is different, based on the energy sources available in each
+        country. The mixes vary significantly from country to country. In Europe many countries rely
+        on fossil fuels and nuclear energy. Just one third of the countries relay on renewable
+        energy for more than 50% of their energy mix. This are mainly the countries in the north of
+        Europe.
       </p>
-      <p>
-        lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, nihil itaque? Earum,
-        consequatur eligendi. Sunt libero maiores incidunt veritatis voluptatum, consequuntur unde
-        ratione pariatur adipisci obcaecati corporis sint fugit quae?
-      </p>
+      <p>The following chart shows the energy mix of the European Countries in the year #todo.</p>
     </TextSection>
 
     <ChartSection
@@ -173,12 +171,13 @@ import { faBalanceScaleLeft } from '@fortawesome/free-solid-svg-icons/faBalanceS
     </ChartSection>
     <TextSection title="Consumption" :icon="faChargingStation">
       <p>
-        In den Vergangen Jahren ist nicht ersichtlich, dass die Schweiz deutlich mehr Energie
-        exportiert als importiert.
+        Over the last few years, the consumption of energy in Switzerland has decreased. After
+        increasing for decades.
       </p>
       <p>
-        Vor 2003 lieferte die Schweiz mehr Energie als sie bezog. Ab 2003 ist dies nicht mehr der
-        eindeutig der Fall.
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat, velit maiores. Neque
+        libero voluptatem similique numquam maxime eos praesentium placeat nesciunt mollitia aperiam
+        magni exercitationem et, consequuntur repudiandae quod reprehenderit.
       </p>
     </TextSection>
     <ChartSection>
