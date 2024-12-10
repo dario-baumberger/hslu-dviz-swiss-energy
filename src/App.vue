@@ -165,23 +165,7 @@ import ChartEuMix from './components/ChartEuMix.vue'
       # todo: change chart
       <ChartConsumption />
     </ChartSection>
-    <TextSection title="Production">
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos iusto alias, atque sint,
-        magnam quasi, dolorem veritatis reiciendis perspiciatis fugiat ratione quibusdam modi eius
-        fuga! Sint amet dolor saepe sapiente? lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Deleniti at aliquam obcaecati eaque. Lorem, ipsum dolor sit amet consectetur
-        adipisicing elit. Libero nisi recusandae quae placeat cupiditate ipsum id exercitationem,
-        officiis nemo impedit consectetur neque praesentium sapiente itaque tempora fuga tempore
-        necessitatibus quia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad repudiandae
-        facilis eveniet, veritatis, ea commodi atque nesciunt sint vel neque ratione eius
-        accusantium nostrum perferendis explicabo porro provident molestiae ipsum?
-      </p>
-    </TextSection>
-    <ChartSection>
-      # todo: change chart
-      <ChartSwissMap />
-    </ChartSection>
+
     <TextSection title="Conclusion">
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias deleniti, nostrum vel porro
