@@ -11,6 +11,7 @@ import ChartSwissMap from './components/ChartSwissMap.vue'
 import ChartProductionArea from './components/ChartProductionArea.vue'
 import ChartConsumption from './components/ChartConsumption.vue'
 import ChartCategorization from './components/ChartCategorization.vue'
+import ChartEuMix from './components/ChartEuMix.vue'
 </script>
 
 <template>
@@ -111,7 +112,7 @@ import ChartCategorization from './components/ChartCategorization.vue'
     <ChartSection
       source-url="https://www.admin.ch/gov/de/start/dokumentation/medienmitteilungen.msg-id-97643.html"
     >
-      # todo: add chart here
+      <ChartEuMix />
     </ChartSection>
 
     <TextSection title="Import and Export from EU">

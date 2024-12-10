@@ -81,9 +81,6 @@ export default defineComponent({
             type: 'pie',
             size: '60%',
             data: this.ungroupedData.slice(1).map((series) => {
-              console.log(this.yearToShowIndex)
-              console.log(series.name, series.data[this.yearToShowIndex])
-
               return {
                 name: series.name,
                 y: series.data[this.yearToShowIndex],
@@ -96,8 +93,6 @@ export default defineComponent({
             size: '40%',
             colors: ['#c5e1a5', '#b0bec5', '#fff59d'],
             data: this.groupedData.slice(1).map((series) => {
-              console.log(series.name, series.data[this.yearToShowIndex])
-
               return {
                 name: series.name,
                 y: series.data[this.yearToShowIndex],
@@ -119,8 +114,6 @@ export default defineComponent({
         return
       }
 
-      console.log(this.yearToShowIndex)
-
       this.chart?.update({
         series: [
           {
@@ -128,9 +121,6 @@ export default defineComponent({
             type: 'pie',
             size: '60%',
             data: this.ungroupedData.slice(1).map((series) => {
-              console.log(this.yearToShowIndex)
-              console.log(series.name, series.data[this.yearToShowIndex])
-
               return {
                 name: series.name,
                 y: series.data[this.yearToShowIndex],
@@ -143,8 +133,6 @@ export default defineComponent({
             size: '40%',
             colors: ['#c5e1a5', '#b0bec5', '#fff59d'],
             data: this.groupedData.slice(1).map((series) => {
-              console.log(series.name, series.data[this.yearToShowIndex])
-
               return {
                 name: series.name,
                 y: series.data[this.yearToShowIndex],
@@ -165,9 +153,9 @@ export default defineComponent({
         this.min = Math.min(...this.years)
         this.max = Math.max(...this.years)
         this.yearToShow = this.max
-        console.log(this.yearToShow)
+
         this.yearToShowIndex = this.years.indexOf(this.yearToShow ?? this.years[-1])
-        console.log(this.yearToShowIndex)
+
         this.ungroupedData = ungroupedData
         this.groupedData = groupedData
 
