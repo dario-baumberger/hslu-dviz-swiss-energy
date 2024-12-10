@@ -64,11 +64,12 @@ export default defineComponent({
               enabled: false,
             },
           },
-          series: {
-            // borderRadius: '25%'
-          },
+          series: {},
         },
-        series: data.slice(1) as Highcharts.SeriesOptionsType[],
+        series: data.slice(1).map((series, index) => ({
+          ...series,
+          color: ['#77c3aa', '#9d9d9c', '#edd76d'][index % 3], // Assign colors to series
+        })) as Highcharts.SeriesOptionsType[],
       }
 
       this.chart = Highcharts.chart('chart3', options)
@@ -94,7 +95,7 @@ export default defineComponent({
         xAxis: {
           categories: filteredYears.map((year) => year.toString()),
         },
-        series: filteredData as Highcharts.SeriesOptionsType[],
+        series: filteredData.slice(1) as Highcharts.SeriesOptionsType[],
       })
     },
     handleRangeChange({ low, high }: { low: number; high: number }) {

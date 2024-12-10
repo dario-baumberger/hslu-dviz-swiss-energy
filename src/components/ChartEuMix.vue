@@ -44,22 +44,33 @@ export default defineComponent({
         credits: {
           enabled: false,
         },
-        xAxis: {},
+        xAxis: {
+          categories: Array.from({ length: 101 }, (_, i) => i.toString()), // Create array from 0 to 100
+          title: {
+            text: 'Percentage',
+          },
+        },
         yAxis: {
-          categories: data[0].data,
+          categories: data[0].data.map((country) => country.toString()), // Display data[0] on the left side
+          title: {
+            text: 'Countries',
+          },
         },
         tooltip: {
           valueSuffix: ' GWh',
         },
         plotOptions: {
           series: {
-            stacking: 'normal',
+            stacking: 'percent',
             dataLabels: {
-              enabled: true,
+              enabled: false,
             },
           },
         },
-        series: data.slice(1) as Highcharts.SeriesOptionsType[],
+        series: data.slice(1).map((series, index) => ({
+          ...series,
+          color: ['#77c3aa', '#9d9d9c', '#edd76d'][index % 3], // Assign colors to series
+        })) as Highcharts.SeriesOptionsType[],
       }
 
       this.chart = Highcharts.chart('ChartEuMix', options)
@@ -82,9 +93,9 @@ export default defineComponent({
       }))
 
       this.chart?.update({
-        xAxis: {
+        /*  xAxis: {
           categories: filteredYears.map((year) => year.toString()),
-        },
+        }, */
         series: filteredData as Highcharts.SeriesOptionsType[],
       })
     },

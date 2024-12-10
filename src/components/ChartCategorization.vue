@@ -80,6 +80,17 @@ export default defineComponent({
             name: 'Categories',
             type: 'pie',
             size: '60%',
+            colors: [
+              '#77c3aa',
+              '#77c3aa',
+              '#77c3aa',
+              '#77c3aa',
+              '#77c3aa',
+              '#77c3aa',
+              '#77c3aa',
+              '#9d9d9c',
+              '#edd76d',
+            ],
             data: this.ungroupedData.slice(1).map((series) => {
               return {
                 name: series.name,
@@ -91,7 +102,7 @@ export default defineComponent({
             name: 'Details',
             type: 'pie',
             size: '40%',
-            colors: ['#c5e1a5', '#b0bec5', '#fff59d'],
+            colors: ['#77c3aa', '#9d9d9c', '#edd76d'],
             data: this.groupedData.slice(1).map((series) => {
               return {
                 name: series.name,
