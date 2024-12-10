@@ -67,7 +67,7 @@ export default defineComponent({
         },
         series: data.slice(1).map((series, index) => ({
           ...series,
-          color: ['#77c3aa', '#9d9d9c', '#edd76d'][index % 3], // Assign colors to series
+          color: ['#4CB19E', '#6D6D6D', '#E4C54E'][index % 3],
         })) as Highcharts.SeriesOptionsType[],
       }
 

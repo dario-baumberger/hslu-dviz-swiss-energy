@@ -80,7 +80,23 @@ export default defineComponent({
             // borderRadius: '25%'
           },
         },
-        series: data.slice(1) as Highcharts.SeriesOptionsType[],
+
+        series: data.slice(1).map((series, index) => ({
+          name: series.name,
+          data: series.data,
+          type: 'column',
+          color: [
+            '#66C7B6',
+            '#3A8C80',
+            '#6EC7A1',
+            '#90D4B4',
+            '#5B9F88',
+            '#7EAF92',
+            '#8FBF9E',
+            '#A0A0A0',
+            '#E4C54E',
+          ][index % 9],
+        })),
       }
 
       this.chart = Highcharts.chart('chartProductionBar', options)
@@ -111,7 +127,7 @@ export default defineComponent({
         xAxis: {
           categories: filteredYears.map((year) => year.toString()),
         },
-        series: filteredData as Highcharts.SeriesOptionsType[],
+        series: filteredData.slice(1) as Highcharts.SeriesOptionsType[],
       })
     },
   },
