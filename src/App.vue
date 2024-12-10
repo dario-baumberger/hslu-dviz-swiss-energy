@@ -7,10 +7,9 @@ import ChartSection from './components/ChartSection.vue'
 
 import ChartImportExportMap from './components/ChartImportExportMap.vue'
 import ChartProductionBar from './components/ChartProductionBar.vue'
-import ChartProductionArea from './components/ChartProductionArea.vue'
-import ChartConsumption from './components/ChartConsumption.vue'
-import ChartCategorization from './components/ChartCategorization.vue'
+import ChartProductionArea from './components/ChartProductionArea.vue'import ChartCategorization from './components/ChartCategorization.vue'
 import ChartEuMix from './components/ChartEuMix.vue'
+import ChartConsumptionCh from './components/ChartConsumptionCh.vue'
 </script>
 
 <template>
@@ -161,8 +160,7 @@ import ChartEuMix from './components/ChartEuMix.vue'
       </p>
     </TextSection>
     <ChartSection>
-      # todo: change chart
-      <ChartConsumption />
+      <ChartConsumptionCh />
     </ChartSection>
 
     <TextSection title="Conclusion" :has-shadow-top="false" :has-shadow-bottom="false">
