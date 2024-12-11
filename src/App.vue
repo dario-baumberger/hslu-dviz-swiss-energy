@@ -74,7 +74,9 @@ import {
         energy, nuclear energy and fossil energy.
       </p>
     </TextSection>
-    <ChartSection source-url="test">
+    <ChartSection
+      source-url="https://opendata.swiss/de/dataset/schweizerische-elektrizitatsbilanz-jahreswerte"
+    >
       <ChartProductionBar />
     </ChartSection>
     <TextSection title="Energy Categorization" :icon="faSitemap">
@@ -88,7 +90,9 @@ import {
       </p>
       <p>The following chart shows the energy mix of Switzerland over the past few years.</p>
     </TextSection>
-    <ChartSection source-url="test">
+    <ChartSection
+      source-url="https://opendata.swiss/de/dataset/schweizerische-elektrizitatsbilanz-jahreswerte"
+    >
       <ChartCategorization />
     </ChartSection>
 
@@ -96,7 +100,12 @@ import {
       <p>
         In Switzerland, electricity is produced from 52.8% hydropower, 36.4% nuclear power, 1.4%
         fossil fuels, and 9.4% new renewable energies (Swiss production mix 2022). Information on
-        this can be found in the Swiss Electricity Statistics.
+        this can be found in the
+        <a
+          href="https://www.admin.ch/gov/de/start/dokumentation/medienmitteilungen.msg-id-97643.html"
+          target="_blank"
+          >Swiss Electricity Statistics.</a
+        >
       </p>
       <p>
         However, electricity delivered to Swiss sockets is not only from Swiss production: there is
@@ -111,7 +120,7 @@ import {
     </TextSection>
 
     <ChartSection
-      source-url="https://www.admin.ch/gov/de/start/dokumentation/medienmitteilungen.msg-id-97643.html"
+      source-url="https://opendata.swiss/de/dataset/schweizerische-elektrizitatsbilanz-jahreswerte"
     >
       <ChartProductionArea />
     </ChartSection>
@@ -128,7 +137,7 @@ import {
     </TextSection>
 
     <ChartSection
-      source-url="https://www.admin.ch/gov/de/start/dokumentation/medienmitteilungen.msg-id-97643.html"
+      source-url="https://www.consilium.europa.eu/de/infographics/how-is-eu-electricity-produced-and-sold/"
     >
       <ChartEuMix />
     </ChartSection>
@@ -148,7 +157,9 @@ import {
         Italy. Switzerland also supplies energy to countries from which it imports energy.
       </p>
     </TextSection>
-    <ChartSection>
+    <ChartSection
+      source-url="https://opendata.swiss/de/dataset/energiedashboard-ch-tagliche-flusse-in-die-und-aus-der-schweiz-strom"
+    >
       <ChartImportExportMap />
     </ChartSection>
     <TextSection title="Import and Export Ratio" :icon="faScaleUnbalanced">
@@ -166,7 +177,9 @@ import {
       </p>
     </TextSection>
 
-    <ChartSection>
+    <ChartSection
+      source-url="https://opendata.swiss/de/dataset/schweizerische-elektrizitatsbilanz-jahreswerte"
+    >
       <ChartImportExport />
     </ChartSection>
     <TextSection title="Consumption" :icon="faChargingStation">
@@ -180,7 +193,9 @@ import {
         magni exercitationem et, consequuntur repudiandae quod reprehenderit.
       </p>
     </TextSection>
-    <ChartSection>
+    <ChartSection
+      source-url="https://www.bfs.admin.ch/bfs/de/home/statistiken/raum-umwelt/umweltindikatoren/alle-indikatoren/nutzung-natuerliche-ressourcen/elektrizitaetsverbrauch.assetdetail.32229444.html"
+    >
       <ChartConsumptionCh />
     </ChartSection>
 
@@ -207,7 +222,7 @@ import {
       </p>
     </TextSection>
   </main>
-  <footer class="text-center text-sm p-4 pt-20 bg-white">
+  <footer class="text-center text-sm p-4 pt-20 bg-white relative">
     <p class="mb-4">HSLU FS24 DVIZ Project: Swiss Energy</p>
     <p class="mb-4 text-sm">
       All charts are made with
