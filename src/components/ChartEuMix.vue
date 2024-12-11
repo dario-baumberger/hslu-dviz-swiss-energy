@@ -31,6 +31,7 @@ export default defineComponent({
   },
   methods: {
     createChart(data: ProductionData[]) {
+      console.log(data[0].data.map((country) => country.toString()))
       const options: Highcharts.Options = {
         chart: {
           backgroundColor: 'transparent',
@@ -42,13 +43,13 @@ export default defineComponent({
         credits: {
           enabled: false,
         },
-        xAxis: {
-          categories: Array.from({ length: 101 }, (_, i) => i.toString()), // Create array from 0 to 100
+        // axes are inverted
+        yAxis: {
           title: {
             text: 'Percentage',
           },
         },
-        yAxis: {
+        xAxis: {
           categories: data[0].data.map((country) => country.toString()), // Display data[0] on the left side
           title: {
             text: 'Countries',
