@@ -40,6 +40,10 @@ export default defineComponent({
           backgroundColor: 'transparent',
           type: 'area',
         },
+        lang: {
+          decimalPoint: '.',
+          thousandsSep: "'",
+        },
         title: {
           text: '',
         },
@@ -51,7 +55,10 @@ export default defineComponent({
         },
         yAxis: {
           title: {
-            text: 'GWh',
+            text: '',
+          },
+          labels: {
+            enabled: false,
           },
         },
         tooltip: {
