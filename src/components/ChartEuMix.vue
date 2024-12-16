@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import * as Highcharts from 'highcharts'
+import { createTooltipFormatter } from '../utils/chartTooltip'
 
 type ProductionData = {
   name: string
@@ -63,7 +64,9 @@ export default defineComponent({
           },
         },
         tooltip: {
-          valueSuffix: ' GWh',
+          valueSuffix: 'GWh',
+          useHTML: true,
+          formatter: createTooltipFormatter('Country', 'Production', true),
         },
         plotOptions: {
           series: {

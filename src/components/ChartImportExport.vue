@@ -70,7 +70,7 @@ export default defineComponent({
         tooltip: {
           valueSuffix: 'GWh',
           useHTML: true,
-          formatter: createTooltipFormatter('Year', 'Prpduction', false),
+          formatter: createTooltipFormatter('Year', 'Production', false),
         },
         plotOptions: {
           column: {

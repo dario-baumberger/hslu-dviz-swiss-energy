@@ -2,8 +2,8 @@ import Highcharts from 'highcharts'
 
 export function tooltipFormatter(
   this: Highcharts.TooltipFormatterContextObject,
-  xLabel: string = this.point.key,
-  yLabel: string = this.series.name,
+  xLabel: string,
+  yLabel: string,
   showPercentage: boolean = true,
 ): string {
   console.log(this)

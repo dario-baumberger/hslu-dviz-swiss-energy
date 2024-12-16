@@ -64,6 +64,7 @@ export default defineComponent({
         credits: {
           enabled: false,
         },
+
         plotOptions: {
           pie: {
             shadow: false,
