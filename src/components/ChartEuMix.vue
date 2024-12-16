@@ -32,7 +32,6 @@ export default defineComponent({
   },
   methods: {
     createChart(data: ProductionData[]) {
-      console.log(data[0].data.map((country) => country.toString()))
       const options: Highcharts.Options = {
         chart: {
           backgroundColor: 'transparent',
@@ -52,10 +51,7 @@ export default defineComponent({
           },
         },
         xAxis: {
-          categories: data[0].data.map((country) => {
-            console.log(country)
-            return country.toString()
-          }), // Display data[0] on the left side
+          categories: data[0].data.map((country) => country.toString()),
           title: {
             text: 'Countries',
           },
