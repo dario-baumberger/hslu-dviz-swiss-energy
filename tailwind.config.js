@@ -11,7 +11,13 @@ module.exports = {
         '2px': '2px',
       },
       height: {
-        'h-screen-1/2': '50vh',
+        'screen-1/2': '50vh',
+        'screen-4/5': '60vh',
+        'screen-2/3': '66.66666vh',
+        'screen-4/5': '80vh',
+      },
+      maxHeight: {
+        'screen-4/5': '80vh',
       },
     },
   },

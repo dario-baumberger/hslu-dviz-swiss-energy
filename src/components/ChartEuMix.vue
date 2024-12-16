@@ -36,6 +36,7 @@ export default defineComponent({
         chart: {
           backgroundColor: 'transparent',
           type: 'bar',
+          height: null,
         },
         title: {
           text: '',
@@ -50,9 +51,15 @@ export default defineComponent({
           },
         },
         xAxis: {
-          categories: data[0].data.map((country) => country.toString()), // Display data[0] on the left side
+          categories: data[0].data.map((country) => {
+            console.log(country)
+            return country.toString()
+          }), // Display data[0] on the left side
           title: {
             text: 'Countries',
+          },
+          labels: {
+            step: 1,
           },
         },
         tooltip: {
@@ -124,5 +131,5 @@ export default defineComponent({
 </script>
 
 <template>
-  <div id="ChartEuMix" class="h-full"></div>
+  <div id="ChartEuMix" class="h-screen-2/3"></div>
 </template>
