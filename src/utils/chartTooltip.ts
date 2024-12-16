@@ -13,7 +13,7 @@ export function tooltipFormatter(
     // Use type assertion to inform TypeScript about the existence of tooltipOptions
     const series = this.series as Highcharts.Series & { tooltipOptions?: { valueSuffix?: string } }
     const valueSuffix = series.tooltipOptions?.valueSuffix || ''
-    tooltip += `<span class="flex justify-between gap-2"><span>${yLabel}: </span><span>${Highcharts.numberFormat(this.y, 0)} ${valueSuffix}</span></span>`
+    tooltip += `<span class="flex justify-between gap-2"><span>${yLabel}: </span><span>${Highcharts.numberFormat(this.y)} ${valueSuffix}</span></span>`
   }
 
   if (showPercentage && this.point.percentage !== undefined) {
