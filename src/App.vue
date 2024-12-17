@@ -132,8 +132,8 @@ import {
       <p>
         In Europe, the energy mix is different, based on the energy sources available in each
         country. The mixes vary significantly from country to country. In Europe many countries rely
-        on fossil fuels and nuclear energy. Just one third of the countries relay on renewable
-        energy for more than 50% of their energy mix. This are mainly the countries in the north of
+        on fossil fuels and nuclear energy. Just one third of the countries rely on renewable energy
+        for more than 50% of their energy mix. These are mainly the countries in the north of
         Europe.
       </p>
       <p>
@@ -182,7 +182,11 @@ import {
         Before 2003, Switzerland supplied more energy than it consumed. Since 2003, this has no
         longer been the case.
       </p>
-      <p></p>
+      <p>
+        The balance between imports and exports is influenced by seasonal demand, weather
+        conditions, and market dynamics. Achieving a stable import-export balance is crucial for
+        energy security.
+      </p>
     </TextSection>
 
     <ChartSection
@@ -192,13 +196,14 @@ import {
     </ChartSection>
     <TextSection title="Consumption" :icon="faChargingStation">
       <p>
-        Over the last few years, the consumption of energy in Switzerland has decreased. After
-        increasing for decades.
+        Over the last few years, the consumption of energy in Switzerland has decreased after
+        increasing for decades. This decline is due to improvements in energy efficiency, changes in
+        industrial demand, and societal awareness of sustainable practices.
       </p>
       <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat, velit maiores. Neque
-        libero voluptatem similique numquam maxime eos praesentium placeat nesciunt mollitia aperiam
-        magni exercitationem et, consequuntur repudiandae quod reprehenderit.
+        Despite the decrease in overall consumption, electricity remains a critical component of
+        Switzerland’s energy landscape, especially with the ongoing transition toward renewable
+        energy sources.
       </p>
     </TextSection>
     <ChartSection
@@ -214,32 +219,54 @@ import {
       :icon="faMagnifyingGlass"
     >
       <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias deleniti, nostrum vel porro
-        libero dolores! Repudiandae omnis aliquam porro aut deserunt odio, dolorem, rerum iste
-        dolore sit quidem dolores at?
+        Switzerland's energy strategy aims to promote sustainability, increase energy efficiency,
+        and reduce dependence on fossil fuels. The country has made significant progress in boosting
+        renewable energy production, particularly through hydropower and photovoltaics.
       </p>
       <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias deleniti, nostrum vel porro
-        libero dolores! Repudiandae omnis aliquam porro aut deserunt odio, dolorem, rerum iste
-        dolore sit quidem dolores at?
+        However, challenges remain in balancing imports and exports, ensuring energy security, and
+        maintaining a stable energy mix. The shift away from nuclear energy and fossil fuels
+        requires careful planning and continued investment in innovative technologies.
       </p>
       <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias deleniti, nostrum vel porro
-        libero dolores! Repudiandae omnis aliquam porro aut deserunt odio, dolorem, rerum iste
-        dolore sit quidem dolores at?
+        By adhering to the 2050 Energy Strategy, Switzerland is paving the way toward a more
+        sustainable and resilient energy future.
       </p>
     </TextSection>
   </main>
 
   <footer class="text-center text-sm p-4 pt-20 bg-white relative">
     <p class="mb-4">HSLU FS24 DVIZ Project: Swiss Energy</p>
-    <p class="mb-4 text-sm">
-      All charts are made with
-      <a href="https://www.highcharts.com/" target="_blank">Highcharts.com</a>
-    </p>
+    <div class="flex flex-col md:flex-row justify-center gap-0 md:gap-1">
+      <p class="mb-4 text-sm">
+        All charts are made with
+        <a href="https://www.highcharts.com/" target="_blank" class="underline hover:text-bold"
+          >Highcharts.com</a
+        >
+      </p>
+      <span class="hidden md:block"> | </span>
+      <p class="mb-4 text-sm">
+        All Icons are from
+        <a href="https://fontawesome.com/" target="_blank" class="underline hover:text-bold"
+          >Font Awesome</a
+        >
+      </p>
+    </div>
     <p>
-      Gabriel Gjonaj, Xheladin Lekaj, and
-      <a href="https://github.com/dario-baumberger">Dario Baumberger</a>
+      Made by
+      <a href="https://github.com/tagjonaj" target="_blank" class="underline hover:text-bold"
+        >Gabriel Gjonaj</a
+      >,
+      <a href="https://github.com/Xheki-l" target="_blank" class="underline hover:text-bold"
+        >Xheladin Lekaj</a
+      >
+      , and
+      <a
+        href="https://github.com/dario-baumberger"
+        target="_blank"
+        class="underline hover:text-bold"
+        >Dario Baumberger</a
+      >
     </p>
   </footer>
 </template>
