@@ -28,7 +28,7 @@ import {
 <template>
   <main class="h-full max-h-full flex flex-col snap-y snap-mandatory relative font-serif">
     <Jumbotron />
-    <div class="bg-white md:pt-32 rellative z-10"></div>
+    <div class="bg-white md:pt-32 relative z-10"></div>
 
     <TextSection
       :has-shadow-top="false"
@@ -37,31 +37,32 @@ import {
       :icon="faBullseye"
     >
       <p>
-        In 2017, the Swiss public voted in favour of the revised Energy Act. This was the first step
+        In 2017, the Swiss public voted in favor of the revised Energy Act. This was the first step
         in implementing the 2050 Energy Strategy, which contains the following objectives:
       </p>
       <ul class="list-disc pl-4">
-        <li>promote renewable energy in Switzerland;</li>
-        <li>reduce dependency on fossil energy from abroad;</li>
-        <li>reduce energy consumption;</li>
-        <li>increase energy efficiency.</li>
+        <li>Promote renewable energy in Switzerland;</li>
+        <li>Reduce dependency on fossil energy from abroad;</li>
+        <li>Reduce energy consumption;</li>
+        <li>Increase energy efficiency.</li>
       </ul>
       <p>
         Existing nuclear power plants can remain in operation as long as they are safe. There is a
         ban on the construction of new nuclear power plants.
       </p>
       <p>
-        <a href="https://www.uvek.admin.ch/uvek/en/home/energy/energy-policy.html" target="_blank"
-          >Read more about Principles of energy policy in Switzerland</a
-        >
+        <a href="https://www.uvek.admin.ch/uvek/en/home/energy/energy-policy.html" target="_blank">
+          Read more about Principles of energy policy in Switzerland
+        </a>
       </p>
       <p class="mt-4">
-        How is Switzerland doing in terms of energy production, promote renewable energy, reduce
-        dependency on fossil energy from abroad and consumption?
+        How is Switzerland doing in terms of energy production, promoting renewable energy, reducing
+        dependency on fossil energy from abroad, and reducing consumption?
       </p>
     </TextSection>
 
-    <div class="bg-white md:pt-32 rellative"></div>
+    <div class="bg-white md:pt-32 relative"></div>
+
     <TextSection :has-shadow-top="false" title="Swiss Energy Production" :icon="faSolarPanel">
       <p>
         Switzerland produces energy from various sources. Hydropower is the most important source of
@@ -69,18 +70,20 @@ import {
         run-of-river and storage power plants.
       </p>
       <p>
-        In the last few years, the share of renewable energy has increased, especially from
-        photovoltaics. Switzerland has multiple renewable energy sources that deliver only a small
-        amount of energy. The share of fossil energy has decreased. The output of photovoltaics,
-        solar, and other renewable sources depends on circumstances like weather. The production per
-        source varies over the years; therefore, the total production varies too.
+        In recent years, the share of renewable energy has increased, especially from photovoltaics.
+        Switzerland has multiple renewable energy sources that deliver only a small amount of
+        energy. The share of fossil energy has decreased. The output of photovoltaics, solar, and
+        other renewable sources depends on circumstances like weather. The production per source
+        varies over the years; therefore, the total production varies too.
       </p>
     </TextSection>
+
     <ChartSection
       source-url="https://opendata.swiss/de/dataset/schweizerische-elektrizitatsbilanz-jahreswerte"
     >
       <ChartProductionBar />
     </ChartSection>
+
     <TextSection title="Energy Categorization" :icon="faSitemap">
       <p>
         The generated energy is fed into the grid, where it is not possible to identify its specific
@@ -94,6 +97,7 @@ import {
         nuclear energy, and fossil energy.
       </p>
     </TextSection>
+
     <ChartSection
       source-url="https://opendata.swiss/de/dataset/schweizerische-elektrizitatsbilanz-jahreswerte"
     >
@@ -102,7 +106,7 @@ import {
 
     <TextSection title="Swiss Energy Mix" :icon="faPlugCircleBolt">
       <p>
-        Over the years, the energy mix has changed. The mix varies from year to year. But overall, a
+        Over the years, the energy mix has changed. The mix varies from year to year. Overall, a
         trend can be seen: the share of renewable energy has increased, while the share of fossil
         energy has decreased.
       </p>
@@ -226,6 +230,7 @@ import {
       </p>
     </TextSection>
   </main>
+
   <footer class="text-center text-sm p-4 pt-20 bg-white relative">
     <p class="mb-4">HSLU FS24 DVIZ Project: Swiss Energy</p>
     <p class="mb-4 text-sm">
@@ -233,7 +238,7 @@ import {
       <a href="https://www.highcharts.com/" target="_blank">Highcharts.com</a>
     </p>
     <p>
-      Gabriel Gjonaj, Xheladin Lekaj and
+      Gabriel Gjonaj, Xheladin Lekaj, and
       <a href="https://github.com/dario-baumberger">Dario Baumberger</a>
     </p>
   </footer>
