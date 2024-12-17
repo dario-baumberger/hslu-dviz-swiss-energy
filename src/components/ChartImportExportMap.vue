@@ -1,12 +1,12 @@
 <template>
   <div class="flex flex-col md:flex-row gap-4 justify-center md:max-w-none mx-auto">
-    <div class="w-full">
+    <div class="w-full hidden md:block">
       <h2 class="text-xl mb-4 font-sans text-center">Import into CH</h2>
-      <div id="chartMapImport" class="h-screen-1/2 w-full hidden md:block"></div>
+      <div id="chartMapImport" class="h-screen-1/2 w-full"></div>
     </div>
-    <div class="w-full">
+    <div class="w-full hidden md:block">
       <h2 class="text-xl mb-4 font-sans text-center">Import from CH</h2>
-      <div id="chartMapExport" class="h-screen-1/2 w-full hidden md:block"></div>
+      <div id="chartMapExport" class="h-screen-1/2 w-full"></div>
     </div>
     <div class="w-full">
       <h2 class="text-xl mb-4 font-sans text-center">Netto Import Export</h2>
