@@ -2,7 +2,7 @@
 
 ## Recommended IDE Setup
 
-Developing this project is seamless with **Visual Studio Code** and a **DevContainer** setup.
+Develop this project seamlessly with **Visual Studio Code** and a **DevContainer** setup.
 
 ### Steps to Get Started:
 
@@ -16,7 +16,7 @@ Developing this project is seamless with **Visual Studio Code** and a **DevConta
 
 ### Without a DevContainer:
 
-If you prefer not to use the DevContainer, you will need to manually install the following prerequisites:
+If you prefer not to use the DevContainer, manually install the following prerequisites:
 
 - [Node.js (NPM)](https://nodejs.org/)
 - [Python](https://www.python.org/)
@@ -25,6 +25,10 @@ If you prefer not to use the DevContainer, you will need to manually install the
 ---
 
 ## Data
+
+1. Data sources are located in `./data`.
+2. Data is processed with Python files located in `./python`.
+3. Processed data will be saved in `./public/data` as JSON files.
 
 ### Data Sources
 
@@ -53,7 +57,7 @@ Ensure Jupyter Notebook is installed, either manually or through the DevContaine
 
 ## Frontend
 
-This template uses **Vue 3** with **Vite** for frontend development.
+This page is built with vue 3, vite and tailwind css.
 
 ### NPM Scripts
 
