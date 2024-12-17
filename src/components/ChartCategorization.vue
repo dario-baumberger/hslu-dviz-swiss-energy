@@ -88,7 +88,10 @@ export default defineComponent({
             innerSize: '50%',
             dataLabels: {
               enabled: true,
-              distance: 50,
+              distance: 70,
+              alignTo: 'plotEdges',
+              connectorWidth: 1,
+              crop: false,
             },
           },
         },
