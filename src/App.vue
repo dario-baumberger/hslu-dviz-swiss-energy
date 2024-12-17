@@ -196,14 +196,14 @@ import {
     </ChartSection>
     <TextSection title="Consumption" :icon="faChargingStation">
       <p>
-        Over the last few years, the consumption of energy in Switzerland has decreased after
-        increasing for decades. This decline is due to improvements in energy efficiency, changes in
-        industrial demand, and societal awareness of sustainable practices.
+        Overall, Switzerland produces more energy than it consumes. Due to supply and demand
+        dynamics, Switzerland engages in energy trade with other countries. Without exporting, there
+        would be a surplus of energy — assuming supply and demand could be ignored. However, this
+        aspect cannot be ignored.
       </p>
       <p>
-        Despite the decrease in overall consumption, electricity remains a critical component of
-        Switzerland’s energy landscape, especially with the ongoing transition toward renewable
-        energy sources.
+        For analysis purposes, we categorize imports and production as **generation**, and exports
+        and consumption as **usage**.
       </p>
     </TextSection>
     <ChartSection
@@ -219,14 +219,19 @@ import {
       :icon="faMagnifyingGlass"
     >
       <p>
+        Over the last few years, there has been a trend toward consuming less energy. This could be
+        due to better energy efficiency, such as the use of LED lights, improved insulation of
+        buildings, and more efficient machines.
+      </p>
+      <p>
         Switzerland's energy strategy aims to promote sustainability, increase energy efficiency,
         and reduce dependence on fossil fuels. The country has made significant progress in boosting
         renewable energy production, particularly through hydropower and photovoltaics.
       </p>
       <p>
         However, challenges remain in balancing imports and exports, ensuring energy security, and
-        maintaining a stable energy mix. The shift away from nuclear energy and fossil fuels
-        requires careful planning and continued investment in innovative technologies.
+        maintaining a stable energy mix. The shift away from nuclear energy requires careful
+        planning and continued investment in innovative technologies.
       </p>
       <p>
         By adhering to the 2050 Energy Strategy, Switzerland is paving the way toward a more
