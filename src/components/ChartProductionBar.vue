@@ -18,13 +18,11 @@ import { createTooltipFormatter } from '../utils/chartTooltip'
 import HighchartsAccessibility from 'highcharts/modules/accessibility'
 import HighchartsExporting from 'highcharts/modules/exporting'
 import HighchartsExportData from 'highcharts/modules/export-data'
-import HighchartsPatternFill from 'highcharts-pattern-fill'
 import { genericOptions, patterns } from '../utils/highchartsOptions'
 
 HighchartsAccessibility(Highcharts)
 HighchartsExporting(Highcharts)
 HighchartsExportData(Highcharts)
-HighchartsPatternFill(Highcharts)
 
 type ProductionData = {
   name: string
