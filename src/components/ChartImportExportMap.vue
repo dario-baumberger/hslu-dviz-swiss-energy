@@ -20,6 +20,14 @@ import Highcharts from 'highcharts/highmaps'
 import topology from '../assets/map.topo.json'
 import InputSlide from './InputSlide.vue'
 import formatNumber from '../utils/formatNumber'
+import HighchartsAccessibility from 'highcharts/modules/accessibility'
+import HighchartsExporting from 'highcharts/modules/exporting'
+import HighchartsExportData from 'highcharts/modules/export-data'
+import { genericOptions } from '../utils/highchartsOptions'
+
+HighchartsAccessibility(Highcharts)
+HighchartsExporting(Highcharts)
+HighchartsExportData(Highcharts)
 
 interface YearlyData {
   name: number
@@ -73,9 +81,11 @@ export default defineComponent({
       const filteredYears = data.find((year) => year.name === this.yearToShow)
 
       const options: Highcharts.Options = {
+        ...genericOptions,
         chart: {
           map: topology,
           animation: false,
+          backgroundColor: 'white',
         },
         credits: {
           enabled: false,

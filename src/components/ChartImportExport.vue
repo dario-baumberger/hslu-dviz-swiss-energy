@@ -15,6 +15,14 @@ import { defineComponent } from 'vue'
 import Highcharts from 'highcharts'
 import InputRange from './InputRange.vue'
 import { createTooltipFormatter } from '../utils/chartTooltip'
+import HighchartsAccessibility from 'highcharts/modules/accessibility'
+import HighchartsExporting from 'highcharts/modules/exporting'
+import HighchartsExportData from 'highcharts/modules/export-data'
+import { genericOptions } from '../utils/highchartsOptions'
+
+HighchartsAccessibility(Highcharts)
+HighchartsExporting(Highcharts)
+HighchartsExportData(Highcharts)
 
 type ProductionData = {
   name: string
@@ -49,8 +57,9 @@ export default defineComponent({
   methods: {
     createChart(years: number[], data: Highcharts.SeriesOptionsType[]) {
       const options: Highcharts.Options = {
+        ...genericOptions,
         chart: {
-          backgroundColor: 'transparent',
+          backgroundColor: 'white',
           type: 'column',
         },
         title: {

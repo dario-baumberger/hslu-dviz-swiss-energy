@@ -1,7 +1,16 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import * as Highcharts from 'highcharts'
+import HighchartsAccessibility from 'highcharts/modules/accessibility'
+import HighchartsExporting from 'highcharts/modules/exporting'
+import HighchartsExportData from 'highcharts/modules/export-data'
+
 import { createTooltipFormatter } from '../utils/chartTooltip'
+import { genericOptions } from '../utils/highchartsOptions'
+
+HighchartsAccessibility(Highcharts)
+HighchartsExporting(Highcharts)
+HighchartsExportData(Highcharts)
 
 type ProductionData = {
   name: string
@@ -33,8 +42,9 @@ export default defineComponent({
   methods: {
     createChart(data: ProductionData[]) {
       const options: Highcharts.Options = {
+        ...genericOptions,
         chart: {
-          backgroundColor: 'transparent',
+          backgroundColor: 'white',
           type: 'bar',
           height: null,
         },
