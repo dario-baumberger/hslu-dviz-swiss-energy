@@ -48,6 +48,9 @@ export default defineComponent({
           backgroundColor: 'white',
           type: 'bar',
           height: null,
+          style: {
+            fontFamily: 'var(--font-serif)',
+          },
         },
         title: {
           text: '',

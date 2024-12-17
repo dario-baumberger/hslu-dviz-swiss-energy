@@ -80,6 +80,9 @@ export default defineComponent({
         chart: {
           backgroundColor: 'white',
           type: 'column',
+          style: {
+            fontFamily: 'var(--font-serif)',
+          },
         },
         legend: {
           // enabled: false,
@@ -101,7 +104,6 @@ export default defineComponent({
         tooltip: {
           useHTML: true,
           formatter: function () {
-            console.log(this)
             return tooltip(undefined, `${this.key} ${this.series.userOptions.stack}`, [
               { label: this.series.name, value: `${formatNumber(this.point.y)} GWh` },
               { label: 'Percentage', value: `${formatNumber(this.point.percentage)} %` },

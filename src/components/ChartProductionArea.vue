@@ -50,6 +50,10 @@ export default defineComponent({
         chart: {
           backgroundColor: 'white',
           type: 'area',
+          style: {
+            fontFamily: 'var(--font-serif)',
+            fontWeight: '200',
+          },
         },
         lang: {
           decimalPoint: '.',

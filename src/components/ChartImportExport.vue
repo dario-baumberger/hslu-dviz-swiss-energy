@@ -62,6 +62,9 @@ export default defineComponent({
         chart: {
           backgroundColor: 'white',
           type: 'column',
+          style: {
+            fontFamily: 'var(--font-serif)',
+          },
         },
         title: {
           text: '',

@@ -1,8 +1,17 @@
 <template>
   <div class="flex flex-col md:flex-row gap-4 justify-center md:max-w-none mx-auto">
-    <div id="chartMapImport" class="h-full w-full hidden md:block"></div>
-    <div id="chartMapExport" class="h-full w-full hidden md:block"></div>
-    <div id="chartMapNetto" class="h-full w-full"></div>
+    <div class="w-full">
+      <h2 class="text-xl mb-4 font-sans text-center">Import into CH</h2>
+      <div id="chartMapImport" class="h-screen-1/2 w-full hidden md:block"></div>
+    </div>
+    <div class="w-full">
+      <h2 class="text-xl mb-4 font-sans text-center">Import from CH</h2>
+      <div id="chartMapExport" class="h-screen-1/2 w-full hidden md:block"></div>
+    </div>
+    <div class="w-full">
+      <h2 class="text-xl mb-4 font-sans text-center">Netto Import Export</h2>
+      <div id="chartMapNetto" class="h-screen-1/2 w-full"></div>
+    </div>
   </div>
   <InputSlide
     v-if="min !== undefined && max !== undefined && yearToShow !== undefined"
@@ -87,6 +96,9 @@ export default defineComponent({
           map: topology,
           animation: false,
           backgroundColor: 'white',
+          style: {
+            fontFamily: 'var(--font-serif)',
+          },
         },
         credits: {
           enabled: false,
@@ -99,7 +111,7 @@ export default defineComponent({
       const importOptions: Highcharts.Options = {
         ...options,
         title: {
-          text: 'Import',
+          text: '',
         },
         colorAxis: {
           type: 'linear',
@@ -137,7 +149,7 @@ export default defineComponent({
       const exportOptions: Highcharts.Options = {
         ...options,
         title: {
-          text: 'Export',
+          text: '',
         },
         colorAxis: {
           type: 'linear',
@@ -177,7 +189,7 @@ export default defineComponent({
       const nettoOptions: Highcharts.Options = {
         ...options,
         title: {
-          text: 'Netto',
+          text: '',
         },
         colorAxis: {
           type: 'linear',

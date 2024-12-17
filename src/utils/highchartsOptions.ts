@@ -2,6 +2,7 @@ export const exportSettings = {
   exporting: {
     buttons: {
       contextButton: {
+        enabled: false,
         menuItems: [
           'viewFullscreen',
           'Print',

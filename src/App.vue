@@ -159,7 +159,8 @@ import {
         Switzerland imports energy from its neighboring countries and also exports energy to these
         same countries. The largest energy imports come from Germany and France, while the largest
         exports go to Italy. Switzerland also supplies energy to countries from which it imports
-        energy.
+        energy. The imported energy from italy is mostyle fossil based energy, while imported energy
+        from France is mostly nuclear energy.
       </p>
       <p>
         Regarding energy independence, we treat imports as negative values (regardless of the energy
@@ -202,8 +203,8 @@ import {
         aspect cannot be ignored.
       </p>
       <p>
-        For analysis purposes, we categorize imports and production as **generation**, and exports
-        and consumption as **usage**.
+        For analysis purposes, we categorize imports and production as generation, and exports and
+        consumption as usage.
       </p>
     </TextSection>
     <ChartSection
