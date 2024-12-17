@@ -7,6 +7,7 @@ export default {
   components: {
     FontAwesomeIcon,
   },
+
   props: {
     title: String,
     icon: {
