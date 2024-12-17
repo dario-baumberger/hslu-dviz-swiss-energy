@@ -158,12 +158,16 @@ export default defineComponent({
       .then((data) => {
         this.years = data[0].data
         this.originalData = data
-        this.min = Math.min(...this.years)
         this.max = Math.max(...this.years)
+        this.min = Math.min(...this.years)
         this.knob1 = this.min
         this.knob2 = this.max
 
         this.createChart(this.years, data)
+        if (window.innerWidth < 768 && this.max - 7 > this.min) {
+          this.knob1 = this.max - 7
+          this.updateChart()
+        }
       })
       .catch((error) => console.error('Error fetching the JSON data:', error))
   },

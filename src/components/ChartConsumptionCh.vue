@@ -168,6 +168,10 @@ export default defineComponent({
         this.knob2 = this.max
 
         this.createChart(this.years, data)
+        if (window.innerWidth < 768 && this.max - 7 > this.min) {
+          this.knob1 = this.max - 7
+          this.updateChart()
+        }
       })
       .catch((error) => console.error('Error fetching the JSON data:', error))
   },
