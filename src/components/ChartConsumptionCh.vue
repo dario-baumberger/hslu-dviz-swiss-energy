@@ -28,6 +28,36 @@ type ComponentData = {
   chart: Highcharts.Chart | null
 }
 
+function prepareSeries(data: ProductionData[]): Highcharts.SeriesOptionsType[] {
+  return [
+    {
+      ...(data.find((series) => series.name === 'Export') as Highcharts.SeriesOptionsType),
+      stack: 'Usage',
+      color: '#1b5e20',
+    },
+    {
+      ...(data.find(
+        (series) => series.name === 'Country consumption',
+      ) as Highcharts.SeriesOptionsType),
+      stack: 'Usage',
+      color: '#ff8c00',
+    },
+
+    {
+      ...(data.find((series) => series.name === 'Import') as Highcharts.SeriesOptionsType),
+      stack: 'Generation',
+      color: '#b71c1c',
+    },
+    {
+      ...(data.find(
+        (series) => series.name === 'Production Netto',
+      ) as Highcharts.SeriesOptionsType),
+      stack: 'Generation',
+      color: '#66bb6a',
+    },
+  ] as Highcharts.SeriesOptionsType[]
+}
+
 export default defineComponent({
   components: {
     InputRange,
@@ -52,7 +82,7 @@ export default defineComponent({
           type: 'column',
         },
         legend: {
-          enabled: false,
+          // enabled: false,
         },
         title: {
           text: '',
@@ -71,20 +101,24 @@ export default defineComponent({
         tooltip: {
           useHTML: true,
           formatter: function () {
-            return tooltip(undefined, this.point.x.toString(), [
-              { label: 'Consumption', value: `${formatNumber(this.point.y)} GWh` },
+            console.log(this)
+            return tooltip(undefined, `${this.key} ${this.series.userOptions.stack}`, [
+              { label: this.series.name, value: `${formatNumber(this.point.y)} GWh` },
+              { label: 'Percentage', value: `${formatNumber(this.point.percentage)} %` },
             ])
           },
         },
         plotOptions: {
-          series: {
+          column: {
             stacking: 'normal',
+          },
+          series: {
             dataLabels: {
               enabled: false,
             },
           },
         },
-        series: data.slice(1) as Highcharts.SeriesOptionsType[],
+        series: prepareSeries(data),
       }
 
       this.chart = Highcharts.chart('ChartConsumptionCh', options)
@@ -110,7 +144,7 @@ export default defineComponent({
         xAxis: {
           categories: filteredYears.map((year) => year.toString()),
         },
-        series: filteredData.slice(1) as Highcharts.SeriesOptionsType[],
+        series: prepareSeries(filteredData),
       })
     },
     handleRangeChange({ low, high }: { low: number; high: number }) {
@@ -120,7 +154,7 @@ export default defineComponent({
     },
   },
   mounted() {
-    fetch('./data/consumption_CH.json')
+    fetch('./data/consumption.json')
       .then((response) => response.json())
       .then((data: ProductionData[]) => {
         this.years = data[0].data
