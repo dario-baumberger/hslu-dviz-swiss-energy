@@ -24,6 +24,7 @@ import HighchartsAccessibility from 'highcharts/modules/accessibility'
 import HighchartsExporting from 'highcharts/modules/exporting'
 import HighchartsExportData from 'highcharts/modules/export-data'
 import { genericOptions } from '../utils/highchartsOptions'
+import { tooltip } from '../utils/chartTooltip'
 
 HighchartsAccessibility(Highcharts)
 HighchartsExporting(Highcharts)
@@ -105,6 +106,17 @@ export default defineComponent({
           minColor: '#efefef',
           maxColor: '#b71c1c',
         },
+        tooltip: {
+          useHTML: true,
+          formatter: function () {
+            const point = this.point
+            const hcKey = point.properties['hc-key']
+            const exports = filteredYears?.data.exports[hcKey] as unknown as number
+            return tooltip(this.point.color as string, this.point.name, [
+              { label: 'CH Imports', value: `${formatNumber(exports)} MWh` },
+            ])
+          },
+        },
         series: [
           {
             type: 'map',
@@ -131,6 +143,18 @@ export default defineComponent({
           type: 'linear',
           minColor: '#efefef',
           maxColor: '#1b5e20',
+        },
+        tooltip: {
+          useHTML: true,
+          formatter: function () {
+            const point = this.point
+            const hcKey = point.properties['hc-key']
+            const imports = filteredYears?.data.imports[hcKey] as unknown as number
+
+            return tooltip(this.point.color as string, this.point.name, [
+              { label: 'CH Exports', value: `${formatNumber(imports)} MWh` },
+            ])
+          },
         },
         series: [
           {
@@ -171,14 +195,11 @@ export default defineComponent({
             const imports = filteredYears?.data.imports[hcKey] as unknown as number
             const exports = filteredYears?.data.exports[hcKey] as unknown as number
             const pointValue = point.value as number
-            return `
-            <b class="text-sm">${point.name}</b><br/>
-              <ul>
-              <li class="text-xs flex gap-2 justify-between"><span>Imports: </span> <span class="text-right">${formatNumber(imports)} MWh</span></li>
-              <li class="text-xs flex gap-2 justify-between"><span>Exports: </span> <span class="text-right">${formatNumber(exports)} MWh</span></li>
-              <li class="text-xs flex gap-2 justify-between"><span>Netto: </span> <span class="text-right">${formatNumber(pointValue)} MWh</span></li>
-              </ul>
-            `
+            return tooltip(this.point.color as string, this.point.name, [
+              { label: 'CH Exports', value: `${formatNumber(imports)} MWh` },
+              { label: 'CH Imports', value: `${formatNumber(exports)} MWh` },
+              { label: 'Netto', value: `${formatNumber(pointValue)} MWh` },
+            ])
           },
         },
         series: [

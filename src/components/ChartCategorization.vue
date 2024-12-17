@@ -17,7 +17,8 @@ import HighchartsAccessibility from 'highcharts/modules/accessibility'
 import HighchartsExporting from 'highcharts/modules/exporting'
 import HighchartsExportData from 'highcharts/modules/export-data'
 import { genericOptions } from '../utils/highchartsOptions'
-import { createTooltipFormatter } from '../utils/chartTooltip'
+import { tooltip } from '../utils/chartTooltip'
+import formatNumber from '../utils/formatNumber'
 
 HighchartsAccessibility(Highcharts)
 HighchartsExporting(Highcharts)
@@ -71,7 +72,12 @@ export default defineComponent({
         tooltip: {
           valueSuffix: 'GWh',
           useHTML: true,
-          formatter: createTooltipFormatter('Year', 'Consumption', true),
+          formatter: function () {
+            return tooltip(this.point.color as string, this.point.name, [
+              { label: 'Production', value: `${formatNumber(this.point.y)} GWh` },
+              { label: 'Percentage', value: `${formatNumber(this.point.percentage)} %` },
+            ])
+          },
         },
         plotOptions: {
           pie: {

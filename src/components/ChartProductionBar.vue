@@ -14,11 +14,12 @@
 import { defineComponent } from 'vue'
 import Highcharts from 'highcharts'
 import InputRange from './InputRange.vue'
-import { createTooltipFormatter } from '../utils/chartTooltip'
+import { tooltip } from '../utils/chartTooltip'
 import HighchartsAccessibility from 'highcharts/modules/accessibility'
 import HighchartsExporting from 'highcharts/modules/exporting'
 import HighchartsExportData from 'highcharts/modules/export-data'
-import { genericOptions, patterns } from '../utils/highchartsOptions'
+import { genericOptions } from '../utils/highchartsOptions'
+import formatNumber from '../utils/formatNumber'
 
 HighchartsAccessibility(Highcharts)
 HighchartsExporting(Highcharts)
@@ -83,7 +84,14 @@ export default defineComponent({
         tooltip: {
           valueSuffix: 'GWh',
           useHTML: true,
-          formatter: createTooltipFormatter('Year', 'Production', false),
+          formatter: function () {
+            console.log(this)
+            return tooltip(this.point.color as string, this.series.name, [
+              { label: 'Year', value: this.key },
+              { label: 'Production', value: `${formatNumber(this.point.y)} GWh` },
+              { label: 'Percentage', value: `${formatNumber(this.point.percentage)} %` },
+            ])
+          },
         },
         plotOptions: {
           column: {

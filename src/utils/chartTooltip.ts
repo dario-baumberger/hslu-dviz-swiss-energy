@@ -1,36 +1,26 @@
-import Highcharts from 'highcharts'
-
-export function tooltipFormatter(
-  this: Highcharts.TooltipFormatterContextObject,
-  xLabel: string,
-  yLabel: string,
-  showPercentage: boolean = true,
-): string {
-  let tooltip = `<span class="flex flex-col gap-1 bg-white"><span><span class="inline-block w-2 h-2 rounded-full" style="background-color: ${this.point.color}"></span> <span class="text-xs">${this.series.name}</span></span>
-  <span class="flex justify-between gap-2"><span>${xLabel}: </span><span>${this.x}</span></span>`
-
-  if (this.y !== null && this.y !== undefined) {
-    // Use type assertion to inform TypeScript about the existence of tooltipOptions
-    const series = this.series as Highcharts.Series & { tooltipOptions?: { valueSuffix?: string } }
-    const valueSuffix = series.tooltipOptions?.valueSuffix || ''
-    tooltip += `<span class="flex justify-between gap-2"><span>${yLabel}: </span><span>${Highcharts.numberFormat(this.y, 0)} ${valueSuffix}</span></span>`
+// todo: make nice
+export function tooltip(
+  color: string | undefined,
+  title: string | undefined,
+  values: Array<{ label: string | undefined; value: string | undefined }>,
+) {
+  let tooltip = `<span class="flex flex-col gap-1 bg-white">`
+  tooltip += `<span class="flex flex-row gap-1 bg-white items-center">`
+  if (color) {
+    tooltip += `<span class="inline-block w-2 h-2 rounded-full" style="background-color: ${color}"></span>`
   }
 
-  if (showPercentage && this.point.percentage !== undefined) {
-    tooltip += `<span class="flex justify-between gap-2"><span>Percentage: </span><span>${Highcharts.numberFormat(this.point.percentage, 2)}%</span></span>`
+  if (title) {
+    tooltip += `<span class="text-xs">${title}</span>`
+  }
+
+  tooltip += `</span>`
+
+  for (const { label, value } of values) {
+    tooltip += `<span class="flex justify-between gap-2"><span>${label}: </span><span>${value}</span></span>`
   }
 
   tooltip += '</span>'
 
   return tooltip
-}
-
-export function createTooltipFormatter(
-  xLabel: string,
-  yLabel: string,
-  showPercentage: boolean = true,
-) {
-  return function (this: Highcharts.TooltipFormatterContextObject) {
-    return tooltipFormatter.call(this, xLabel, yLabel, showPercentage)
-  }
 }
