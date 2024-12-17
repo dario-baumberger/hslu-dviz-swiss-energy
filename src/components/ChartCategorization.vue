@@ -64,7 +64,9 @@ export default defineComponent({
         credits: {
           enabled: false,
         },
-
+        tooltip: {
+          valueSuffix: 'GWh',
+        },
         plotOptions: {
           pie: {
             shadow: false,
