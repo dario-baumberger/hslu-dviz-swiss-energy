@@ -6,7 +6,7 @@ export function tooltipFormatter(
   yLabel: string,
   showPercentage: boolean = true,
 ): string {
-  let tooltip = `<span class="flex flex-col gap-1"><span><span class="inline-block w-2 h-2 rounded-full" style="background-color: ${this.point.color}"></span> <span class="text-xs">${this.series.name}</span></span>
+  let tooltip = `<span class="flex flex-col gap-1 bg-white"><span><span class="inline-block w-2 h-2 rounded-full" style="background-color: ${this.point.color}"></span> <span class="text-xs">${this.series.name}</span></span>
   <span class="flex justify-between gap-2"><span>${xLabel}: </span><span>${this.x}</span></span>`
 
   if (this.y !== null && this.y !== undefined) {
