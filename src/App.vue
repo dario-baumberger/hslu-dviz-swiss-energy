@@ -65,13 +65,15 @@ import {
     <TextSection :has-shadow-top="false" title="Swiss Energy Production" :icon="faSolarPanel">
       <p>
         Switzerland produces energy from various sources. Hydropower is the most important source of
-        renewable energy in Switzerland. Followed by nuclear power. Hydropower is separated into run
-        of river and storage power plants. In the last few years, the share of renewable energy has
-        increased. Especially photovoltaic has increased. Switzerland has multiple renewable energy
-        sources which deliver only a small amount of energy. The share of fossil energy has
-        decreased. In the following chart, you can see the development of energy production. For the
-        further analysis we will split the energy production into the categories of renewable
-        energy, nuclear energy and fossil energy.
+        renewable energy in Switzerland, followed by nuclear power. Hydropower is divided into
+        run-of-river and storage power plants.
+      </p>
+      <p>
+        In the last few years, the share of renewable energy has increased, especially from
+        photovoltaics. Switzerland has multiple renewable energy sources that deliver only a small
+        amount of energy. The share of fossil energy has decreased. The output of photovoltaics,
+        solar, and other renewable sources depends on circumstances like weather. The production per
+        source varies over the years; therefore, the total production varies too.
       </p>
     </TextSection>
     <ChartSection
@@ -81,14 +83,16 @@ import {
     </ChartSection>
     <TextSection title="Energy Categorization" :icon="faSitemap">
       <p>
-        Switzerland produces energy from various sources. The generated energy is fed into the grid,
-        where it is not possible to identify its specific source. This is referred to as the energy
-        mix. Within this mix, it is only possible to determine the proportion of energy contributed
-        by each source. Over the years, the energy mix has changed. From now on, we will only use
-        the three categories of renewable energy, nuclear energy, and fossil energy for our
-        analysis.
+        The generated energy is fed into the grid, where it is not possible to identify its specific
+        source. This is referred to as the energy mix. Within this mix, it is only possible to
+        determine the proportion of energy contributed by each source. Due to changes in production,
+        the mix changes as well.
       </p>
-      <p>The following chart shows the energy mix of Switzerland over the past few years.</p>
+      <p>
+        Switzerland has many sources of energy, especially in the renewables sector. For further
+        analysis, we will break down energy production into the categories of renewable energy,
+        nuclear energy, and fossil energy.
+      </p>
     </TextSection>
     <ChartSection
       source-url="https://opendata.swiss/de/dataset/schweizerische-elektrizitatsbilanz-jahreswerte"
@@ -98,25 +102,14 @@ import {
 
     <TextSection title="Swiss Energy Mix" :icon="faPlugCircleBolt">
       <p>
-        In Switzerland, electricity is produced from 52.8% hydropower, 36.4% nuclear power, 1.4%
-        fossil fuels, and 9.4% new renewable energies (Swiss production mix 2022). Information on
-        this can be found in the
-        <a
-          href="https://www.admin.ch/gov/de/start/dokumentation/medienmitteilungen.msg-id-97643.html"
-          target="_blank"
-          >Swiss Electricity Statistics.</a
-        >
+        Over the years, the energy mix has changed. The mix varies from year to year. But overall, a
+        trend can be seen: the share of renewable energy has increased, while the share of fossil
+        energy has decreased.
       </p>
       <p>
-        However, electricity delivered to Swiss sockets is not only from Swiss production: there is
-        active trade with foreign countries, with electricity being both exported and imported.
-        Swiss guarantees of origin are traded domestically, and foreign ones can be imported.
-        Therefore, the Swiss production mix does not correspond to the average composition of the
-        delivered electricity (Swiss delivery mix).
+        The Swiss production mix does not correspond to the average composition of the delivered
+        electricity (Swiss delivery mix).
       </p>
-      <a href="https://www.strom.ch/de/service/stromkennzeichnung" target="_blank"
-        >More Informationen</a
-      >
     </TextSection>
 
     <ChartSection
@@ -127,13 +120,23 @@ import {
 
     <TextSection title="European Energy Mix" :icon="faEarthEurope">
       <p>
+        Electricity delivered to Swiss sockets is not only from Swiss production: there is active
+        trade with foreign countries, with electricity being both exported and imported. Swiss
+        guarantees of origin are traded domestically, and foreign ones can be imported.
+      </p>
+
+      <p>
         In Europe, the energy mix is different, based on the energy sources available in each
         country. The mixes vary significantly from country to country. In Europe many countries rely
         on fossil fuels and nuclear energy. Just one third of the countries relay on renewable
         energy for more than 50% of their energy mix. This are mainly the countries in the north of
         Europe.
       </p>
-      <p>The following chart shows the energy mix of the European Countries in the year #todo.</p>
+      <p>
+        To identify the shares of fossil energy, renewable energy, or nuclear energy from abroad, we
+        need to know the energy mixes of the other countries. The following chart shows the energy
+        mix of the European Countries in the year #todo.
+      </p>
     </TextSection>
 
     <ChartSection
@@ -149,12 +152,16 @@ import {
         is imported.
       </p>
       <p>
-        Switzerland imports energy from its neighboring countries and also exports energy to the
-        same countries. The following maps show energy imports and exports over the past few years.
+        Switzerland imports energy from its neighboring countries and also exports energy to these
+        same countries. The largest energy imports come from Germany and France, while the largest
+        exports go to Italy. Switzerland also supplies energy to countries from which it imports
+        energy.
       </p>
       <p>
-        Switzerland imports the most energy from Germany and France. It exports the most energy to
-        Italy. Switzerland also supplies energy to countries from which it imports energy.
+        Regarding energy independence, we treat imports as negative values (regardless of the energy
+        mix of the respective country.) and exports as positive values. If imports exceed exports,
+        Switzerland is dependent on foreign energy. If exports exceed imports, Switzerland is energy
+        independent.
       </p>
     </TextSection>
     <ChartSection
@@ -171,10 +178,7 @@ import {
         Before 2003, Switzerland supplied more energy than it consumed. Since 2003, this has no
         longer been the case.
       </p>
-      <p>
-        To identify the shares of fossil energy, renewable energy, or nuclear energy from abroad, we
-        need to know the energy mixes of the other countries.
-      </p>
+      <p></p>
     </TextSection>
 
     <ChartSection
