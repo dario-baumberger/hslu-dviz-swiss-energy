@@ -81,6 +81,9 @@ export default defineComponent({
             name: 'Categories',
             type: 'pie',
             size: '60%',
+            innerSize: '60%',
+            borderWidth: 1,
+
             colors: [
               '#66C7B6',
               '#3A8C80',
@@ -103,6 +106,8 @@ export default defineComponent({
             name: 'Details',
             type: 'pie',
             size: '40%',
+            innerSize: '50%',
+            borderWidth: 1,
             colors: ['#4CB19E', '#6D6D6D', '#E4C54E'],
             data: this.groupedData.slice(1).map((series) => {
               return {
