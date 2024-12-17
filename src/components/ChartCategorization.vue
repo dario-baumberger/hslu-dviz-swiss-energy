@@ -70,7 +70,6 @@ export default defineComponent({
           margin: [0, 0, 0, 0],
         },
         tooltip: {
-          valueSuffix: 'GWh',
           useHTML: true,
           formatter: function () {
             return tooltip(this.point.color as string, this.point.name, [

@@ -69,7 +69,6 @@ export default defineComponent({
           },
         },
         tooltip: {
-          valueSuffix: 'GWh',
           useHTML: true,
           formatter: function () {
             return tooltip(undefined, this.point.x.toString(), [

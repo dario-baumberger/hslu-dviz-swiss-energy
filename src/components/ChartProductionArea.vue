@@ -73,10 +73,8 @@ export default defineComponent({
           },
         },
         tooltip: {
-          valueSuffix: 'GWh',
           useHTML: true,
           formatter: function () {
-            console.log(this)
             return tooltip(this.point.color as string, this.series.name, [
               { label: 'Year', value: this.key },
               { label: 'Production', value: `${formatNumber(this.point.y)} GWh` },
