@@ -2,7 +2,16 @@
 import { defineComponent } from 'vue'
 import * as Highcharts from 'highcharts'
 import InputRange from './InputRange.vue'
-import { createTooltipFormatter } from '../utils/chartTooltip'
+import { tooltip } from '../utils/chartTooltip'
+import HighchartsAccessibility from 'highcharts/modules/accessibility'
+import HighchartsExporting from 'highcharts/modules/exporting'
+import HighchartsExportData from 'highcharts/modules/export-data'
+import { genericOptions } from '../utils/highchartsOptions'
+import formatNumber from '../utils/formatNumber'
+
+HighchartsAccessibility(Highcharts)
+HighchartsExporting(Highcharts)
+HighchartsExportData(Highcharts)
 
 type ProductionData = {
   name: string
@@ -17,6 +26,36 @@ type ComponentData = {
   originalData: ProductionData[]
   years: number[]
   chart: Highcharts.Chart | null
+}
+
+function prepareSeries(data: ProductionData[]): Highcharts.SeriesOptionsType[] {
+  return [
+    {
+      ...(data.find((series) => series.name === 'Export') as Highcharts.SeriesOptionsType),
+      stack: 'Usage',
+      color: '#1b5e20',
+    },
+    {
+      ...(data.find(
+        (series) => series.name === 'Country consumption',
+      ) as Highcharts.SeriesOptionsType),
+      stack: 'Usage',
+      color: '#ff8c00',
+    },
+
+    {
+      ...(data.find((series) => series.name === 'Import') as Highcharts.SeriesOptionsType),
+      stack: 'Generation',
+      color: '#b71c1c',
+    },
+    {
+      ...(data.find(
+        (series) => series.name === 'Production Netto',
+      ) as Highcharts.SeriesOptionsType),
+      stack: 'Generation',
+      color: '#66bb6a',
+    },
+  ] as Highcharts.SeriesOptionsType[]
 }
 
 export default defineComponent({
@@ -37,12 +76,16 @@ export default defineComponent({
   methods: {
     createChart(years: number[], data: ProductionData[]) {
       const options: Highcharts.Options = {
+        ...genericOptions,
         chart: {
-          backgroundColor: 'transparent',
+          backgroundColor: 'white',
           type: 'column',
+          style: {
+            fontFamily: 'var(--font-serif)',
+          },
         },
         legend: {
-          enabled: false,
+          // enabled: false,
         },
         title: {
           text: '',
@@ -59,19 +102,25 @@ export default defineComponent({
           },
         },
         tooltip: {
-          valueSuffix: 'GWh',
           useHTML: true,
-          formatter: createTooltipFormatter('Year', 'Consumption', false),
+          formatter: function () {
+            return tooltip(undefined, `${this.key} ${this.series.userOptions.stack}`, [
+              { label: this.series.name, value: `${formatNumber(this.point.y)} GWh` },
+              { label: 'Percentage', value: `${formatNumber(this.point.percentage)} %` },
+            ])
+          },
         },
         plotOptions: {
-          series: {
+          column: {
             stacking: 'normal',
+          },
+          series: {
             dataLabels: {
               enabled: false,
             },
           },
         },
-        series: data.slice(1) as Highcharts.SeriesOptionsType[],
+        series: prepareSeries(data),
       }
 
       this.chart = Highcharts.chart('ChartConsumptionCh', options)
@@ -97,7 +146,7 @@ export default defineComponent({
         xAxis: {
           categories: filteredYears.map((year) => year.toString()),
         },
-        series: filteredData.slice(1) as Highcharts.SeriesOptionsType[],
+        series: prepareSeries(filteredData),
       })
     },
     handleRangeChange({ low, high }: { low: number; high: number }) {
@@ -107,7 +156,7 @@ export default defineComponent({
     },
   },
   mounted() {
-    fetch('./data/consumption_CH.json')
+    fetch('./data/consumption.json')
       .then((response) => response.json())
       .then((data: ProductionData[]) => {
         this.years = data[0].data
@@ -119,6 +168,10 @@ export default defineComponent({
         this.knob2 = this.max
 
         this.createChart(this.years, data)
+        if (window.innerWidth < 768 && this.max - 7 > this.min) {
+          this.knob1 = this.max - 7
+          this.updateChart()
+        }
       })
       .catch((error) => console.error('Error fetching the JSON data:', error))
   },

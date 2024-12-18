@@ -7,7 +7,7 @@
         <span class="font-sans text-sm">{{ max }}</span>
       </div>
       <span class="absolute left-0 right-0 h-1 flex justify-between px-3 z-10">
-        <span v-for="_ in max - min + 1" :key="_" class="w-2px h-full bg-black"> </span>
+        <span v-for="_ in max - min + 1" :key="_" class="w-2px h-full bg-slate-500"> </span>
       </span>
       <label v-if="min !== null && max !== null && value !== null">
         <span class="sr-only">Limit 1</span>

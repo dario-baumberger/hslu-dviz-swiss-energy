@@ -1,8 +1,17 @@
 <template>
   <div class="flex flex-col md:flex-row gap-4 justify-center md:max-w-none mx-auto">
-    <div id="chartMapImport" class="h-full w-full hidden md:block"></div>
-    <div id="chartMapExport" class="h-full w-full hidden md:block"></div>
-    <div id="chartMapNetto" class="h-full w-full"></div>
+    <div class="w-full hidden md:block">
+      <h2 class="text-xl mb-4 font-sans text-center">Import into CH</h2>
+      <div id="chartMapImport" class="h-screen-1/2 w-full"></div>
+    </div>
+    <div class="w-full hidden md:block">
+      <h2 class="text-xl mb-4 font-sans text-center">Import from CH</h2>
+      <div id="chartMapExport" class="h-screen-1/2 w-full"></div>
+    </div>
+    <div class="w-full">
+      <h2 class="text-xl mb-4 font-sans text-center">Netto Import Export</h2>
+      <div id="chartMapNetto" class="h-screen-1/2 w-full"></div>
+    </div>
   </div>
   <InputSlide
     v-if="min !== undefined && max !== undefined && yearToShow !== undefined"
@@ -20,6 +29,15 @@ import Highcharts from 'highcharts/highmaps'
 import topology from '../assets/map.topo.json'
 import InputSlide from './InputSlide.vue'
 import formatNumber from '../utils/formatNumber'
+import HighchartsAccessibility from 'highcharts/modules/accessibility'
+import HighchartsExporting from 'highcharts/modules/exporting'
+import HighchartsExportData from 'highcharts/modules/export-data'
+import { genericOptions } from '../utils/highchartsOptions'
+import { tooltip } from '../utils/chartTooltip'
+
+HighchartsAccessibility(Highcharts)
+HighchartsExporting(Highcharts)
+HighchartsExportData(Highcharts)
 
 interface YearlyData {
   name: number
@@ -73,9 +91,14 @@ export default defineComponent({
       const filteredYears = data.find((year) => year.name === this.yearToShow)
 
       const options: Highcharts.Options = {
+        ...genericOptions,
         chart: {
           map: topology,
           animation: false,
+          backgroundColor: 'white',
+          style: {
+            fontFamily: 'var(--font-serif)',
+          },
         },
         credits: {
           enabled: false,
@@ -88,12 +111,23 @@ export default defineComponent({
       const importOptions: Highcharts.Options = {
         ...options,
         title: {
-          text: 'Import',
+          text: '',
         },
         colorAxis: {
           type: 'linear',
           minColor: '#efefef',
           maxColor: '#b71c1c',
+        },
+        tooltip: {
+          useHTML: true,
+          formatter: function () {
+            const point = this.point
+            const hcKey = point.properties['hc-key']
+            const exports = filteredYears?.data.exports[hcKey] as unknown as number
+            return tooltip(this.point.color as string, this.point.name, [
+              { label: 'CH Imports', value: `${formatNumber(exports)} MWh` },
+            ])
+          },
         },
         series: [
           {
@@ -115,12 +149,24 @@ export default defineComponent({
       const exportOptions: Highcharts.Options = {
         ...options,
         title: {
-          text: 'Export',
+          text: '',
         },
         colorAxis: {
           type: 'linear',
           minColor: '#efefef',
           maxColor: '#1b5e20',
+        },
+        tooltip: {
+          useHTML: true,
+          formatter: function () {
+            const point = this.point
+            const hcKey = point.properties['hc-key']
+            const imports = filteredYears?.data.imports[hcKey] as unknown as number
+
+            return tooltip(this.point.color as string, this.point.name, [
+              { label: 'CH Exports', value: `${formatNumber(imports)} MWh` },
+            ])
+          },
         },
         series: [
           {
@@ -143,7 +189,7 @@ export default defineComponent({
       const nettoOptions: Highcharts.Options = {
         ...options,
         title: {
-          text: 'Netto',
+          text: '',
         },
         colorAxis: {
           type: 'linear',
@@ -161,14 +207,11 @@ export default defineComponent({
             const imports = filteredYears?.data.imports[hcKey] as unknown as number
             const exports = filteredYears?.data.exports[hcKey] as unknown as number
             const pointValue = point.value as number
-            return `
-            <b class="text-sm">${point.name}</b><br/>
-              <ul>
-              <li class="text-xs flex gap-2 justify-between"><span>Imports: </span> <span class="text-right">${formatNumber(imports)} MWh</span></li>
-              <li class="text-xs flex gap-2 justify-between"><span>Exports: </span> <span class="text-right">${formatNumber(exports)} MWh</span></li>
-              <li class="text-xs flex gap-2 justify-between"><span>Netto: </span> <span class="text-right">${formatNumber(pointValue)} MWh</span></li>
-              </ul>
-            `
+            return tooltip(this.point.color as string, this.point.name, [
+              { label: 'CH Exports', value: `${formatNumber(imports)} MWh` },
+              { label: 'CH Imports', value: `${formatNumber(exports)} MWh` },
+              { label: 'Netto', value: `${formatNumber(pointValue)} MWh` },
+            ])
           },
         },
         series: [

@@ -14,7 +14,16 @@
 import { defineComponent } from 'vue'
 import Highcharts from 'highcharts'
 import InputRange from './InputRange.vue'
-import { createTooltipFormatter } from '../utils/chartTooltip'
+import { tooltip } from '../utils/chartTooltip'
+import HighchartsAccessibility from 'highcharts/modules/accessibility'
+import HighchartsExporting from 'highcharts/modules/exporting'
+import HighchartsExportData from 'highcharts/modules/export-data'
+import { genericOptions } from '../utils/highchartsOptions'
+import formatNumber from '../utils/formatNumber'
+
+HighchartsAccessibility(Highcharts)
+HighchartsExporting(Highcharts)
+HighchartsExportData(Highcharts)
 
 type ProductionData = {
   name: string
@@ -49,9 +58,13 @@ export default defineComponent({
   methods: {
     createChart(years: number[], data: Highcharts.SeriesOptionsType[]) {
       const options: Highcharts.Options = {
+        ...genericOptions,
         chart: {
-          backgroundColor: 'transparent',
+          backgroundColor: 'white',
           type: 'column',
+          style: {
+            fontFamily: 'var(--font-serif)',
+          },
         },
         title: {
           text: '',
@@ -68,9 +81,13 @@ export default defineComponent({
           },
         },
         tooltip: {
-          valueSuffix: 'GWh',
           useHTML: true,
-          formatter: createTooltipFormatter('Year', 'Production', false),
+          formatter: function () {
+            return tooltip(this.point.color as string, this.series.name, [
+              { label: 'Year', value: this.key },
+              { label: 'Production', value: `${formatNumber(this.point.y)} GWh` },
+            ])
+          },
         },
         plotOptions: {
           column: {
@@ -128,6 +145,10 @@ export default defineComponent({
         this.knob2 = this.max
 
         this.createChart(this.years, data)
+        if (window.innerWidth < 768 && this.max - 7 > this.min) {
+          this.knob1 = this.max - 7
+          this.updateChart()
+        }
       })
       .catch((error) => console.error('Error fetching the JSON data:', error))
   },

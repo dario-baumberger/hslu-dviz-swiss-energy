@@ -3,8 +3,8 @@ module.exports = {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     fontFamily: {
-      sans: ['"Oswald"', 'sans-serif'],
-      serif: ['"Quattrocento"', 'serif'],
+      sans: 'var(--font-sans)',
+      serif: 'var(--font-serif)',
     },
     extend: {
       width: {
@@ -12,7 +12,7 @@ module.exports = {
       },
       height: {
         'screen-1/2': '50vh',
-        'screen-4/5': '60vh',
+        'screen-3/5': '60vh',
         'screen-2/3': '66.66666vh',
         'screen-4/5': '80vh',
       },

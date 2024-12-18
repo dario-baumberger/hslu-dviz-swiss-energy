@@ -14,8 +14,16 @@
 import { defineComponent } from 'vue'
 import Highcharts from 'highcharts'
 import InputRange from './InputRange.vue'
+import { tooltip } from '../utils/chartTooltip'
+import HighchartsAccessibility from 'highcharts/modules/accessibility'
+import HighchartsExporting from 'highcharts/modules/exporting'
+import HighchartsExportData from 'highcharts/modules/export-data'
+import { genericOptions } from '../utils/highchartsOptions'
+import formatNumber from '../utils/formatNumber'
 
-import { createTooltipFormatter } from '../utils/chartTooltip'
+HighchartsAccessibility(Highcharts)
+HighchartsExporting(Highcharts)
+HighchartsExportData(Highcharts)
 
 type ProductionData = {
   name: string
@@ -50,8 +58,9 @@ export default defineComponent({
   methods: {
     createChart(years: number[], data: ProductionData[]) {
       const options: Highcharts.Options = {
+        ...genericOptions,
         chart: {
-          backgroundColor: 'transparent',
+          backgroundColor: 'white',
           type: 'column',
         },
         lang: {
@@ -73,9 +82,14 @@ export default defineComponent({
           },
         },
         tooltip: {
-          valueSuffix: 'GWh',
           useHTML: true,
-          formatter: createTooltipFormatter('Year', 'Production', false),
+          formatter: function () {
+            return tooltip(this.point.color as string, this.series.name, [
+              { label: 'Year', value: this.key },
+              { label: 'Production', value: `${formatNumber(this.point.y)} GWh` },
+              { label: 'Percentage', value: `${formatNumber(this.point.percentage)} %` },
+            ])
+          },
         },
         plotOptions: {
           column: {
@@ -144,12 +158,16 @@ export default defineComponent({
       .then((data) => {
         this.years = data[0].data
         this.originalData = data
-        this.min = Math.min(...this.years)
         this.max = Math.max(...this.years)
+        this.min = Math.min(...this.years)
         this.knob1 = this.min
         this.knob2 = this.max
 
         this.createChart(this.years, data)
+        if (window.innerWidth < 768 && this.max - 7 > this.min) {
+          this.knob1 = this.max - 7
+          this.updateChart()
+        }
       })
       .catch((error) => console.error('Error fetching the JSON data:', error))
   },

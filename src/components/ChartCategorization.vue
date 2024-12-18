@@ -13,6 +13,16 @@
 import { defineComponent } from 'vue'
 import Highcharts from 'highcharts'
 import InputSlide from './InputSlide.vue'
+import HighchartsAccessibility from 'highcharts/modules/accessibility'
+import HighchartsExporting from 'highcharts/modules/exporting'
+import HighchartsExportData from 'highcharts/modules/export-data'
+import { genericOptions } from '../utils/highchartsOptions'
+import { tooltip } from '../utils/chartTooltip'
+import formatNumber from '../utils/formatNumber'
+
+HighchartsAccessibility(Highcharts)
+HighchartsExporting(Highcharts)
+HighchartsExportData(Highcharts)
 
 type ProductionData = {
   name: string
@@ -49,22 +59,28 @@ export default defineComponent({
   methods: {
     createChart() {
       const options: Highcharts.Options = {
+        ...genericOptions,
         chart: {
-          backgroundColor: 'transparent',
+          backgroundColor: 'white',
           type: 'pie',
           spacingTop: 0,
           spacingRight: 0,
           spacingBottom: 0,
           spacingLeft: 0,
           margin: [0, 0, 0, 0],
+          style: {
+            fontFamily: 'var(--font-serif)',
+          },
         },
-        title: {
-          text: '',
+        tooltip: {
+          useHTML: true,
+          formatter: function () {
+            return tooltip(this.point.color as string, this.point.name, [
+              { label: 'Production', value: `${formatNumber(this.point.y)} GWh` },
+              { label: 'Percentage', value: `${formatNumber(this.point.percentage)} %` },
+            ])
+          },
         },
-        credits: {
-          enabled: false,
-        },
-
         plotOptions: {
           pie: {
             shadow: false,
@@ -72,7 +88,10 @@ export default defineComponent({
             innerSize: '50%',
             dataLabels: {
               enabled: true,
-              distance: 50,
+              distance: 70,
+              alignTo: 'plotEdges',
+              connectorWidth: 1,
+              crop: false,
             },
           },
         },

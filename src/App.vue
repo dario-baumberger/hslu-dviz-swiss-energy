@@ -28,7 +28,7 @@ import {
 <template>
   <main class="h-full max-h-full flex flex-col snap-y snap-mandatory relative font-serif">
     <Jumbotron />
-    <div class="bg-white md:pt-32 rellative z-10"></div>
+    <div class="bg-white md:pt-32 relative z-10"></div>
 
     <TextSection
       :has-shadow-top="false"
@@ -37,59 +37,67 @@ import {
       :icon="faBullseye"
     >
       <p>
-        In 2017, the Swiss public voted in favour of the revised Energy Act. This was the first step
+        In 2017, the Swiss public voted in favor of the revised Energy Act. This was the first step
         in implementing the 2050 Energy Strategy, which contains the following objectives:
       </p>
       <ul class="list-disc pl-4">
-        <li>promote renewable energy in Switzerland;</li>
-        <li>reduce dependency on fossil energy from abroad;</li>
-        <li>reduce energy consumption;</li>
-        <li>increase energy efficiency.</li>
+        <li>Promote renewable energy in Switzerland;</li>
+        <li>Reduce dependency on fossil energy from abroad;</li>
+        <li>Reduce energy consumption;</li>
+        <li>Increase energy efficiency.</li>
       </ul>
       <p>
         Existing nuclear power plants can remain in operation as long as they are safe. There is a
         ban on the construction of new nuclear power plants.
       </p>
       <p>
-        <a href="https://www.uvek.admin.ch/uvek/en/home/energy/energy-policy.html" target="_blank"
-          >Read more about Principles of energy policy in Switzerland</a
-        >
+        <a href="https://www.uvek.admin.ch/uvek/en/home/energy/energy-policy.html" target="_blank">
+          Read more about Principles of energy policy in Switzerland
+        </a>
       </p>
       <p class="mt-4">
-        How is Switzerland doing in terms of energy production, promote renewable energy, reduce
-        dependency on fossil energy from abroad and consumption?
+        How is Switzerland doing in terms of energy production, promoting renewable energy, reducing
+        dependency on fossil energy from abroad, and reducing consumption?
       </p>
     </TextSection>
 
-    <div class="bg-white md:pt-32 rellative"></div>
+    <div class="bg-white md:pt-32 relative"></div>
+
     <TextSection :has-shadow-top="false" title="Swiss Energy Production" :icon="faSolarPanel">
       <p>
         Switzerland produces energy from various sources. Hydropower is the most important source of
-        renewable energy in Switzerland. Followed by nuclear power. Hydropower is separated into run
-        of river and storage power plants. In the last few years, the share of renewable energy has
-        increased. Especially photovoltaic has increased. Switzerland has multiple renewable energy
-        sources which deliver only a small amount of energy. The share of fossil energy has
-        decreased. In the following chart, you can see the development of energy production. For the
-        further analysis we will split the energy production into the categories of renewable
-        energy, nuclear energy and fossil energy.
+        renewable energy in Switzerland, followed by nuclear power. Hydropower is divided into
+        run-of-river and storage power plants.
+      </p>
+      <p>
+        In recent years, the share of renewable energy has increased, especially from photovoltaics.
+        Switzerland has multiple renewable energy sources that deliver only a small amount of
+        energy. The share of fossil energy has decreased. The output of photovoltaics, solar, and
+        other renewable sources depends on circumstances like weather. The production per source
+        varies over the years; therefore, the total production varies too.
       </p>
     </TextSection>
+
     <ChartSection
       source-url="https://opendata.swiss/de/dataset/schweizerische-elektrizitatsbilanz-jahreswerte"
     >
       <ChartProductionBar />
     </ChartSection>
+
     <TextSection title="Energy Categorization" :icon="faSitemap">
       <p>
-        Switzerland produces energy from various sources. The generated energy is fed into the grid,
-        where it is not possible to identify its specific source. This is referred to as the energy
-        mix. Within this mix, it is only possible to determine the proportion of energy contributed
-        by each source. Over the years, the energy mix has changed. From now on, we will only use
-        the three categories of renewable energy, nuclear energy, and fossil energy for our
-        analysis.
+        The generated energy is fed into the grid, where it is not possible to identify its specific
+        source. This is referred to as the energy mix. Within this mix, it is only possible to
+        determine the proportion of energy contributed by each source. Due to changes in production,
+        the mix changes as well.
       </p>
-      <p>The following chart shows the energy mix of Switzerland over the past few years.</p>
+      <p>
+        Switzerland has many sources of energy, especially in the renewables sector. For further
+        analysis, we will break down energy production into the categories of renewable energy,
+        nuclear energy, and fossil energy.
+      </p>
     </TextSection>
+
     <ChartSection
       source-url="https://opendata.swiss/de/dataset/schweizerische-elektrizitatsbilanz-jahreswerte"
     >
@@ -98,25 +106,14 @@ import {
 
     <TextSection title="Swiss Energy Mix" :icon="faPlugCircleBolt">
       <p>
-        In Switzerland, electricity is produced from 52.8% hydropower, 36.4% nuclear power, 1.4%
-        fossil fuels, and 9.4% new renewable energies (Swiss production mix 2022). Information on
-        this can be found in the
-        <a
-          href="https://www.admin.ch/gov/de/start/dokumentation/medienmitteilungen.msg-id-97643.html"
-          target="_blank"
-          >Swiss Electricity Statistics.</a
-        >
+        Over the years, the energy mix has changed. The mix varies from year to year. Overall, a
+        trend can be seen: the share of renewable energy has increased, while the share of fossil
+        energy has decreased.
       </p>
       <p>
-        However, electricity delivered to Swiss sockets is not only from Swiss production: there is
-        active trade with foreign countries, with electricity being both exported and imported.
-        Swiss guarantees of origin are traded domestically, and foreign ones can be imported.
-        Therefore, the Swiss production mix does not correspond to the average composition of the
-        delivered electricity (Swiss delivery mix).
+        The Swiss production mix does not correspond to the average composition of the delivered
+        electricity (Swiss delivery mix).
       </p>
-      <a href="https://www.strom.ch/de/service/stromkennzeichnung" target="_blank"
-        >More Informationen</a
-      >
     </TextSection>
 
     <ChartSection
@@ -127,13 +124,23 @@ import {
 
     <TextSection title="European Energy Mix" :icon="faEarthEurope">
       <p>
+        Electricity delivered to Swiss sockets is not only from Swiss production: there is active
+        trade with foreign countries, with electricity being both exported and imported. Swiss
+        guarantees of origin are traded domestically, and foreign ones can be imported.
+      </p>
+
+      <p>
         In Europe, the energy mix is different, based on the energy sources available in each
         country. The mixes vary significantly from country to country. In Europe many countries rely
-        on fossil fuels and nuclear energy. Just one third of the countries relay on renewable
-        energy for more than 50% of their energy mix. This are mainly the countries in the north of
+        on fossil fuels and nuclear energy. Just one third of the countries rely on renewable energy
+        for more than 50% of their energy mix. These are mainly the countries in the north of
         Europe.
       </p>
-      <p>The following chart shows the energy mix of the European Countries in the year #todo.</p>
+      <p>
+        To identify the shares of fossil energy, renewable energy, or nuclear energy from abroad, we
+        need to know the energy mixes of the other countries. The following chart shows the energy
+        mix of the European Countries in the year #todo.
+      </p>
     </TextSection>
 
     <ChartSection
@@ -149,12 +156,17 @@ import {
         is imported.
       </p>
       <p>
-        Switzerland imports energy from its neighboring countries and also exports energy to the
-        same countries. The following maps show energy imports and exports over the past few years.
+        Switzerland imports energy from its neighboring countries and also exports energy to these
+        same countries. The largest energy imports come from Germany and France, while the largest
+        exports go to Italy. Switzerland also supplies energy to countries from which it imports
+        energy. The imported energy from italy is mostyle fossil based energy, while imported energy
+        from France is mostly nuclear energy.
       </p>
       <p>
-        Switzerland imports the most energy from Germany and France. It exports the most energy to
-        Italy. Switzerland also supplies energy to countries from which it imports energy.
+        Regarding energy independence, we treat imports as negative values (regardless of the energy
+        mix of the respective country.) and exports as positive values. If imports exceed exports,
+        Switzerland is dependent on foreign energy. If exports exceed imports, Switzerland is energy
+        independent.
       </p>
     </TextSection>
     <ChartSection
@@ -172,8 +184,9 @@ import {
         longer been the case.
       </p>
       <p>
-        To identify the shares of fossil energy, renewable energy, or nuclear energy from abroad, we
-        need to know the energy mixes of the other countries.
+        The balance between imports and exports is influenced by seasonal demand, weather
+        conditions, and market dynamics. Achieving a stable import-export balance is crucial for
+        energy security.
       </p>
     </TextSection>
 
@@ -184,13 +197,14 @@ import {
     </ChartSection>
     <TextSection title="Consumption" :icon="faChargingStation">
       <p>
-        Over the last few years, the consumption of energy in Switzerland has decreased. After
-        increasing for decades.
+        Overall, Switzerland produces more energy than it consumes. Due to supply and demand
+        dynamics, Switzerland engages in energy trade with other countries. Without exporting, there
+        would be a surplus of energy — assuming supply and demand could be ignored. However, this
+        aspect cannot be ignored.
       </p>
       <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat, velit maiores. Neque
-        libero voluptatem similique numquam maxime eos praesentium placeat nesciunt mollitia aperiam
-        magni exercitationem et, consequuntur repudiandae quod reprehenderit.
+        For analysis purposes, we categorize imports and production as generation, and exports and
+        consumption as usage.
       </p>
     </TextSection>
     <ChartSection
@@ -206,31 +220,59 @@ import {
       :icon="faMagnifyingGlass"
     >
       <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias deleniti, nostrum vel porro
-        libero dolores! Repudiandae omnis aliquam porro aut deserunt odio, dolorem, rerum iste
-        dolore sit quidem dolores at?
+        Over the last few years, there has been a trend toward consuming less energy. This could be
+        due to better energy efficiency, such as the use of LED lights, improved insulation of
+        buildings, and more efficient machines.
       </p>
       <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias deleniti, nostrum vel porro
-        libero dolores! Repudiandae omnis aliquam porro aut deserunt odio, dolorem, rerum iste
-        dolore sit quidem dolores at?
+        Switzerland's energy strategy aims to promote sustainability, increase energy efficiency,
+        and reduce dependence on fossil fuels. The country has made significant progress in boosting
+        renewable energy production, particularly through hydropower and photovoltaics.
       </p>
       <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias deleniti, nostrum vel porro
-        libero dolores! Repudiandae omnis aliquam porro aut deserunt odio, dolorem, rerum iste
-        dolore sit quidem dolores at?
+        However, challenges remain in balancing imports and exports, ensuring energy security, and
+        maintaining a stable energy mix. The shift away from nuclear energy requires careful
+        planning and continued investment in innovative technologies.
+      </p>
+      <p>
+        By adhering to the 2050 Energy Strategy, Switzerland is paving the way toward a more
+        sustainable and resilient energy future.
       </p>
     </TextSection>
   </main>
+
   <footer class="text-center text-sm p-4 pt-20 bg-white relative">
     <p class="mb-4">HSLU FS24 DVIZ Project: Swiss Energy</p>
-    <p class="mb-4 text-sm">
-      All charts are made with
-      <a href="https://www.highcharts.com/" target="_blank">Highcharts.com</a>
-    </p>
+    <div class="flex flex-col md:flex-row justify-center gap-0 md:gap-1">
+      <p class="mb-4 text-sm">
+        All charts are made with
+        <a href="https://www.highcharts.com/" target="_blank" class="underline hover:text-bold"
+          >Highcharts.com</a
+        >
+      </p>
+      <span class="hidden md:block"> | </span>
+      <p class="mb-4 text-sm">
+        All Icons are from
+        <a href="https://fontawesome.com/" target="_blank" class="underline hover:text-bold"
+          >Font Awesome</a
+        >
+      </p>
+    </div>
     <p>
-      Gabriel Gjonaj, Xheladin Lekaj and
-      <a href="https://github.com/dario-baumberger">Dario Baumberger</a>
+      Made by
+      <a href="https://github.com/tagjonaj" target="_blank" class="underline hover:text-bold"
+        >Gabriel Gjonaj</a
+      >,
+      <a href="https://github.com/Xheki-l" target="_blank" class="underline hover:text-bold"
+        >Xheladin Lekaj</a
+      >
+      , and
+      <a
+        href="https://github.com/dario-baumberger"
+        target="_blank"
+        class="underline hover:text-bold"
+        >Dario Baumberger</a
+      >
     </p>
   </footer>
 </template>

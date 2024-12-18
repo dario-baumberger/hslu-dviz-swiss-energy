@@ -12,13 +12,13 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --fix",
-    "format": "prettier --write src/",
-    "tailwind": "npx tailwindcss -i ./src/assets/style.css -o ./public/assets/style.css --watch"
+    "format": "prettier --write src/"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.1",
     "@fortawesome/free-solid-svg-icons": "^6.7.1",
     "@fortawesome/vue-fontawesome": "^3.0.8",
+    "highcharts-pattern-fill": "^3.0.3",
     "vue": "^3.5.13"
   },
   "devDependencies": {
