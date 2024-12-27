@@ -1,4 +1,3 @@
-// todo: make nice
 export default function formatNumber(number: number | undefined): string {
   if (number === 0) {
     return '0'
@@ -12,8 +11,8 @@ export default function formatNumber(number: number | undefined): string {
     return 'NaN'
   }
 
-  const formattedNumber = number.toFixed(2)
-  const parts = formattedNumber.split('.')
-  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, "'")
-  return parts.join('.')
+  return number.toLocaleString('de-CH', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })
 }
