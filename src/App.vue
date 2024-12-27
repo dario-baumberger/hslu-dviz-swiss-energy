@@ -11,6 +11,7 @@ import ChartProductionArea from './components/ChartProductionArea.vue'
 import ChartCategorization from './components/ChartCategorization.vue'
 import ChartEuMix from './components/ChartEuMix.vue'
 import ChartConsumptionCh from './components/ChartConsumptionCh.vue'
+import StyledLink from './components/Link.vue'
 
 import {
   faBullseye,
@@ -51,9 +52,12 @@ import {
         ban on the construction of new nuclear power plants.
       </p>
       <p>
-        <a href="https://www.uvek.admin.ch/uvek/en/home/energy/energy-policy.html" target="_blank">
+        <StyledLink
+          href="https://www.uvek.admin.ch/uvek/en/home/energy/energy-policy.html"
+          target="_blank"
+        >
           Read more about Principles of energy policy in Switzerland
-        </a>
+        </StyledLink>
       </p>
       <p class="mt-4">
         How is Switzerland doing in terms of energy production, promoting renewable energy, reducing
