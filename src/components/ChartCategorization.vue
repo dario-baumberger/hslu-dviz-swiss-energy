@@ -67,7 +67,6 @@ export default defineComponent({
           spacingRight: 0,
           spacingBottom: 0,
           spacingLeft: 0,
-          margin: [0, 0, 0, 0],
           style: {
             fontFamily: 'var(--font-serif)',
           },

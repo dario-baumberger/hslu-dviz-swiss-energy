@@ -136,7 +136,7 @@ export default defineComponent({
             data: mapData(filteredYears?.data.imports),
             states: {
               hover: {
-                color: '#f44336',
+                color: '#000000',
               },
             },
             dataLabels: {
@@ -162,7 +162,6 @@ export default defineComponent({
             const point = this.point
             const hcKey = point.properties['hc-key']
             const imports = filteredYears?.data.imports[hcKey] as unknown as number
-
             return tooltip(this.point.color as string, this.point.name, [
               { label: 'CH Exports', value: `${formatNumber(imports)} MWh` },
             ])
@@ -175,7 +174,7 @@ export default defineComponent({
             data: mapData(filteredYears?.data.exports),
             states: {
               hover: {
-                color: '#4caf50',
+                color: '#000000',
               },
             },
             dataLabels: {
@@ -221,7 +220,7 @@ export default defineComponent({
             data: mapData(filteredYears?.data.netto),
             states: {
               hover: {
-                color: '#0000FF',
+                color: '#000000',
               },
             },
             dataLabels: {
