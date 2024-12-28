@@ -203,11 +203,11 @@ import {
       <p>
         Overall, Switzerland produces more energy than it consumes. Due to supply and demand
         dynamics, Switzerland engages in energy trade with other countries. Without exporting, there
-        would be a surplus of energy — assuming supply and demand could be ignored. However, this
-        aspect cannot be ignored.
+        would be overall a surplus of energy — assuming supply and demand could be ignored. However,
+        this aspect cannot be ignored.
       </p>
       <p>
-        For analysis purposes, we categorize imports and production as generation, and exports and
+        For analysis purposes, we categorize imports and production as production, and exports and
         consumption as usage.
       </p>
     </TextSection>

@@ -45,14 +45,14 @@ function prepareSeries(data: ProductionData[]): Highcharts.SeriesOptionsType[] {
 
     {
       ...(data.find((series) => series.name === 'Import') as Highcharts.SeriesOptionsType),
-      stack: 'Generation',
+      stack: 'Production',
       color: '#b71c1c',
     },
     {
       ...(data.find(
         (series) => series.name === 'Production Netto',
       ) as Highcharts.SeriesOptionsType),
-      stack: 'Generation',
+      stack: 'Production',
       color: '#66bb6a',
     },
   ] as Highcharts.SeriesOptionsType[]
