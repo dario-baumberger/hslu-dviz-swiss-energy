@@ -10,7 +10,10 @@ export default {
 }
 </script>
 <template>
-  <component class="underline hover:decoration-2 transition-all duration-300" :is="tag">
+  <component
+    class="underline hover:decoration-2 hover:text-black transition-all duration-300"
+    :is="tag"
+  >
     <slot />
   </component>
 </template>
