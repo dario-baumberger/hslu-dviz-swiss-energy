@@ -117,7 +117,7 @@
     ]
   },
   {
-    "name": "Other (renewable waste)",
+    "name": "Renewable waste",
     "data": [
       352.0,
       343.0,
@@ -312,7 +312,7 @@
     ]
   },
   {
-    "name": "Other (fossil)",
+    "name": "Fossil",
     "data": [
       661.0,
       904.0,

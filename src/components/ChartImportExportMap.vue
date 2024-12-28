@@ -9,7 +9,7 @@
       <div id="chartMapExport" class="h-screen-1/2 w-full"></div>
     </div>
     <div class="w-full">
-      <h2 class="text-xl mb-4 font-sans text-center">Netto Import Export</h2>
+      <h2 class="text-xl mb-4 font-sans text-center">Import Export</h2>
       <div id="chartMapNetto" class="h-screen-1/2 w-full"></div>
     </div>
   </div>
