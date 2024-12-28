@@ -244,9 +244,9 @@ export default defineComponent({
           formatter: function () {
             const point = this.point
             const hcKey = point.properties['hc-key']
-            const imports = filteredYears?.data.imports[hcKey] as unknown as number
+            const exports = filteredYears?.data.exports[hcKey] as unknown as number
             return tooltip(this.point.color as string, this.point.name, [
-              { label: 'CH Exports', value: `${formatNumber(imports)} MWh` },
+              { label: 'CH Exports', value: `${formatNumber(exports)} MWh` },
             ])
           },
         },
@@ -265,9 +265,9 @@ export default defineComponent({
           formatter: function () {
             const point = this.point
             const hcKey = point.properties['hc-key']
-            const exports = filteredYears?.data.exports[hcKey] as unknown as number
+            const imports = filteredYears?.data.imports[hcKey] as unknown as number
             return tooltip(this.point.color as string, this.point.name, [
-              { label: 'CH Imports', value: `${formatNumber(exports)} MWh` },
+              { label: 'CH Imports', value: `${formatNumber(imports)} MWh` },
             ])
           },
         },
