@@ -5,7 +5,7 @@
       <div id="chartMapImport" class="h-screen-1/2 w-full"></div>
     </div>
     <div class="w-full hidden md:block">
-      <h2 class="text-xl mb-4 font-sans text-center">Import from CH</h2>
+      <h2 class="text-xl mb-4 font-sans text-center">Export from CH</h2>
       <div id="chartMapExport" class="h-screen-1/2 w-full"></div>
     </div>
     <div class="w-full">
@@ -87,7 +87,7 @@ export default defineComponent({
     }
   },
   methods: {
-    createChart(years: number[], data: YearlyData[]) {
+    createChart(data: YearlyData[]) {
       const filteredYears = data.find((year) => year.name === this.yearToShow)
 
       const options: Highcharts.Options = {
@@ -123,9 +123,9 @@ export default defineComponent({
           formatter: function () {
             const point = this.point
             const hcKey = point.properties['hc-key']
-            const exports = filteredYears?.data.exports[hcKey] as unknown as number
+            const imports = filteredYears?.data.imports[hcKey] as unknown as number
             return tooltip(this.point.color as string, this.point.name, [
-              { label: 'CH Imports', value: `${formatNumber(exports)} MWh` },
+              { label: 'CH Imports', value: `${formatNumber(imports)} MWh` },
             ])
           },
         },
@@ -161,9 +161,9 @@ export default defineComponent({
           formatter: function () {
             const point = this.point
             const hcKey = point.properties['hc-key']
-            const imports = filteredYears?.data.imports[hcKey] as unknown as number
+            const exports = filteredYears?.data.exports[hcKey] as unknown as number
             return tooltip(this.point.color as string, this.point.name, [
-              { label: 'CH Exports', value: `${formatNumber(imports)} MWh` },
+              { label: 'CH Exports', value: `${formatNumber(exports)} MWh` },
             ])
           },
         },
@@ -239,58 +239,68 @@ export default defineComponent({
       const filteredYears = this.originalData.find((item) => item.name === this.yearToShow)
 
       this.chartExport?.update({
+        tooltip: {
+          useHTML: true,
+          formatter: function () {
+            const point = this.point
+            const hcKey = point.properties['hc-key']
+            const imports = filteredYears?.data.imports[hcKey] as unknown as number
+            return tooltip(this.point.color as string, this.point.name, [
+              { label: 'CH Exports', value: `${formatNumber(imports)} MWh` },
+            ])
+          },
+        },
         series: [
           {
             type: 'map',
             name: 'Export',
             data: mapData(filteredYears?.data.exports),
-            states: {
-              hover: {
-                color: '#BADA55',
-              },
-            },
-            dataLabels: {
-              enabled: true,
-              format: '{point.name}',
-            },
           },
         ],
       })
 
       this.chartImport?.update({
+        tooltip: {
+          useHTML: true,
+          formatter: function () {
+            const point = this.point
+            const hcKey = point.properties['hc-key']
+            const exports = filteredYears?.data.exports[hcKey] as unknown as number
+            return tooltip(this.point.color as string, this.point.name, [
+              { label: 'CH Imports', value: `${formatNumber(exports)} MWh` },
+            ])
+          },
+        },
         series: [
           {
             type: 'map',
             name: 'Import',
             data: mapData(filteredYears?.data.imports),
-            states: {
-              hover: {
-                color: 'red',
-              },
-            },
-            dataLabels: {
-              enabled: true,
-              format: '{point.name}',
-            },
           },
         ],
       })
 
       this.chartNetto?.update({
+        tooltip: {
+          useHTML: true,
+          formatter: function () {
+            const point = this.point
+            const hcKey = point.properties['hc-key']
+            const imports = filteredYears?.data.imports[hcKey] as unknown as number
+            const exports = filteredYears?.data.exports[hcKey] as unknown as number
+            const pointValue = point.value as number
+            return tooltip(this.point.color as string, this.point.name, [
+              { label: 'CH Exports', value: `${formatNumber(imports)} MWh` },
+              { label: 'CH Imports', value: `${formatNumber(exports)} MWh` },
+              { label: 'Netto', value: `${formatNumber(pointValue)} MWh` },
+            ])
+          },
+        },
         series: [
           {
             type: 'map',
             name: 'Import',
             data: mapData(filteredYears?.data.netto),
-            states: {
-              hover: {
-                color: 'red',
-              },
-            },
-            dataLabels: {
-              enabled: true,
-              format: '{point.name}',
-            },
           },
         ],
       })
@@ -310,7 +320,7 @@ export default defineComponent({
         this.max = Math.max(...this.years)
         this.yearToShow = this.max
 
-        this.createChart(this.years, data)
+        this.createChart(data)
       })
       .catch((error) => console.error('Error fetching the JSON data:', error))
   },
