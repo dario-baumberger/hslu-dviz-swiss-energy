@@ -20,6 +20,7 @@ import HighchartsExporting from 'highcharts/modules/exporting'
 import HighchartsExportData from 'highcharts/modules/export-data'
 import { genericOptions } from '../utils/highchartsOptions'
 import formatNumber from '../utils/formatNumber'
+import erzeugungData from '../data/erzeugung.json'
 
 HighchartsAccessibility(Highcharts)
 HighchartsExporting(Highcharts)
@@ -50,13 +51,13 @@ export default defineComponent({
       max: undefined,
       knob1: undefined,
       knob2: undefined,
-      originalData: [],
+      originalData: erzeugungData,
       years: [] as number[],
       chart: null as Highcharts.Chart | null,
     }
   },
   methods: {
-    createChart(years: number[], data: ProductionData[]) {
+    createChart() {
       const options: Highcharts.Options = {
         ...genericOptions,
         chart: {
@@ -77,7 +78,7 @@ export default defineComponent({
           enabled: false,
         },
         xAxis: {
-          categories: years.map((year) => year.toString()),
+          categories: this.years.map((year) => year.toString()),
         },
         yAxis: {
           title: {
@@ -105,7 +106,7 @@ export default defineComponent({
           },
         },
 
-        series: data.slice(1).map((series, index) => ({
+        series: this.originalData.slice(1).map((series, index) => ({
           name: series.name,
           data: series.data,
           type: 'column',
@@ -156,23 +157,18 @@ export default defineComponent({
     },
   },
   mounted() {
-    fetch('./data/erzeugung.json')
-      .then((response) => response.json())
-      .then((data) => {
-        this.years = data[0].data
-        this.originalData = data
-        this.max = Math.max(...this.years)
-        this.min = Math.min(...this.years)
-        this.knob1 = this.min
-        this.knob2 = this.max
+    this.years = this.originalData[0].data
 
-        this.createChart(this.years, data)
-        if (window.innerWidth < 768 && this.max - 7 > this.min) {
-          this.knob1 = this.max - 7
-          this.updateChart()
-        }
-      })
-      .catch((error) => console.error('Error fetching the JSON data:', error))
+    this.max = Math.max(...this.years)
+    this.min = Math.min(...this.years)
+    this.knob1 = this.min
+    this.knob2 = this.max
+
+    this.createChart()
+    if (window.innerWidth < 768 && this.max - 7 > this.min) {
+      this.knob1 = this.max - 7
+      this.updateChart()
+    }
   },
 })
 </script>

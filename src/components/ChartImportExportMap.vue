@@ -34,17 +34,18 @@ import HighchartsExporting from 'highcharts/modules/exporting'
 import HighchartsExportData from 'highcharts/modules/export-data'
 import { genericOptions } from '../utils/highchartsOptions'
 import { tooltip } from '../utils/chartTooltip'
+import data from '../data/ogd107_strom_import_export.json'
 
 HighchartsAccessibility(Highcharts)
 HighchartsExporting(Highcharts)
 HighchartsExportData(Highcharts)
 
-interface YearlyData {
+type YearlyData = {
   name: number
   data: {
-    exports: [string, number][]
-    imports: [string, number][]
-    netto: [string, number][]
+    exports: Record<string, number>
+    imports: Record<string, number>
+    netto: Record<string, number>
   }
 }
 
@@ -79,7 +80,7 @@ export default defineComponent({
       min: undefined,
       max: undefined,
       yearToShow: undefined,
-      originalData: [],
+      originalData: data,
       years: [],
       chartImport: undefined,
       chartExport: undefined,
@@ -87,8 +88,8 @@ export default defineComponent({
     }
   },
   methods: {
-    createChart(data: YearlyData[]) {
-      const filteredYears = data.find((year) => year.name === this.yearToShow)
+    createChart() {
+      const filteredYears = this.originalData.find((year) => year.name === this.yearToShow)
 
       const options: Highcharts.Options = {
         ...genericOptions,
@@ -311,18 +312,13 @@ export default defineComponent({
     },
   },
   mounted() {
-    fetch('./data/ogd107_strom_import_export.json')
-      .then((response) => response.json())
-      .then((data) => {
-        this.years = data.map((item: YearlyData) => item.name)
-        this.originalData = data
-        this.min = Math.min(...this.years)
-        this.max = Math.max(...this.years)
-        this.yearToShow = this.max
+    this.years = this.originalData.map((item: YearlyData) => item.name)
 
-        this.createChart(data)
-      })
-      .catch((error) => console.error('Error fetching the JSON data:', error))
+    this.min = Math.min(...this.years)
+    this.max = Math.max(...this.years)
+    this.yearToShow = this.max
+
+    this.createChart()
   },
 })
 </script>

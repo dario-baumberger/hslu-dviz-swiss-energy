@@ -19,6 +19,8 @@ import HighchartsExportData from 'highcharts/modules/export-data'
 import { genericOptions } from '../utils/highchartsOptions'
 import { tooltip } from '../utils/chartTooltip'
 import formatNumber from '../utils/formatNumber'
+import erzeugungData from '../data/erzeugung.json'
+import erzeugungGroupedData from '../data/erzeugung-grouped-2.json'
 
 HighchartsAccessibility(Highcharts)
 HighchartsExporting(Highcharts)
@@ -50,8 +52,8 @@ export default defineComponent({
       max: undefined,
       yearToShow: undefined,
       yearToShowIndex: -1,
-      ungroupedData: [],
-      groupedData: [],
+      ungroupedData: erzeugungData,
+      groupedData: erzeugungGroupedData,
       years: [],
       chart: null as Highcharts.Chart | null,
     }
@@ -190,24 +192,17 @@ export default defineComponent({
     },
   },
   mounted() {
-    Promise.all([
-      fetch('./data/erzeugung.json').then((response) => response.json()),
-      fetch('./data/erzeugung-grouped-2.json').then((response) => response.json()),
-    ])
-      .then(([ungroupedData, groupedData]: [ProductionData[], ProductionData[]]) => {
-        this.years = ungroupedData[0].data
-        this.min = Math.min(...this.years)
-        this.max = Math.max(...this.years)
-        this.yearToShow = this.max
+    this.years = this.ungroupedData[0].data
+    this.min = Math.min(...this.years)
+    this.max = Math.max(...this.years)
+    this.yearToShow = this.max
 
-        this.yearToShowIndex = this.years.indexOf(this.yearToShow ?? this.years[-1])
+    this.yearToShowIndex = this.years.indexOf(this.yearToShow ?? this.years[-1])
 
-        this.ungroupedData = ungroupedData
-        this.groupedData = groupedData
+    this.ungroupedData = this.ungroupedData
+    this.groupedData = this.groupedData
 
-        this.createChart()
-      })
-      .catch((error) => console.error('Error fetching the JSON data:', error))
+    this.createChart()
   },
 })
 </script>

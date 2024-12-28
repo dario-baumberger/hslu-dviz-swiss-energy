@@ -8,6 +8,7 @@ import HighchartsExporting from 'highcharts/modules/exporting'
 import HighchartsExportData from 'highcharts/modules/export-data'
 import { genericOptions } from '../utils/highchartsOptions'
 import formatNumber from '../utils/formatNumber'
+import productionData from '../data/erzeugung-grouped-2.json'
 
 HighchartsAccessibility(Highcharts)
 HighchartsExporting(Highcharts)
@@ -38,13 +39,13 @@ export default defineComponent({
       max: undefined,
       knob1: undefined,
       knob2: undefined,
-      originalData: [],
+      originalData: productionData,
       years: [],
       chart: null,
     }
   },
   methods: {
-    createChart(years: number[], data: ProductionData[]) {
+    createChart() {
       const options: Highcharts.Options = {
         ...genericOptions,
         chart: {
@@ -66,7 +67,7 @@ export default defineComponent({
           enabled: false,
         },
         xAxis: {
-          categories: years.map((year) => year.toString()),
+          categories: this.years.map((year) => year.toString()),
         },
         yAxis: {
           title: {
@@ -95,7 +96,7 @@ export default defineComponent({
           },
           series: {},
         },
-        series: data.slice(1).map((series, index) => ({
+        series: this.originalData.slice(1).map((series, index) => ({
           ...series,
           color: ['#4CB19E', '#6D6D6D', '#E4C54E'][index % 3],
         })) as Highcharts.SeriesOptionsType[],
@@ -134,19 +135,13 @@ export default defineComponent({
     },
   },
   mounted() {
-    fetch('./data/erzeugung-grouped-2.json')
-      .then((response) => response.json())
-      .then((data: ProductionData[]) => {
-        this.years = data[0].data
-        this.originalData = data
-        this.min = Math.min(...this.years)
-        this.max = Math.max(...this.years)
-        this.knob1 = this.min
-        this.knob2 = this.max
+    this.years = this.originalData[0].data
+    this.min = Math.min(...this.years)
+    this.max = Math.max(...this.years)
+    this.knob1 = this.min
+    this.knob2 = this.max
 
-        this.createChart(this.years, data)
-      })
-      .catch((error) => console.error('Error fetching the JSON data:', error))
+    this.createChart()
   },
 })
 </script>
