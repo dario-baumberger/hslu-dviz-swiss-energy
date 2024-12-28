@@ -48,6 +48,10 @@ input[type='range']::-webkit-slider-thumb:active {
     0 0 9px #387bbe;
 }
 
+html {
+  color: rgb(51, 51, 51);
+}
+
 #knob1 {
   height: 0;
   z-index: 11;
