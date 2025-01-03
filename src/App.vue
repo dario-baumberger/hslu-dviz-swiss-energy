@@ -143,7 +143,7 @@ import {
       <p>
         To identify the shares of fossil energy, renewable energy, or nuclear energy from abroad, we
         need to know the energy mixes of the other countries. The following chart shows the energy
-        mix of the European Countries in the year #todo.
+        mix of the European Countries in the year 2022.
       </p>
     </TextSection>
 
