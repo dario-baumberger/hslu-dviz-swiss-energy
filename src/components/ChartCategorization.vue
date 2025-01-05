@@ -10,6 +10,8 @@
 </template>
 
 <script lang="ts">
+import type { ProductionData } from '../types/production.types'
+
 import { defineComponent } from 'vue'
 import Highcharts from 'highcharts'
 import InputSlide from './InputSlide.vue'
@@ -26,15 +28,13 @@ HighchartsAccessibility(Highcharts)
 HighchartsExporting(Highcharts)
 HighchartsExportData(Highcharts)
 
-type ProductionData = {
-  name: string
-  data: number[]
-}
-
+/**
+ * Data type for the component data.
+ */
 type ComponentData = {
-  min: number | undefined
-  max: number | undefined
-  yearToShow: number | undefined
+  min: number
+  max: number
+  yearToShow: number
   yearToShowIndex: number
   ungroupedData: ProductionData[]
   groupedData: ProductionData[]
@@ -47,16 +47,33 @@ export default defineComponent({
     InputSlide,
   },
   data(): ComponentData {
+    const years = erzeugungData[0].data as number[]
+    const min = Math.min(...years)
+    const max = Math.max(...years)
     return {
-      min: undefined,
-      max: undefined,
-      yearToShow: undefined,
-      yearToShowIndex: -1,
+      min: min,
+      max: max,
+      yearToShow: max,
+      yearToShowIndex: years.indexOf(max),
       ungroupedData: erzeugungData,
       groupedData: erzeugungGroupedData,
-      years: [],
+      years: years,
       chart: null as Highcharts.Chart | null,
     }
+  },
+  computed: {
+    categoriesData(): { name: string; y: number }[] {
+      return this.ungroupedData.slice(1).map((series) => ({
+        name: series.name,
+        y: series.data[this.yearToShowIndex],
+      }))
+    },
+    detailsData(): { name: string; y: number }[] {
+      return this.groupedData.slice(1).map((series) => ({
+        name: series.name,
+        y: series.data[this.yearToShowIndex],
+      }))
+    },
   },
   methods: {
     createChart() {
@@ -115,12 +132,7 @@ export default defineComponent({
               '#A0A0A0',
               '#E4C54E',
             ],
-            data: this.ungroupedData.slice(1).map((series) => {
-              return {
-                name: series.name,
-                y: series.data[this.yearToShowIndex],
-              }
-            }),
+            data: this.categoriesData,
           },
           {
             name: 'Details',
@@ -129,12 +141,7 @@ export default defineComponent({
             innerSize: '50%',
             borderWidth: 1,
             colors: ['#4CB19E', '#6D6D6D', '#E4C54E'],
-            data: this.groupedData.slice(1).map((series) => {
-              return {
-                name: series.name,
-                y: series.data[this.yearToShowIndex],
-              }
-            }),
+            data: this.detailsData,
           },
         ],
       }
@@ -168,40 +175,20 @@ export default defineComponent({
               '#A0A0A0',
               '#E4C54E',
             ],
-            data: this.ungroupedData.slice(1).map((series) => {
-              return {
-                name: series.name,
-                y: series.data[this.yearToShowIndex],
-              }
-            }),
+            data: this.categoriesData,
           },
           {
             name: 'Details',
             type: 'pie',
             size: '40%',
             colors: ['#4CB19E', '#6D6D6D', '#E4C54E'],
-            data: this.groupedData.slice(1).map((series) => {
-              return {
-                name: series.name,
-                y: series.data[this.yearToShowIndex],
-              }
-            }),
+            data: this.detailsData,
           },
         ],
       })
     },
   },
   mounted() {
-    this.years = this.ungroupedData[0].data
-    this.min = Math.min(...this.years)
-    this.max = Math.max(...this.years)
-    this.yearToShow = this.max
-
-    this.yearToShowIndex = this.years.indexOf(this.yearToShow ?? this.years[-1])
-
-    this.ungroupedData = this.ungroupedData
-    this.groupedData = this.groupedData
-
     this.createChart()
   },
 })
