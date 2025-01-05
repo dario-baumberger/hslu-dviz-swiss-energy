@@ -267,7 +267,7 @@ export default defineComponent({
 					{
 						type: 'map',
 						name: 'Export',
-						data: mapData(context.filteredYears.data.exports),
+						data: mapData(context.filteredYears?.data.exports),
 					},
 				],
 			})
@@ -288,7 +288,7 @@ export default defineComponent({
 					{
 						type: 'map',
 						name: 'Import',
-						data: mapData(context.filteredYears.data.imports),
+						data: mapData(context.filteredYears?.data.imports),
 					},
 				],
 			})
@@ -313,7 +313,7 @@ export default defineComponent({
 					{
 						type: 'map',
 						name: 'Netto',
-						data: mapData(context.filteredYears.data.netto),
+						data: mapData(context.filteredYears?.data.netto),
 					},
 				],
 			})
