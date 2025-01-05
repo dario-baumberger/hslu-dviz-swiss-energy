@@ -11,6 +11,8 @@
 </template>
 
 <script lang="ts">
+import type { ProductionData } from '../types/production.types'
+
 import { defineComponent } from 'vue'
 import Highcharts from 'highcharts'
 import InputRange from './InputRange.vue'
@@ -26,19 +28,14 @@ HighchartsAccessibility(Highcharts)
 HighchartsExporting(Highcharts)
 HighchartsExportData(Highcharts)
 
-type ProductionData = {
-  name: string
-  data: number[]
-}
-
 type ComponentData = {
-  min: number | undefined
-  max: number | undefined
-  knob1: number | undefined
-  knob2: number | undefined
+  min: number
+  max: number
+  knob1: number
+  knob2: number
   originalData: ProductionData[]
   years: number[]
-  chart: Highcharts.Chart | null
+  chart: Highcharts.Chart | undefined
 }
 
 export default defineComponent({
@@ -46,18 +43,38 @@ export default defineComponent({
     InputRange,
   },
   data(): ComponentData {
+    const years = einfuhr_ausfuhr[0].data
+    const min = Math.min(...years)
+    const max = Math.max(...years)
+    console.log(min, max)
     return {
-      min: undefined,
-      max: undefined,
-      knob1: undefined,
-      knob2: undefined,
+      min: min,
+      max: max,
+      knob1: min,
+      knob2: max,
       originalData: einfuhr_ausfuhr,
-      years: [],
-      chart: null,
+      years: years,
+      chart: undefined,
     }
+  },
+  computed: {
+    filteredData(): ProductionData[] {
+      const startIndex = this.years.indexOf(this.knob1)
+      const endIndex = this.years.indexOf(this.knob2) + 1
+      return this.originalData.map((series) => ({
+        ...series,
+        data: series.data.slice(startIndex, endIndex),
+      }))
+    },
+    filteredYears(): string[] {
+      return this.years
+        .filter((year) => year >= this.knob1 && year <= this.knob2)
+        .map((year) => year.toString())
+    },
   },
   methods: {
     createChart() {
+      // chart configuration
       const options: Highcharts.Options = {
         ...genericOptions,
         chart: {
@@ -74,7 +91,7 @@ export default defineComponent({
           enabled: false,
         },
         xAxis: {
-          categories: this.years.map((year) => year.toString()),
+          categories: this.filteredYears,
         },
         yAxis: {
           title: {
@@ -99,7 +116,7 @@ export default defineComponent({
           series: {},
         },
         colors: ['#b71c1c', '#1b5e20'],
-        series: this.originalData.slice(1).map((series) => ({
+        series: this.filteredData.slice(1).map((series) => ({
           ...series,
           type: 'column',
         })),
@@ -113,39 +130,18 @@ export default defineComponent({
       this.updateChart()
     },
     updateChart() {
-      if (!(this.knob1 && this.knob2 && this.min && this.max)) {
-        return
-      }
-
-      const minYear = this.knob1
-      const maxYear = this.knob2
-
-      const filteredYears = this.years.filter((year) => year >= minYear && year <= maxYear)
-      const startIndex = this.years.indexOf(minYear)
-      const endIndex = this.years.indexOf(maxYear) + 1
-
-      const filteredData = this.originalData.map((series) => ({
-        ...series,
-        data: series.data.slice(startIndex + 1, endIndex),
-      }))
-
       this.chart?.update({
         xAxis: {
-          categories: filteredYears.map((year) => year.toString()),
+          categories: this.filteredYears,
         },
-        series: filteredData.slice(1) as Highcharts.SeriesOptionsType[],
+        series: this.filteredData.slice(1) as Highcharts.SeriesOptionsType[],
       })
     },
   },
   mounted() {
-    this.years = this.originalData[0].data
-
-    this.min = Math.min(...this.years)
-    this.max = Math.max(...this.years)
-    this.knob1 = this.min
-    this.knob2 = this.max
-
     this.createChart()
+
+    //on mobile screens limit inital displayed data
     if (window.innerWidth < 768 && this.max - 7 > this.min) {
       this.knob1 = this.max - 7
       this.updateChart()
