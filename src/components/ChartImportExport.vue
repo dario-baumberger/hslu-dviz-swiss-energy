@@ -46,7 +46,6 @@ export default defineComponent({
 		const years = einfuhr_ausfuhr[0].data
 		const min = Math.min(...years)
 		const max = Math.max(...years)
-		console.log(min, max)
 		return {
 			min: min,
 			max: max,
