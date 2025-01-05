@@ -77,6 +77,7 @@ export default defineComponent({
   },
   methods: {
     createChart() {
+      // chart configuration
       const options: Highcharts.Options = {
         ...genericOptions,
         chart: {
