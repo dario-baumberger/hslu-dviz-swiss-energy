@@ -50,9 +50,9 @@ type YearlyData = {
 }
 
 type ComponentData = {
-  min: number | undefined
-  max: number | undefined
-  yearToShow: number | undefined
+  min: number
+  max: number
+  yearToShow: number
   originalData: YearlyData[]
   years: number[]
   chartImport: Highcharts.Chart | undefined
@@ -71,26 +71,41 @@ function mapData(data: unknown): [string, number | null][] {
   ]) as [string, number | null][]
 }
 
+/**
+ * Component for the EU map.
+ * Import and Export will be hidden on mobile.
+ */
 export default defineComponent({
   components: {
     InputSlide,
   },
   data(): ComponentData {
+    const years = data.map((item: YearlyData) => item.name)
+    const min = Math.min(...years)
+    const max = Math.max(...years)
     return {
-      min: undefined,
-      max: undefined,
-      yearToShow: undefined,
+      min: min,
+      max: max,
+      yearToShow: max,
       originalData: data,
-      years: [],
+      years: years,
       chartImport: undefined,
       chartExport: undefined,
       chartNetto: undefined,
     }
   },
+  computed: {
+    filteredYears(): YearlyData | undefined {
+      return this.originalData.find((year) => year.name === this.yearToShow)
+    },
+  },
   methods: {
     createChart() {
-      const filteredYears = this.originalData.find((year) => year.name === this.yearToShow)
+      // need for access to parent context within Highcharts callbacks
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
+      const context = this
 
+      // chart configuration for all charts
       const options: Highcharts.Options = {
         ...genericOptions,
         chart: {
@@ -109,11 +124,9 @@ export default defineComponent({
         },
       }
 
+      // chart configuration for import chart
       const importOptions: Highcharts.Options = {
         ...options,
-        title: {
-          text: '',
-        },
         colorAxis: {
           type: 'linear',
           minColor: '#efefef',
@@ -124,7 +137,7 @@ export default defineComponent({
           formatter: function () {
             const point = this.point
             const hcKey = point.properties['hc-key']
-            const imports = filteredYears?.data.imports[hcKey] as unknown as number
+            const imports = context.filteredYears?.data.imports[hcKey] as unknown as number
             return tooltip(this.point.color as string, this.point.name, [
               { label: 'CH Imports', value: `${formatNumber(imports)} MWh` },
             ])
@@ -134,45 +147,7 @@ export default defineComponent({
           {
             type: 'map',
             name: 'Import',
-            data: mapData(filteredYears?.data.imports),
-            states: {
-              hover: {
-                color: '#000000',
-              },
-            },
-            dataLabels: {
-              enabled: true,
-              format: '{point.name}',
-            },
-          },
-        ],
-      }
-      const exportOptions: Highcharts.Options = {
-        ...options,
-        title: {
-          text: '',
-        },
-        colorAxis: {
-          type: 'linear',
-          minColor: '#efefef',
-          maxColor: '#1b5e20',
-        },
-        tooltip: {
-          useHTML: true,
-          formatter: function () {
-            const point = this.point
-            const hcKey = point.properties['hc-key']
-            const exports = filteredYears?.data.exports[hcKey] as unknown as number
-            return tooltip(this.point.color as string, this.point.name, [
-              { label: 'CH Exports', value: `${formatNumber(exports)} MWh` },
-            ])
-          },
-        },
-        series: [
-          {
-            type: 'map',
-            name: 'Export',
-            data: mapData(filteredYears?.data.exports),
+            data: mapData(this.filteredYears?.data.imports || {}),
             states: {
               hover: {
                 color: '#000000',
@@ -186,11 +161,46 @@ export default defineComponent({
         ],
       }
 
+      // chart configuration for export chart
+      const exportOptions: Highcharts.Options = {
+        ...options,
+        colorAxis: {
+          type: 'linear',
+          minColor: '#efefef',
+          maxColor: '#1b5e20',
+        },
+        tooltip: {
+          useHTML: true,
+          formatter: function () {
+            const point = this.point
+            const hcKey = point.properties['hc-key']
+            const exports = context.filteredYears?.data.exports[hcKey] as unknown as number
+            return tooltip(this.point.color as string, this.point.name, [
+              { label: 'CH Exports', value: `${formatNumber(exports)} MWh` },
+            ])
+          },
+        },
+        series: [
+          {
+            type: 'map',
+            name: 'Export',
+            data: mapData(this.filteredYears?.data.exports || {}),
+            states: {
+              hover: {
+                color: '#000000',
+              },
+            },
+            dataLabels: {
+              enabled: true,
+              format: '{point.name}',
+            },
+          },
+        ],
+      }
+
+      // chart configuration for netto chart
       const nettoOptions: Highcharts.Options = {
         ...options,
-        title: {
-          text: '',
-        },
         colorAxis: {
           type: 'linear',
           stops: [
@@ -204,8 +214,8 @@ export default defineComponent({
           formatter: function () {
             const point = this.point
             const hcKey = point.properties['hc-key']
-            const imports = filteredYears?.data.imports[hcKey] as unknown as number
-            const exports = filteredYears?.data.exports[hcKey] as unknown as number
+            const imports = context.filteredYears?.data.imports[hcKey] as unknown as number
+            const exports = context.filteredYears?.data.exports[hcKey] as unknown as number
             const pointValue = point.value as number
             return tooltip(this.point.color as string, this.point.name, [
               { label: 'CH Exports', value: `${formatNumber(imports)} MWh` },
@@ -218,7 +228,7 @@ export default defineComponent({
           {
             type: 'map',
             name: 'Netto',
-            data: mapData(filteredYears?.data.netto),
+            data: mapData(this.filteredYears?.data.netto || {}),
             states: {
               hover: {
                 color: '#000000',
@@ -237,7 +247,9 @@ export default defineComponent({
       this.chartNetto = Highcharts.mapChart('chartMapNetto', nettoOptions)
     },
     updateChart() {
-      const filteredYears = this.originalData.find((item) => item.name === this.yearToShow)
+      // need for access to parent context within Highcharts callbacks
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
+      const context = this
 
       this.chartExport?.update({
         tooltip: {
@@ -245,7 +257,7 @@ export default defineComponent({
           formatter: function () {
             const point = this.point
             const hcKey = point.properties['hc-key']
-            const exports = filteredYears?.data.exports[hcKey] as unknown as number
+            const exports = context.filteredYears?.data.exports[hcKey] as unknown as number
             return tooltip(this.point.color as string, this.point.name, [
               { label: 'CH Exports', value: `${formatNumber(exports)} MWh` },
             ])
@@ -255,7 +267,7 @@ export default defineComponent({
           {
             type: 'map',
             name: 'Export',
-            data: mapData(filteredYears?.data.exports),
+            data: mapData(context.filteredYears.data.exports),
           },
         ],
       })
@@ -266,7 +278,7 @@ export default defineComponent({
           formatter: function () {
             const point = this.point
             const hcKey = point.properties['hc-key']
-            const imports = filteredYears?.data.imports[hcKey] as unknown as number
+            const imports = context.filteredYears?.data.imports[hcKey] as unknown as number
             return tooltip(this.point.color as string, this.point.name, [
               { label: 'CH Imports', value: `${formatNumber(imports)} MWh` },
             ])
@@ -276,7 +288,7 @@ export default defineComponent({
           {
             type: 'map',
             name: 'Import',
-            data: mapData(filteredYears?.data.imports),
+            data: mapData(context.filteredYears.data.imports),
           },
         ],
       })
@@ -287,8 +299,8 @@ export default defineComponent({
           formatter: function () {
             const point = this.point
             const hcKey = point.properties['hc-key']
-            const imports = filteredYears?.data.imports[hcKey] as unknown as number
-            const exports = filteredYears?.data.exports[hcKey] as unknown as number
+            const imports = context.filteredYears?.data.imports[hcKey] as unknown as number
+            const exports = context.filteredYears?.data.exports[hcKey] as unknown as number
             const pointValue = point.value as number
             return tooltip(this.point.color as string, this.point.name, [
               { label: 'CH Exports', value: `${formatNumber(imports)} MWh` },
@@ -300,8 +312,8 @@ export default defineComponent({
         series: [
           {
             type: 'map',
-            name: 'Import',
-            data: mapData(filteredYears?.data.netto),
+            name: 'Netto',
+            data: mapData(context.filteredYears.data.netto),
           },
         ],
       })
@@ -312,12 +324,6 @@ export default defineComponent({
     },
   },
   mounted() {
-    this.years = this.originalData.map((item: YearlyData) => item.name)
-
-    this.min = Math.min(...this.years)
-    this.max = Math.max(...this.years)
-    this.yearToShow = this.max
-
     this.createChart()
   },
 })

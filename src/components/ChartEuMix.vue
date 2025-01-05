@@ -36,7 +36,7 @@ type ComponentData = {
   knob2: number | undefined
   originalData: ProductionData[]
   years: number[]
-  chart: Highcharts.Chart | null
+  chart: Highcharts.Chart | undefined
 }
 
 export default defineComponent({
@@ -51,7 +51,7 @@ export default defineComponent({
       knob2: max,
       originalData: energiemixData,
       years: years,
-      chart: null,
+      chart: undefined,
     }
   },
   computed: {

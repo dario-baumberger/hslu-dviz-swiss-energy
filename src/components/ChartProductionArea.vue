@@ -38,7 +38,7 @@ type ComponentData = {
   knob2: number
   originalData: ProductionData[]
   years: number[]
-  chart: Highcharts.Chart | null
+  chart: Highcharts.Chart | undefined
 }
 
 /**
@@ -59,7 +59,7 @@ export default defineComponent({
       knob2: max,
       originalData: productionData,
       years: years,
-      chart: null,
+      chart: undefined,
     }
   },
   computed: {
