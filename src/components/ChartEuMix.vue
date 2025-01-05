@@ -12,7 +12,7 @@ import HighchartsExportData from 'highcharts/modules/export-data'
 import { tooltip } from '../utils/chartTooltip'
 import { genericOptions } from '../utils/highchartsOptions'
 import formatNumber from '../utils/formatNumber'
-import energiemixData from '../data/energiemix_eu.json'
+import energiemixData from '../data/energiemix-eu.json'
 
 HighchartsAccessibility(Highcharts)
 HighchartsExporting(Highcharts)

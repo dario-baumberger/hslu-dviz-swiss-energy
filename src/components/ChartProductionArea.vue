@@ -22,7 +22,7 @@ import HighchartsExporting from 'highcharts/modules/exporting'
 import HighchartsExportData from 'highcharts/modules/export-data'
 import { genericOptions } from '../utils/highchartsOptions'
 import formatNumber from '../utils/formatNumber'
-import productionData from '../data/erzeugung-grouped-2.json'
+import productionData from '../data/production-grouped.json'
 
 HighchartsAccessibility(Highcharts)
 HighchartsExporting(Highcharts)

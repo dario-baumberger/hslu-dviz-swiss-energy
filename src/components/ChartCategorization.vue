@@ -21,8 +21,8 @@ import HighchartsExportData from 'highcharts/modules/export-data'
 import { genericOptions } from '../utils/highchartsOptions'
 import { tooltip } from '../utils/chartTooltip'
 import formatNumber from '../utils/formatNumber'
-import erzeugungData from '../data/erzeugung.json'
-import erzeugungGroupedData from '../data/erzeugung-grouped-2.json'
+import erzeugungData from '../data/production.json'
+import erzeugungGroupedData from '../data/production-grouped.json'
 
 HighchartsAccessibility(Highcharts)
 HighchartsExporting(Highcharts)
