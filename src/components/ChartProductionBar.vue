@@ -11,6 +11,8 @@
 </template>
 
 <script lang="ts">
+import type { ProductionData } from '../types/production.types'
+
 import { defineComponent } from 'vue'
 import Highcharts from 'highcharts'
 import InputRange from './InputRange.vue'
@@ -25,14 +27,6 @@ import erzeugungData from '../data/erzeugung.json'
 HighchartsAccessibility(Highcharts)
 HighchartsExporting(Highcharts)
 HighchartsExportData(Highcharts)
-
-/**
- * Data type for the production data.
- */
-type ProductionData = {
-  name: string
-  data: number[]
-}
 
 /**
  * Data type for the component data.
