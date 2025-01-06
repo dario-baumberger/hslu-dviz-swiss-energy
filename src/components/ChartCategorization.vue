@@ -111,6 +111,7 @@ export default defineComponent({
 							alignTo: 'plotEdges',
 							connectorWidth: 1,
 							crop: false,
+							overflow: 'justify',
 						},
 					},
 				},
