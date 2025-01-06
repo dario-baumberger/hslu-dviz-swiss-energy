@@ -226,7 +226,8 @@ import {
 			<p>
 				Over the last few years, there has been a trend toward consuming less energy. This could be
 				due to better energy efficiency, such as the use of LED lights, improved insulation of
-				buildings, and more efficient machines.
+				buildings, and more efficient machines. Measuring efficiency is not easy due to the
+				inconsistent consumption of energy.
 			</p>
 			<p>
 				Switzerland's energy strategy aims to promote sustainability, increase energy efficiency,
