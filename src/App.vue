@@ -269,8 +269,7 @@ import {
 			>,
 			<a href="https://github.com/Xheki-l" target="_blank" class="underline hover:text-bold"
 				>Xheladin Lekaj</a
-			>
-			, and
+			>, and
 			<a
 				href="https://github.com/dario-baumberger"
 				target="_blank"
