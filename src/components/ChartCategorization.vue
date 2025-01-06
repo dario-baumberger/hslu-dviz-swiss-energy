@@ -108,7 +108,7 @@ export default defineComponent({
 						dataLabels: {
 							enabled: true,
 							distance: 70,
-							alignTo: 'connectors',
+							alignTo: 'plotEdges',
 							connectorWidth: 1,
 							crop: false,
 						},

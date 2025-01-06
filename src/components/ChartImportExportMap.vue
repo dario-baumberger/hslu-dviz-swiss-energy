@@ -101,7 +101,7 @@ export default defineComponent({
 	},
 	methods: {
 		createChart() {
-			// need for access to parent context within Highcharts callbacks
+			// needed fto access the parent context within Highcharts callbacks
 			// eslint-disable-next-line @typescript-eslint/no-this-alias
 			const context = this
 
@@ -110,7 +110,7 @@ export default defineComponent({
 				...genericOptions,
 				chart: {
 					map: topology,
-					animation: false,
+					animation: true,
 					backgroundColor: 'white',
 					style: {
 						fontFamily: 'var(--font-serif)',
@@ -247,7 +247,7 @@ export default defineComponent({
 			this.chartNetto = Highcharts.mapChart('chartMapNetto', nettoOptions)
 		},
 		updateChart() {
-			// need for access to parent context within Highcharts callbacks
+			// needed fto access the parent context within Highcharts callbacks
 			// eslint-disable-next-line @typescript-eslint/no-this-alias
 			const context = this
 
