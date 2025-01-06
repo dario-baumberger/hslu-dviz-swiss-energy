@@ -1,3 +1,9 @@
+/**
+ * Simple function to format a number to a string with 2 decimal places
+ *
+ * @param number
+ * @returns
+ */
 export default function formatNumber(number: number | undefined): string {
 	if (number === 0) {
 		return '0'

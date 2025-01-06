@@ -10,7 +10,7 @@ import HighchartsExporting from 'highcharts/modules/exporting'
 import HighchartsExportData from 'highcharts/modules/export-data'
 
 import { tooltip } from '../utils/chartTooltip'
-import { genericOptions } from '../utils/highchartsOptions'
+import { genericOptions, tooltipOptions } from '../utils/highchartsOptions'
 import formatNumber from '../utils/formatNumber'
 import energiemixData from '../data/energiemix-eu.json'
 
@@ -104,7 +104,7 @@ export default defineComponent({
 					},
 				},
 				tooltip: {
-					useHTML: true,
+					...tooltipOptions,
 					formatter: function () {
 						return tooltip(this.point.color as string, this.series.name, [
 							{ label: 'Country', value: this.key },

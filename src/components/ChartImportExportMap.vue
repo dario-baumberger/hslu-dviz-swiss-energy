@@ -32,7 +32,7 @@ import formatNumber from '../utils/formatNumber'
 import HighchartsAccessibility from 'highcharts/modules/accessibility'
 import HighchartsExporting from 'highcharts/modules/exporting'
 import HighchartsExportData from 'highcharts/modules/export-data'
-import { genericOptions } from '../utils/highchartsOptions'
+import { genericOptions, tooltipOptions } from '../utils/highchartsOptions'
 import { tooltip } from '../utils/chartTooltip'
 import data from '../data/import-export-eu.json'
 
@@ -133,7 +133,7 @@ export default defineComponent({
 					maxColor: '#b71c1c',
 				},
 				tooltip: {
-					useHTML: true,
+					...tooltipOptions,
 					formatter: function () {
 						const point = this.point
 						const hcKey = point.properties['hc-key']
@@ -170,7 +170,7 @@ export default defineComponent({
 					maxColor: '#1b5e20',
 				},
 				tooltip: {
-					useHTML: true,
+					...tooltipOptions,
 					formatter: function () {
 						const point = this.point
 						const hcKey = point.properties['hc-key']
@@ -210,7 +210,7 @@ export default defineComponent({
 					],
 				},
 				tooltip: {
-					useHTML: true,
+					...tooltipOptions,
 					formatter: function () {
 						const point = this.point
 						const hcKey = point.properties['hc-key']
@@ -253,7 +253,7 @@ export default defineComponent({
 
 			this.chartExport?.update({
 				tooltip: {
-					useHTML: true,
+					...tooltipOptions,
 					formatter: function () {
 						const point = this.point
 						const hcKey = point.properties['hc-key']
@@ -274,7 +274,7 @@ export default defineComponent({
 
 			this.chartImport?.update({
 				tooltip: {
-					useHTML: true,
+					...tooltipOptions,
 					formatter: function () {
 						const point = this.point
 						const hcKey = point.properties['hc-key']
@@ -295,7 +295,7 @@ export default defineComponent({
 
 			this.chartNetto?.update({
 				tooltip: {
-					useHTML: true,
+					...tooltipOptions,
 					formatter: function () {
 						const point = this.point
 						const hcKey = point.properties['hc-key']
@@ -328,3 +328,5 @@ export default defineComponent({
 	},
 })
 </script>
+
+<style scoped></style>

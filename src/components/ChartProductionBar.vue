@@ -20,7 +20,7 @@ import { tooltip } from '../utils/chartTooltip'
 import HighchartsAccessibility from 'highcharts/modules/accessibility'
 import HighchartsExporting from 'highcharts/modules/exporting'
 import HighchartsExportData from 'highcharts/modules/export-data'
-import { genericOptions } from '../utils/highchartsOptions'
+import { genericOptions, tooltipOptions } from '../utils/highchartsOptions'
 import formatNumber from '../utils/formatNumber'
 import erzeugungData from '../data/production.json'
 
@@ -108,7 +108,7 @@ export default defineComponent({
 					},
 				},
 				tooltip: {
-					useHTML: true,
+					...tooltipOptions,
 					formatter: function () {
 						return tooltip(this.point.color as string, this.series.name, [
 							{ label: 'Year', value: this.key },

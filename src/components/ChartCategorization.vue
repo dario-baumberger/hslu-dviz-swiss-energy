@@ -18,7 +18,7 @@ import InputSlide from './InputSlide.vue'
 import HighchartsAccessibility from 'highcharts/modules/accessibility'
 import HighchartsExporting from 'highcharts/modules/exporting'
 import HighchartsExportData from 'highcharts/modules/export-data'
-import { genericOptions } from '../utils/highchartsOptions'
+import { genericOptions, tooltipOptions } from '../utils/highchartsOptions'
 import { tooltip } from '../utils/chartTooltip'
 import formatNumber from '../utils/formatNumber'
 import erzeugungData from '../data/production.json'
@@ -92,7 +92,7 @@ export default defineComponent({
 					},
 				},
 				tooltip: {
-					useHTML: true,
+					...tooltipOptions,
 					formatter: function () {
 						return tooltip(this.point.color as string, this.point.name, [
 							{ label: 'Production', value: `${formatNumber(this.point.y)} GWh` },

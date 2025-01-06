@@ -1,10 +1,17 @@
-// todo: make nice
+/**
+ * tooltip generator function for highcharts tooltip formatter
+ *
+ * @param color
+ * @param title
+ * @param values
+ * @returns
+ */
 export function tooltip(
 	color: string | undefined,
 	title: string | undefined,
 	values: Array<{ label: string | undefined; value: string | undefined }>,
 ) {
-	let tooltip = `<span class="flex flex-col gap-1 bg-white rounded font-serif">`
+	let tooltip = `<span class="flex flex-col gap-1 bg-white rounded font-serif p-2 shadow">`
 	tooltip += `<span class="flex flex-row gap-1 bg-white items-center font-sans">`
 	if (color) {
 		tooltip += `<span class="inline-block w-2 h-2 rounded-full" style="background-color: ${color}"></span>`

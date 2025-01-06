@@ -1,3 +1,8 @@
+import Highcharts from 'highcharts'
+
+/**
+ * Highcharts export options for all charts
+ */
 export const exportSettings = {
 	exporting: {
 		buttons: {
@@ -21,7 +26,10 @@ export const exportSettings = {
 	},
 }
 
-export const genericOptions = {
+/**
+ * Highcharts options for all charts
+ */
+export const genericOptions: Highcharts.Options = {
 	title: {
 		text: '',
 	},
@@ -29,4 +37,15 @@ export const genericOptions = {
 		enabled: false,
 	},
 	...exportSettings,
+}
+
+/*
+ * Highcharts tooltip options for all charts
+ */
+export const tooltipOptions: Highcharts.TooltipOptions = {
+	useHTML: true,
+	hideDelay: 6000000,
+	shadow: true,
+	padding: 0,
+	backgroundColor: 'white',
 }
