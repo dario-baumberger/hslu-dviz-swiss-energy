@@ -37,7 +37,6 @@ The project uses the following data sources:
 | Name                                                                    | Link                                                                                                           | Description                        |
 | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
 | Energiedashboard.ch: Tägliche Flüsse in die und aus der Schweiz (Strom) | [Link](https://opendata.swiss/de/dataset/energiedashboard-ch-tagliche-flusse-in-die-und-aus-der-schweiz-strom) | Daily electricity flows data       |
-| Energiedashboard.ch: Stromverbrauch Swissgrid                           | [Link](https://opendata.swiss/de/dataset/energiedashboard-ch-stromverbrauch-swissgrid)                         | Electricity consumption data       |
 | Schweizerische Elektrizitätsbilanz - Jahreswerte                        | [Link](https://opendata.swiss/de/dataset/schweizerische-elektrizitatsbilanz-jahreswerte)                       | Swiss electricity balance (annual) |
 | European Council                                                        | [Link](https://www.consilium.europa.eu/en/infographics/how-is-eu-electricity-produced-and-sold/)               | European Energy Mix                |
 
