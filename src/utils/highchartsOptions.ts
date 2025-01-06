@@ -44,7 +44,7 @@ export const genericOptions: Highcharts.Options = {
  */
 export const tooltipOptions: Highcharts.TooltipOptions = {
 	useHTML: true,
-	hideDelay: 6000000,
+	hideDelay: 300,
 	shadow: true,
 	padding: 0,
 	backgroundColor: 'white',
