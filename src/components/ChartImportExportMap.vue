@@ -34,7 +34,7 @@ import HighchartsExporting from 'highcharts/modules/exporting'
 import HighchartsExportData from 'highcharts/modules/export-data'
 import { genericOptions } from '../utils/highchartsOptions'
 import { tooltip } from '../utils/chartTooltip'
-import data from '../data/ogd107_strom_import_export.json'
+import data from '../data/import-export-eu.json'
 
 HighchartsAccessibility(Highcharts)
 HighchartsExporting(Highcharts)
