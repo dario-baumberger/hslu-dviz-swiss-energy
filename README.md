@@ -7,7 +7,7 @@ Develop this project seamlessly with **Visual Studio Code** and a **DevContainer
 ### Steps to Get Started:
 
 1. Open the project in VS Code.
-2. Open the project in the **DevContainer** (use the VS Code DevContainer extension).
+2. Open the project in the **DevContainer** (use the VS Code DevContainer extension). Downloading the image and all requirements may take a while.
 3. Run the following commands:
    ```bash
    npm install
@@ -28,17 +28,17 @@ If you prefer not to use the DevContainer, manually install the following prereq
 
 1. Data sources are located in `./data`.
 2. Data is processed with Python files located in `./python`.
-3. Processed data will be saved in `./public/data` as JSON files.
+3. Processed data will be saved in `./src/data` as JSON files.
 
 ### Data Sources
 
 The project uses the following data sources:
 
-| Name                                                                    | Link                                                                                                           | Description                        |
-| ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| Energiedashboard.ch: Tägliche Flüsse in die und aus der Schweiz (Strom) | [Link](https://opendata.swiss/de/dataset/energiedashboard-ch-tagliche-flusse-in-die-und-aus-der-schweiz-strom) | Daily electricity flows data       |
-| Schweizerische Elektrizitätsbilanz - Jahreswerte                        | [Link](https://opendata.swiss/de/dataset/schweizerische-elektrizitatsbilanz-jahreswerte)                       | Swiss electricity balance (annual) |
-| European Council                                                        | [Link](https://www.consilium.europa.eu/en/infographics/how-is-eu-electricity-produced-and-sold/)               | European Energy Mix                |
+| Name                                                             | Link                                                                                                           | Description                        |
+| ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| energiedashboard.ch: Daily import and export flows (Electricity) | [Link](https://opendata.swiss/de/dataset/energiedashboard-ch-tagliche-flusse-in-die-und-aus-der-schweiz-strom) | Daily electricity flows data       |
+| Schweizerische Elektrizitätsbilanz - Jahreswerte                 | [Link](https://opendata.swiss/de/dataset/schweizerische-elektrizitatsbilanz-jahreswerte)                       | Swiss electricity balance (annual) |
+| European Council                                                 | [Link](https://www.consilium.europa.eu/en/infographics/how-is-eu-electricity-produced-and-sold/)               | European Energy Mix                |
 
 ---
 
@@ -52,6 +52,8 @@ jupyter notebook
 
 Ensure Jupyter Notebook is installed, either manually or through the DevContainer setup.
 
+Or run Jupyter Notebooks directly within VS Code.
+
 ---
 
 ## Frontend
@@ -62,13 +64,11 @@ This page is built with vue 3, vite and tailwind css.
 
 The project includes the following NPM scripts:
 
-| Script              | Description                                                    |
-| ------------------- | -------------------------------------------------------------- |
-| `npm run dev`       | Compile and Hot-Reload for Development                         |
-| `npm run build`     | Type-Check, Compile, and Minify for Production                 |
-| `npm run test:unit` | Run Unit Tests with [Vitest](https://vitest.dev/)              |
-| `npm run test:e2e`  | Run End-to-End Tests with [Playwright](https://playwright.dev) |
-| `npm run lint`      | Lint code with [ESLint](https://eslint.org/)                   |
+| Script          | Description                                    |
+| --------------- | ---------------------------------------------- |
+| `npm run dev`   | Compile and Hot-Reload for Development         |
+| `npm run build` | Type-Check, Compile, and Minify for Production |
+| `npm run lint`  | Lint code with [ESLint](https://eslint.org/)   |
 
 ---
 
