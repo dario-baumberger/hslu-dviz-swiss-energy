@@ -247,35 +247,28 @@ import {
 	</main>
 
 	<footer class="text-center text-sm p-4 pt-20 bg-white relative">
-		<p class="mb-4">HSLU FS24 DVIZ Project: Swiss Energy</p>
+		<p class="mb-4">
+			<StyledLink href="https://www.hslu.ch/en/" target="_blank">HSLU</StyledLink> FS24 DVIZ
+			Project: Swiss Energy
+		</p>
 		<div class="flex flex-col md:flex-row justify-center gap-0 md:gap-1">
 			<p class="mb-4 text-sm">
 				All charts are made with
-				<a href="https://www.highcharts.com/" target="_blank" class="underline hover:text-bold"
-					>Highcharts.com</a
-				>
+				<StyledLink href="https://www.highcharts.com/" target="_blank">Highcharts.com</StyledLink>
 			</p>
 			<span class="hidden md:block"> | </span>
 			<p class="mb-4 text-sm">
 				All Icons are from
-				<a href="https://fontawesome.com/" target="_blank" class="underline hover:text-bold"
-					>Font Awesome</a
-				>
+				<StyledLink href="https://fontawesome.com/" target="_blank">Font Awesome</StyledLink>
 			</p>
 		</div>
 		<p>
 			Made by
-			<a href="https://github.com/tagjonaj" target="_blank" class="underline hover:text-bold"
-				>Gabriel Gjonaj</a
-			>,
-			<a href="https://github.com/Xheki-l" target="_blank" class="underline hover:text-bold"
-				>Xheladin Lekaj</a
-			>, and
-			<a
-				href="https://github.com/dario-baumberger"
-				target="_blank"
-				class="underline hover:text-bold"
-				>Dario Baumberger</a
+			<StyledLink href="https://github.com/tagjonaj" target="_blank">Gabriel Gjonaj</StyledLink>
+			,
+			<StyledLink href="https://github.com/Xheki-l" target="_blank">Xheladin Lekaj</StyledLink>, and
+			<StyledLink href="https://github.com/dario-baumberger" target="_blank"
+				>Dario Baumberger</StyledLink
 			>
 		</p>
 	</footer>
