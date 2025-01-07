@@ -13,7 +13,8 @@
         "Vue.volar",
         "ms-playwright.playwright",
         "vitest.explorer",
-        "EditorConfig.EditorConfig"
+        "EditorConfig.EditorConfig",
+        "ms-toolsai.jupyter-keymap"
       ]
     },
     "python.defaultInterpreterPath": ".venv/bin/python",
