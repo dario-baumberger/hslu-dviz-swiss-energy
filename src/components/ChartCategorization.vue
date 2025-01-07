@@ -83,10 +83,7 @@ export default defineComponent({
 				chart: {
 					backgroundColor: 'white',
 					type: 'pie',
-					spacingTop: 0,
-					spacingRight: 0,
-					spacingBottom: 0,
-					spacingLeft: 0,
+
 					style: {
 						fontFamily: 'var(--font-serif)',
 					},
@@ -107,7 +104,7 @@ export default defineComponent({
 						innerSize: '50%',
 						dataLabels: {
 							enabled: true,
-							distance: 70,
+							distance: 100,
 							alignTo: 'plotEdges',
 							connectorWidth: 1,
 							crop: false,
